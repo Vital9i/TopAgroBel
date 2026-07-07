@@ -1,45 +1,33 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  SERVICE_DETAILS,
+  LINK_GROUPS,
+  PAGE_EXTRA_GROUPS,
+  MONOLIT_KARKAS_BLOCK,
+} from "./service-content.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.join(__dirname, "..");
 
-/** @typedef {{ slug: string; title: string; lede?: string; freq?: string }} Service */
+const SITE_ORIGIN = "https://topagrobel.by";
+
+/** @typedef {{ slug: string; title: string; lede?: string; freq?: string; stub?: boolean }} Service */
 
 /** @type {Service[]} */
-const CORE = [
+const OBJECT_BUILD = [
   {
     slug: "stroitelstvo-zdaniy-i-sooruzheniy",
     title: "Строительство зданий и сооружений",
     freq: "2 470 / мес.",
   },
   {
-    slug: "stroitelno-montazhnye-raboty",
-    title: "Строительно-монтажные работы",
-    freq: "580 / мес.",
-  },
-  {
     slug: "promyshlennoe-stroitelstvo",
     title: "Промышленное строительство",
     freq: "170 / мес.",
   },
-  {
-    slug: "monolitnye-raboty",
-    title: "Монолитные работы",
-    freq: "120 / мес.",
-  },
-  { slug: "genpodryad", title: "Генподряд", freq: "30 / мес." },
-  {
-    slug: "rekonstrukciya-zdaniy",
-    title: "Реконструкция зданий",
-    freq: "220 / мес.",
-  },
-];
-
-/** @type {Service[]} */
-const BY_OBJECT = [
   {
     slug: "promyshlennye-zdaniya",
     title: "Промышленные здания",
@@ -55,10 +43,6 @@ const BY_OBJECT = [
     title: "Строительство ангаров",
     freq: "70 / мес.",
   },
-];
-
-/** @type {Service[]} */
-const BY_TECH = [
   {
     slug: "stroitelstvo-bystrovozvodimyh-zdaniy",
     title: "Быстровозводимые здания",
@@ -68,11 +52,6 @@ const BY_TECH = [
     slug: "angary-iz-sendvich-paneley",
     title: "Ангары из сэндвич-панелей",
     freq: "10 / мес.",
-  },
-  {
-    slug: "beskarkasnye-angary",
-    title: "Бескаркасные ангары",
-    freq: "20 / мес.",
   },
   {
     slug: "zdaniya-iz-sendvich-paneley",
@@ -90,9 +69,75 @@ const BY_TECH = [
     title: "Модульные здания",
     freq: "20 / мес.",
   },
+  { slug: "genpodryad", title: "Генподряд", freq: "30 / мес." },
+  {
+    slug: "rekonstrukciya-zdaniy",
+    title: "Реконструкция зданий",
+    freq: "220 / мес.",
+  },
 ];
 
-const SERVICES = [...CORE, ...BY_OBJECT, ...BY_TECH];
+/** @type {Service[]} */
+const WORK_TYPES = [
+  {
+    slug: "stroitelno-montazhnye-raboty",
+    title: "Строительно-монтажные работы",
+    freq: "580 / мес.",
+  },
+  {
+    slug: "promyshlennye-betonnye-poly",
+    title: "Промышленные бетонные полы",
+  },
+  { slug: "zemlyanye-raboty", title: "Земляные работы" },
+  {
+    slug: "fundamenty-promyshlennyh-zdaniy",
+    title: "Фундаменты промышленных зданий",
+  },
+  {
+    slug: "montazh-metallokonstrukciy",
+    title: "Монтаж металлоконструкций",
+  },
+  {
+    slug: "montazh-sbornogo-zhelezobetona",
+    title: "Монтаж сборного железобетона",
+  },
+  {
+    slug: "monolitnye-raboty",
+    title: "Монолитные работы",
+    freq: "120 / мес.",
+  },
+  { slug: "krovelnye-raboty", title: "Кровельные работы" },
+  { slug: "fasadnye-raboty", title: "Фасадные работы" },
+  {
+    slug: "naruzhnye-inzhenernye-seti",
+    title: "Наружные инженерные сети",
+  },
+  { slug: "teplotrassy", title: "Теплотрассы" },
+  {
+    slug: "stroitelstvo-dorog-i-ploshchadok",
+    title: "Строительство дорог, проездов и площадок",
+  },
+  {
+    slug: "blagoustroystvo-territorii",
+    title: "Благоустройство территории",
+  },
+  { slug: "usilenie-konstrukciy", title: "Усиление конструкций" },
+  {
+    slug: "arenda-stroitelnoy-tehniki",
+    title: "Аренда строительной техники",
+    stub: true,
+  },
+];
+
+const SERVICES = [...OBJECT_BUILD, ...WORK_TYPES];
+
+/** @type {Record<string, string>} */
+const PAGE_EXTRA_TITLES = {
+  "stroitelno-montazhnye-raboty": "Виды строительно-монтажных работ",
+  "promyshlennoe-stroitelstvo": "Работы в составе промышленного строительства",
+  "stroitelstvo-zdaniy-i-sooruzheniy": "Полный цикл работ",
+  "rekonstrukciya-zdaniy": "Работы при реконструкции",
+};
 
 function esc(s) {
   return String(s)
@@ -100,6 +145,261 @@ function esc(s) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+/** @param {string[]} items */
+function renderListItems(items) {
+  return items.map((item) => `<li>${esc(item)}</li>`).join("");
+}
+
+/**
+ * @param {string} title
+ * @param {{ slug: string; label: string }[]} links
+ */
+function renderLinkGrid(title, links) {
+  const items = links
+    .map(
+      (l) =>
+        `<li><a class="srv-crosslink" href="${esc(l.slug)}.html">${esc(l.label)}</a></li>`,
+    )
+    .join("");
+  return `
+      <section class="srv-crosslinks wrap" aria-labelledby="srv-crosslinks-${esc(title).replace(/\s/g, "-")}">
+        <h2 class="srv-section-title srv-section-title--center">${esc(title)}</h2>
+        <ul class="srv-crosslinks-grid">${items}</ul>
+      </section>`;
+}
+
+/** @param {string} slug */
+function renderPageExtras(slug) {
+  let html = "";
+  const groupKey = PAGE_EXTRA_GROUPS[slug];
+  if (groupKey && LINK_GROUPS[groupKey]) {
+    html += renderLinkGrid(
+      PAGE_EXTRA_TITLES[slug] ?? "Смежные услуги",
+      LINK_GROUPS[groupKey],
+    );
+  }
+  if (slug === "monolitnye-raboty") {
+    html += `
+      <section class="srv-detail wrap" aria-labelledby="srv-monolit-karkas">
+        <h2 id="srv-monolit-karkas" class="srv-section-title">${esc(MONOLIT_KARKAS_BLOCK.title)}</h2>
+        <p class="srv-section-lede">${esc(MONOLIT_KARKAS_BLOCK.text)}</p>
+      </section>`;
+  }
+  return html;
+}
+
+/**
+ * @param {import("./service-content.mjs").ServiceDetail} detail
+ * @param {string} slug
+ */
+function detailedServiceLandingMarkup(detail, slug) {
+  const t = esc(detail.h1);
+  const scrollLead = `#service-lead-${slug}`;
+  const scrollBtn = (label, extraClass = "") =>
+    `<a class="srv-cta-solid srv-btn-scroll${extraClass ? ` ${extraClass}` : ""}" href="${scrollLead}" data-scroll-target="${scrollLead}">${esc(label)}</a>`;
+
+  const heroBullets =
+    detail.heroBullets?.map((b) => `<li>${esc(b)}</li>`).join("") ??
+    `<li>Работаем с промышленными, складскими и коммерческими объектами по Беларуси.</li>`;
+
+  const faqHtml = detail.faq
+    .map(
+      (item) => `
+            <div class="faq-item">
+              <button type="button" class="faq-q focus-ring" aria-expanded="false">${esc(item.q)}</button>
+              <div class="faq-a">${esc(item.a)}</div>
+            </div>`,
+    )
+    .join("");
+
+  const relatedHtml = detail.related?.length
+    ? renderLinkGrid("Смежные услуги", detail.related)
+    : "";
+
+  const leadCta = detail.leadCta ?? detail.ctaLabel;
+
+  return `
+      <section class="srv-hero" aria-labelledby="srv-hero-heading-${slug}">
+        <div class="srv-hero__bg" aria-hidden="true"></div>
+        <div class="srv-hero__inner wrap">
+          <nav class="breadcrumbs breadcrumbs--srv" aria-label="Хлебные крошки">
+            <ol>
+              <li><a href="../index.html">Главная</a></li>
+              <li><a href="index.html">Услуги</a></li>
+              <li aria-current="page">${t}</li>
+            </ol>
+          </nav>
+          <div class="srv-hero__grid">
+            <div class="srv-hero__copy">
+              <p class="srv-hero__label">Строительные услуги ТопАгроБел</p>
+              <h1 id="srv-hero-heading-${slug}" class="srv-hero__title">${t}</h1>
+              <ul class="srv-hero-list">${heroBullets}</ul>
+              <p class="srv-hero__lede">${esc(detail.heroLede)}</p>
+            </div>
+            <aside class="srv-hero__cta srv-cta-card" aria-label="Обратная связь">
+              <strong class="srv-cta-card__title">Получить расчёт</strong>
+              <p class="srv-cta-card__sub">Оставьте заявку — подготовим ориентир по срокам и стоимости работ.</p>
+              <p class="srv-cta-card__phone"><a href="tel:+375XXXXXXXXX">+375 (XX) XXX-XX-XX</a></p>
+              ${scrollBtn(detail.ctaLabel)}
+              <p class="srv-cta-card__hint">Ответ оперативно в рабочее время&nbsp;• пн–пт 09:00–18:00</p>
+              <div class="srv-cta-card__avatar" aria-hidden="true"><span>ПК</span></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="srv-detail srv-detail--muted wrap" aria-labelledby="srv-objects-${slug}">
+        <h2 id="srv-objects-${slug}" class="srv-section-title">${esc(detail.objects.title)}</h2>
+        <ul class="srv-checklist">${renderListItems(detail.objects.items)}</ul>
+      </section>
+
+      <section class="srv-feature">
+        <div class="srv-feature-inner wrap">
+          <div class="srv-feature-photo" aria-hidden="true"></div>
+          <div class="srv-feature-body">
+            <h2 class="srv-section-title">${esc(detail.works.title)}</h2>
+            <ul class="srv-checklist srv-checklist--light">${renderListItems(detail.works.items)}</ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="srv-detail wrap" aria-labelledby="srv-stages-${slug}">
+        <h2 id="srv-stages-${slug}" class="srv-section-title">${esc(detail.stages.title)}</h2>
+        <ol class="srv-steps-list">${detail.stages.items.map((item) => `<li>${esc(item)}</li>`).join("")}</ol>
+      </section>
+
+      <section class="srv-banner" aria-labelledby="srv-pricing-${slug}">
+        <div class="srv-banner__bg" aria-hidden="true"></div>
+        <div class="srv-banner__inner wrap">
+          <div class="srv-banner__copy">
+            <h2 id="srv-pricing-${slug}" class="srv-banner__title">${esc(detail.pricing.title)}</h2>
+            <ul class="srv-checklist srv-checklist--light">${renderListItems(detail.pricing.items)}</ul>
+          </div>
+          <aside class="srv-banner__cta srv-cta-card srv-cta-card--compact">
+            <strong class="srv-cta-card__title">Коммерческое предложение</strong>
+            <p class="srv-cta-card__sub">Финальную цену закрепляем в договоре после сбора исходных данных по объекту.</p>
+            ${scrollBtn(detail.ctaLabel)}
+          </aside>
+        </div>
+      </section>
+
+      <section class="srv-projects" aria-labelledby="srv-projects-heading-${slug}">
+        <div class="srv-projects-head wrap">
+          <h2 id="srv-projects-heading-${slug}" class="srv-projects-title">Примеры выполненных работ</h2>
+          <a href="../index.html#objects-showcase" class="srv-projects-more">На главную — блок проектов</a>
+        </div>
+        <div class="srv-projects-grid wrap">
+          ${[1, 2, 3, 4, 5, 6]
+            .map(
+              (n) =>
+                `<figure class="srv-project-cell"><figcaption class="visually-hidden">${t}&nbsp;— карточка проекта&nbsp;${n}</figcaption><span class="srv-project-ph">Фото ${n}</span></figure>`,
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <section class="srv-faq" aria-labelledby="srv-faq-title-${slug}">
+        <div class="srv-faq-bar">
+          <h2 id="srv-faq-title-${slug}" class="srv-faq-title">Частые вопросы</h2>
+        </div>
+        <div class="srv-faq-body wrap">
+          <div class="faq faq--srv">${faqHtml}</div>
+        </div>
+      </section>
+
+      <section class="srv-final strip-cta">
+        <div class="strip-cta__inner wrap">
+          <div>
+            <strong class="strip-cta__title">${esc(detail.ctaLabel)}</strong>
+            <p class="strip-cta__text">Короткая заявка ниже — технический отдел оценит объём работ и сроки подготовки КП.</p>
+          </div>
+          ${scrollBtn(detail.ctaLabel)}
+        </div>
+      </section>
+
+      ${relatedHtml}
+
+      <article id="service-lead-${slug}" class="srv-lead" aria-labelledby="srv-lead-title-${slug}">
+        <div class="srv-lead-inner wrap">
+          <h2 id="srv-lead-title-${slug}" class="srv-section-title">Форма заявки</h2>
+          <p class="srv-section-lede">Опишите объект, площадь и сроки — свяжемся для уточнения деталей.</p>
+          <form class="lead-form lead-form--srv" data-contact-form novalidate>
+            <div class="field-row">
+              <label for="lead-name-${slug}">Компания / ФИО</label>
+              <input id="lead-name-${slug}" name="name" autocomplete="organization" placeholder="Как к вам обращаться">
+            </div>
+            <div class="field-row">
+              <label for="lead-phone-${slug}">Телефон</label>
+              <input id="lead-phone-${slug}" name="phone" autocomplete="tel" placeholder="+375…">
+            </div>
+            <div class="field-row">
+              <label for="lead-msg-${slug}">Задача</label>
+              <textarea id="lead-msg-${slug}" name="message" placeholder="Площадь, назначение объекта, срок КП"></textarea>
+            </div>
+            <div>
+              <button class="srv-cta-solid srv-lead-submit" type="submit">${esc(leadCta)}</button>
+            </div>
+          </form>
+        </div>
+      </article>`;
+}
+
+/** @param {Service} service */
+function stubServiceMarkup(service) {
+  const slug = esc(service.slug);
+  const t = esc(service.title);
+  const scrollLead = `#service-lead-${service.slug}`;
+  return `
+      <section class="srv-hero" aria-labelledby="srv-hero-heading-${slug}">
+        <div class="srv-hero__bg" aria-hidden="true"></div>
+        <div class="srv-hero__inner wrap">
+          <nav class="breadcrumbs breadcrumbs--srv" aria-label="Хлебные крошки">
+            <ol>
+              <li><a href="../index.html">Главная</a></li>
+              <li><a href="index.html">Услуги</a></li>
+              <li aria-current="page">${t}</li>
+            </ol>
+          </nav>
+          <div class="srv-hero__grid">
+            <div class="srv-hero__copy">
+              <p class="srv-hero__label">Строительные услуги ТопАгроБел</p>
+              <h1 id="srv-hero-heading-${slug}" class="srv-hero__title">${t}</h1>
+              <p class="srv-hero__lede">Раздел находится в разработке. Скоро здесь появится информация об аренде строительной техники.</p>
+            </div>
+            <aside class="srv-hero__cta srv-cta-card" aria-label="Обратная связь">
+              <strong class="srv-cta-card__title">Связаться с нами</strong>
+              <p class="srv-cta-card__sub">Оставьте контакты — сообщим о запуске раздела или подберём технику через менеджера.</p>
+              <p class="srv-cta-card__phone"><a href="tel:+375XXXXXXXXX">+375 (XX) XXX-XX-XX</a></p>
+              <a class="srv-cta-solid srv-btn-scroll" href="${scrollLead}" data-scroll-target="${scrollLead}">Связаться с нами</a>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <article id="service-lead-${slug}" class="srv-lead" aria-labelledby="srv-lead-title-${slug}">
+        <div class="srv-lead-inner wrap">
+          <h2 id="srv-lead-title-${slug}" class="srv-section-title">Форма заявки</h2>
+          <form class="lead-form lead-form--srv" data-contact-form novalidate>
+            <div class="field-row">
+              <label for="lead-name-${slug}">Компания / ФИО</label>
+              <input id="lead-name-${slug}" name="name" autocomplete="organization" placeholder="Как к вам обращаться">
+            </div>
+            <div class="field-row">
+              <label for="lead-phone-${slug}">Телефон</label>
+              <input id="lead-phone-${slug}" name="phone" autocomplete="tel" placeholder="+375…">
+            </div>
+            <div class="field-row">
+              <label for="lead-msg-${slug}">Сообщение</label>
+              <textarea id="lead-msg-${slug}" name="message" placeholder="Интересующая техника или вопрос"></textarea>
+            </div>
+            <div>
+              <button class="srv-cta-solid srv-lead-submit" type="submit">Отправить заявку</button>
+            </div>
+          </form>
+        </div>
+      </article>`;
 }
 
 /**
@@ -420,7 +720,7 @@ function serviceLandingMarkup(service) {
             <h2 class="srv-section-title">Технологии и качество производства работ</h2>
             <p class="srv-section-lede">Для услуги «${t}» подбираем конструктив и материалы с учётом нормативной базы Беларуси, коррозионной активности и нагрузок.</p>
             <ul class="srv-checklist srv-checklist--light">
-              <li>Разделение производственного блока СМР и авторского наблюдения где это требуется ТЗ.</li>
+              <li>Разделение производственного блока строительно-монтажных работ и авторского наблюдения где это требуется ТЗ.</li>
               <li>Стандартизация узлов там, где позволяет проект — выше качество монтажа и ниже брак при стыковании партий КМД.</li>
               <li>Отчётность по этапам: акты промежуточных работ, промежуточные оплаты по графику договора.</li>
             </ul>
@@ -484,6 +784,8 @@ function serviceLandingMarkup(service) {
             .join("")}
         </div>
       </section>
+
+      ${renderPageExtras(service.slug)}
 
       <section class="srv-faq" aria-labelledby="srv-faq-title-${slug}">
         <div class="srv-faq-bar">
@@ -556,12 +858,29 @@ function serviceLandingMarkup(service) {
 }
 
 function serviceHtml(service) {
-  const slugFile = `${service.slug}.html`;
-  const meta = `${service.title}: строительные работы, прозрачная смета, этапы, готовые объекты (блок), FAQ для Минского региона.`;
+  const detail = SERVICE_DETAILS[service.slug];
+  let mainMarkup;
+  let pageTitle;
+  let meta;
+
+  if (service.stub) {
+    mainMarkup = stubServiceMarkup(service);
+    pageTitle = "Аренда строительной техники | ТопАгроБел";
+    meta =
+      "Аренда строительной техники для земляных, погрузочных, демонтажных и строительных работ. Страница находится в разработке.";
+  } else if (detail) {
+    mainMarkup = detailedServiceLandingMarkup(detail, service.slug);
+    pageTitle = detail.seoTitle;
+    meta = detail.seoDescription;
+  } else {
+    mainMarkup = serviceLandingMarkup(service);
+    pageTitle = `${service.title} — ТопАгроБел`;
+    meta = `${service.title}: строительные работы, прозрачная смета, этапы, готовые объекты (блок), FAQ для Минского региона.`;
+  }
 
   return `${baseHead({
     depth: "subdir",
-    title: `${service.title} — ТопАгроБел`,
+    title: pageTitle,
     meta,
   })}
   <link rel="stylesheet" href="${urls("subdir").css}service-page.css">
@@ -573,7 +892,7 @@ ${renderUnifiedHeader({
 })}
 
   <main class="site-main site-main--service">
-${serviceLandingMarkup(service)}
+${mainMarkup}
   </main>
 
 ${renderFooter("subdir")}
@@ -584,33 +903,33 @@ ${scripts({ depth: "subdir" })}
 
 function uslugiIndexHtml() {
   const meta =
-    "Каталог промышленного и складского строительства: ангары, быстровозводимые технологии, генподряд.";
+    "Каталог промышленного и складского строительства: строительство объектов, виды строительно-монтажных работ, ангары, быстровозводимые технологии, генподряд.";
 
-  const groupsHtml = [
-    ["Основные услуги", CORE],
-    ["По типу объекта", BY_OBJECT],
-    ["По технологии", BY_TECH],
-  ]
-    .map(([heading, rows]) => {
-      const rowsHtml = rows
-        .map(
-          (r) => `
+  /** @param {string} heading @param {Service[]} rows */
+  const groupSection = (heading, rows) => {
+    const rowsHtml = rows
+      .map(
+        (r) => `
           <section class="link-card">
             <h3 style="margin:0 0 8px;"><a href="${esc(r.slug)}.html">${esc(r.title)}</a></h3>
-            <p style="margin:0;color:#565656">${esc(`/uslugi/${r.slug}.html`)}</p>
+            <p style="margin:0;color:#565656">${esc(`/uslugi/${r.slug}`)}</p>
           </section>`,
-        )
-        .join("");
-      return `
-      <section class="wrap" style="margin-top:16px;">
-        <h2 class="page-title" style="font-size:22px;">${esc(String(heading))}</h2>
+      )
+      .join("");
+    return `
+      <section class="wrap uslugi-group" style="margin-top:16px;">
+        <h2 class="page-title" style="font-size:22px;">${esc(heading)}</h2>
         <div class="card-grid cols-3">${rowsHtml}
         </div>
       </section>`;
-    })
-    .join("");
+  };
+
+  const groupsHtml =
+    groupSection("Строительство объектов", OBJECT_BUILD) +
+    groupSection("Виды работ", WORK_TYPES);
 
   return `${baseHead({ depth: "subdir", title: "Услуги — ТопАгроБел", meta })}
+  <link rel="stylesheet" href="${urls("subdir").css}service-page.css">
 </head>
 <body class="site-shell">
 ${renderUnifiedHeader({
@@ -620,8 +939,14 @@ ${renderUnifiedHeader({
 
   <main class="site-main">
     <div class="wrap">
+      <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <ol>
+          <li><a href="../index.html">Главная</a></li>
+          <li aria-current="page">Услуги</li>
+        </ol>
+      </nav>
       <h1 class="page-title">Строительные услуги</h1>
-      <p class="page-lede">Все ключевые «посадочные страницы» по SEO-карте вынесены в отдельные HTML-документы в папке <code>/uslugi/</code>.</p>
+      <p class="page-lede">Каталог посадочных страниц: строительство промышленных, складских и коммерческих объектов и отдельные виды строительно-монтажных работ.</p>
 
       <div class="hero">
         <h2 style="margin:0 0 10px;font-size:20px;">Схема проекта и правила блоков на услуге</h2>
@@ -713,15 +1038,11 @@ ${scripts({ depth: "root" })}
 }
 
 function seoSitemapHtml() {
-  const coreItems = CORE.map(
+  const objectItems = OBJECT_BUILD.map(
     (s, idx) => `
                 <li class="service-item"><span class="num">${idx + 1}</span><div><span class="service-name">${esc(s.title)}</span><a class="url" href="uslugi/${esc(s.slug)}.html">${esc(`/uslugi/${s.slug}`)}</a></div><span class="freq">${esc(s.freq ?? "—")}</span></li>`,
   ).join("");
-  const byObjectItems = BY_OBJECT.map(
-    (s, idx) => `
-                <li class="service-item"><span class="num">${idx + 1}</span><div><span class="service-name">${esc(s.title)}</span><a class="url" href="uslugi/${esc(s.slug)}.html">${esc(`/uslugi/${s.slug}`)}</a></div><span class="freq">${esc(s.freq ?? "—")}</span></li>`,
-  ).join("");
-  const byTechItems = BY_TECH.map(
+  const workItems = WORK_TYPES.map(
     (s, idx) => `
                 <li class="service-item"><span class="num">${idx + 1}</span><div><span class="service-name">${esc(s.title)}</span><a class="url" href="uslugi/${esc(s.slug)}.html">${esc(`/uslugi/${s.slug}`)}</a></div><span class="freq">${esc(s.freq ?? "—")}</span></li>`,
   ).join("");
@@ -730,14 +1051,14 @@ function seoSitemapHtml() {
     <div class="container">
       <header class="header">
         <h1 class="title">SEO-сайтмап сайта ТопАгроБел</h1>
-        <p class="subtitle">Все релевантные запросы из семантики распределены по посадочным страницам.<br/>Частотность на исходной схеме — суммарный спрос кластера в месяц по Минской области.</p>
+        <p class="subtitle">Промышленное и складское строительство, виды строительно-монтажных работ и посадочные страницы услуг.<br/>Частотность на исходной схеме — суммарный спрос кластера в месяц по Минской области.</p>
 
         <div class="semantic-bar">
           <div class="semantic-icon"><span></span></div>
           <span>Охват семантики:</span>
-          <span><span class="yellow">68</span> целевых запросов</span>
+          <span><span class="yellow">расширенный</span> каталог услуг</span>
           <span class="dot"></span>
-          <span>суммарная частотность <span class="yellow">4 420</span> запросов/мес.</span>
+          <span>промышленное строительство и виды работ</span>
         </div>
 
         <section class="home-node">
@@ -751,24 +1072,18 @@ function seoSitemapHtml() {
 
       <section class="structure">
         <div class="section-box services-section">
-          <div class="box-title"><span class="title-icon crane"></span>Услуги <small>(основное SEO-ядро)</small></div>
+          <div class="box-title"><span class="title-icon crane"></span>Услуги <small>(SEO-ядро)</small></div>
 
           <div class="services-grid">
             <article class="service-column">
-              <div class="service-head">Основные услуги</div>
-              <ul class="service-list">${coreItems}
+              <div class="service-head">Строительство объектов</div>
+              <ul class="service-list">${objectItems}
               </ul>
             </article>
 
             <article class="service-column">
-              <div class="service-head">По типу объекта</div>
-              <ul class="service-list">${byObjectItems}
-              </ul>
-            </article>
-
-            <article class="service-column">
-              <div class="service-head">По технологии</div>
-              <ul class="service-list">${byTechItems}
+              <div class="service-head">Виды работ</div>
+              <ul class="service-list">${workItems}
               </ul>
             </article>
           </div>
@@ -810,7 +1125,7 @@ function seoSitemapHtml() {
                 <div class="arrow">→</div>
                 <div class="flow-item"><div class="flow-ico light"></div>Технология /<br/>решение</div>
                 <div class="arrow">→</div>
-                <div class="flow-item"><div class="flow-ico rub">₽</div>Стоимость</div>
+                <div class="flow-item"><div class="flow-ico rub">BYN</div>Стоимость</div>
                 <div class="arrow">→</div>
                 <div class="flow-item"><div class="flow-ico steps"></div>Этапы</div>
                 <div class="flow-item"><div class="flow-ico steps"></div>Готовые<br/>объекты</div>
@@ -854,6 +1169,57 @@ ${scripts({ depth: "root" })}
 </html>`;
 }
 
+function sitemapXml() {
+  const today = new Date().toISOString().slice(0, 10);
+  const staticPages = [
+    { loc: "/", priority: "1.0", changefreq: "weekly" },
+    { loc: "/uslugi/", priority: "0.9", changefreq: "weekly" },
+    ...SERVICES.map((s) => ({
+      loc: `/uslugi/${s.slug}`,
+      priority: s.stub ? "0.4" : "0.8",
+      changefreq: s.stub ? "monthly" : "monthly",
+    })),
+    { loc: "/o-kompanii/", priority: "0.7", changefreq: "monthly" },
+    { loc: "/partnery/", priority: "0.6", changefreq: "monthly" },
+    { loc: "/sertifikaty-i-dokumenty/", priority: "0.6", changefreq: "monthly" },
+    { loc: "/kontakty/", priority: "0.7", changefreq: "monthly" },
+    { loc: "/rekvizity/", priority: "0.4", changefreq: "yearly" },
+    { loc: "/blog/", priority: "0.6", changefreq: "weekly" },
+  ];
+
+  const urls = staticPages
+    .map(
+      (p) => `
+  <url>
+    <loc>${SITE_ORIGIN}${p.loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${p.changefreq}</changefreq>
+    <priority>${p.priority}</priority>
+  </url>`,
+    )
+    .join("");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}
+</urlset>`;
+}
+
+function beskarkasRedirectHtml() {
+  return `<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=stroitelstvo-angarov.html">
+  <link rel="canonical" href="${SITE_ORIGIN}/uslugi/stroitelstvo-angarov">
+  <title>Перенаправление — Строительство ангаров | ТопАгроБел</title>
+  <script>location.replace("stroitelstvo-angarov.html");</script>
+</head>
+<body>
+  <p>Страница перемещена. <a href="stroitelstvo-angarov.html">Перейти к строительству ангаров</a>.</p>
+</body>
+</html>`;
+}
+
 for (const s of SERVICES) {
   fs.writeFileSync(
     path.join(PROJECT_ROOT, "uslugi", `${s.slug}.html`),
@@ -868,6 +1234,14 @@ fs.writeFileSync(path.join(PROJECT_ROOT, "uslugi", "index.html"), uslugiIndexHtm
 // fs.writeFileSync(path.join(PROJECT_ROOT, "index.html"), homepageHtml(), "utf8");
 
 fs.writeFileSync(path.join(PROJECT_ROOT, "seo-sitemap.html"), seoSitemapHtml(), "utf8");
+
+fs.writeFileSync(path.join(PROJECT_ROOT, "sitemap.xml"), sitemapXml(), "utf8");
+
+fs.writeFileSync(
+  path.join(PROJECT_ROOT, "uslugi", "beskarkasnye-angary.html"),
+  beskarkasRedirectHtml(),
+  "utf8",
+);
 
 const corp = [
   // «О компании» — см. статический o-kompanii/index.html (макет, не генератором).

@@ -3,15 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ТопАгроБел — промышленное и складское строительство</title>
-  <meta name="description" content="Строительство объектов промышленного и складского назначения, монтаж ангаров и быстровозводимых зданий. Минский регион и вся Беларусь.">
+  <title>Промышленное строительство под ключ в Минской области | ТопАгроБел</title>
+  <meta name="description" content="ТопАгроБел — подряд и генподряд на промышленных, складских, офисных и коммерческих объектах в Минске и Минской области. Строительство под ключ: фундаменты, металлоконструкции, кровли, фасады, сети и благоустройство.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Промышленное строительство под ключ | ТопАгроБел">
+  <meta property="og:description" content="Подряд и генподряд на промышленных, складских и коммерческих объектах в Минске и Минской области.">
+  <meta property="og:image" content="assets/images/main/topagrobel-industrial-hero.webp">
+  <meta property="og:locale" content="ru_BY">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/images/main/topagrobel-industrial-hero.webp" as="image" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/header-unified.css">
-  <link rel="stylesheet" href="css/service-page.css">
   <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "GeneralContractor",
+    "name": "ТопАгроБел",
+    "description": "Промышленное и складское строительство под ключ в Минске и Минской области",
+    "areaServed": "Минск и Минская область",
+    "url": "https://topagrobel.by/",
+    "telephone": "+375-XX-XXX-XX-XX",
+    "openingHours": "Mo-Fr 09:00-18:00"
+  }
+  </script>
 </head>
 <body class="site-shell home-page">
 
@@ -19,10 +38,9 @@
     <div class="home-topbar">
       <div class="wrap home-topbar-row">
         <a class="home-logo-strong" href="index.html">ТОП<span>АГРО</span>БЕЛ</a>
-        <div class="home-contacts-strip">
-          <span><strong>График:</strong> пн–пт 09:00–18:00</span>
-          <a href="tel:+375XXXXXXXXX">+375 (XX) XXX-XX-XX</a>
-          <span>Минская область, выезд по РБ</span>
+        <div class="home-contacts-strip home-contacts-strip--compact">
+          <a class="home-contacts-strip__phone" href="tel:+375291234567">+375 (29) 123-45-67</a>
+          <span class="home-contacts-strip__meta">пн–пт 09:00–18:00 · Минск и область</span>
         </div>
         <button type="button" class="home-btn-callback home-btn-scroll" data-scroll-target="#zakaz-consult">
           Обратный звонок
@@ -38,8 +56,8 @@
           <ul>
             <li><a href="o-kompanii/index.html">О компании</a></li>
             <li><a href="uslugi/index.html">Услуги</a></li>
-            <li><a href="#objects-showcase">Проекты</a></li>
-            <li><a href="#pricing-offer">Цены</a></li>
+            <li><a href="#home-portfolio" data-nav-anchor>Проекты</a></li>
+            <li><a href="#home-pricing" data-nav-anchor>Стоимость</a></li>
             <li><a href="blog/index.html">Новости</a></li>
             <li><a href="kontakty/index.html">Контакты</a></li>
           </ul>
@@ -49,299 +67,798 @@
   </header>
 
   <main class="site-main">
-    <!-- Герой -->
-    <section class="home-hero" aria-label="Обложка главной страницы">
-      <div class="wrap home-hero-grid">
-        <div class="home-hero-map" aria-hidden="true">
-          <span class="home-hero-map-label">География: РБ • приоритет — Минский регион</span>
-        </div>
-        <div class="home-hero-content">
-          <h2>Сильнее в промышленном монтаже</h2>
-          <p>Собственное сопряжение и контроль сроков под вашу задачу: склады и ангары, быстровозводимые здания, работы генерального подряда и реконструкция.</p>
-          <div class="home-hero-metric">
-            <strong>Сроки без «тонн» неопределённости</strong>
-            <p style="margin:0;color:rgba(255,255,255,0.8);font-size:15px;">Смета понятнее, когда известна технология, этапность оплат и габариты объекта до старта площадки.</p>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;">
-            <a class="home-btn-solid" href="#zakaz-consult">Запросить консультацию</a>
-            <a class="home-btn-outline" href="uslugi/index.html">Открыть каталог услуг</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Цифры и преимущества -->
-    <section class="home-section home-section--muted">
-      <div class="wrap">
-        <h2 class="home-section-title">Факты о компании</h2>
-        <div class="home-cards-3">
-          <article class="home-stat-card">
-            <b>13+ лет</b>
-            <span>На рынке промышленного строительства и монтажа</span>
-          </article>
-          <article class="home-stat-card">
-            <b>200&nbsp;000&nbsp;м²</b>
-            <span>Выполнено и находится под обслуживанием объектов суммарно</span>
-          </article>
-          <article class="home-stat-card">
-            <b>50+</b>
-            <span>Сотрудников и штат технического блока производства работ</span>
-          </article>
+    <!-- Hero -->
+    <section class="home-hero--industrial" aria-label="Промышленное строительство под ключ">
+      <div class="home-hero__bg" aria-hidden="true">
+        <img
+          class="home-hero__bg-img"
+          src="assets/images/main/topagrobel-industrial-hero.webp"
+          alt=""
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+          decoding="async">
+      </div>
+      <div class="home-hero__overlay" aria-hidden="true"></div>
+      <div class="wrap home-hero__inner">
+        <div class="home-hero__content">
+          <ul class="home-hero__chips" aria-label="Направления работы">
+            <li class="home-hero__chip">Промышленность</li>
+            <li class="home-hero__chip">Подряд</li>
+            <li class="home-hero__chip">Генподряд</li>
+          </ul>
+          <h1 class="home-hero__title">Промышленное строительство <span class="home-hero__accent">под ключ</span></h1>
+          <p class="home-hero__sub">Подряд и генподряд на промышленных, складских, офисных и коммерческих объектах в Минске и Минской области.</p>
+          <div class="home-hero__actions">
+            <a class="home-btn-solid home-btn-scroll" href="#zakaz-consult" data-scroll-target="#zakaz-consult">Получить расчёт</a>
+            <a class="home-btn-outline" href="uslugi/index.html">Смотреть услуги</a>
+          </div>
+          <ul class="home-hero__trust" aria-label="Условия работы">
+            <li class="home-hero__trust-item--wide">
+              <span class="home-hero__trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+              </span>
+              В договоре зафиксированы: 5 лет гарантии, сроки работ, сметная стоимость
+            </li>
+            <li>
+              <span class="home-hero__trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+              </span>
+              60+ специалистов в штате
+            </li>
+            <li>
+              <span class="home-hero__trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+              </span>
+              7 единиц собственной техники
+            </li>
+          </ul>
         </div>
-        <ul class="home-feature-list">
-          <li class="home-feature-item">
-            <div class="home-feature-icon" aria-hidden="true">◆</div>
-            <div><strong>Собственное производство и закрепление поставки металлоконструкций</strong><br>Сокращает риски по срокам и повышает качество стыков.</div>
+        <ul class="home-hero__metrics" aria-label="Ключевые показатели">
+          <li class="home-hero__metric">
+            <strong>80+</strong>
+            <span>готовых объектов</span>
           </li>
-          <li class="home-feature-item">
-            <div class="home-feature-icon">▣</div>
-            <div><strong>Парк спецтехники и логистика по объекту</strong><br>Меньше простоев, выше качество производственного цикла.</div>
+          <li class="home-hero__metric">
+            <strong>20+</strong>
+            <span>постоянных клиентов</span>
           </li>
-          <li class="home-feature-item">
-            <div class="home-feature-icon">⚙</div>
-            <div><strong>Сопровождение «проект → производство → сдача»</strong><br>Вы получаете прозрачные этапы и коммуникацию по факту площадки.</div>
-          </li>
-          <li class="home-feature-item">
-            <div class="home-feature-icon">✓</div>
-            <div><strong>Документооборот и сертификаты — строго под ТЗ клиента</strong><br>Исполнительная документация входит в поставку.</div>
-          </li>
-          <li class="home-feature-item">
-            <div class="home-feature-icon">★</div>
-            <div><strong>Без размытых страниц «цены отдельно»</strong><br>Вся коммерческая логика сосредоточена по услугам с блоками сметной прозрачности.</div>
+          <li class="home-hero__metric">
+            <strong>РБ</strong>
+            <span>работаем по всей стране</span>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- Этапы -->
-    <section class="home-section" id="stages-builder" aria-labelledby="stages-heading">
+    <!-- Мы на YouTube -->
+    <section class="home-youtube" id="home-youtube" aria-labelledby="youtube-heading">
       <div class="wrap">
-        <h2 class="home-section-title" id="stages-heading">Этапы строительства</h2>
-        <div class="home-stages" data-home-stages data-stage-default="05">
-          <div class="home-stages-sidebar" role="tablist" aria-label="Этапы строительства"></div>
-          <div class="home-stage-panel-wrap">
-            <div class="home-stage-photo" aria-hidden="true"></div>
-            <div class="home-stage-inner">
-              <div class="home-stage-panels"></div>
-              <button type="button" class="home-btn-solid home-stage-cta home-btn-scroll" data-scroll-target="#zakaz-consult">
-                Запросить консультацию по этапам
-              </button>
-            </div>
+        <header class="home-youtube__header">
+          <h2 class="home-section-title" id="youtube-heading">Мы на YouTube</h2>
+          <p class="home-section-lede home-section-lede--flush">Смотрите, как мы строим и реконструируем объекты. Видео появятся на канале в ближайшее время.</p>
+        </header>
+
+        <ul class="home-youtube__grid">
+          <li>
+            <article class="home-youtube__card" data-video-placeholder data-video-title="Знакомство">
+              <div class="home-youtube__thumb" aria-hidden="true">
+                <span class="home-youtube__play">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="home-youtube__soon">Скоро</span>
+              </div>
+              <h3 class="home-youtube__title">Знакомство</h3>
+            </article>
+          </li>
+          <li>
+            <article class="home-youtube__card" data-video-placeholder data-video-title="Строим завод в Кобрине">
+              <div class="home-youtube__thumb" aria-hidden="true">
+                <span class="home-youtube__play">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="home-youtube__soon">Скоро</span>
+              </div>
+              <h3 class="home-youtube__title">Строим завод в Кобрине</h3>
+            </article>
+          </li>
+          <li>
+            <article class="home-youtube__card" data-video-placeholder data-video-title="Реконструкция Минского костела">
+              <div class="home-youtube__thumb" aria-hidden="true">
+                <span class="home-youtube__play">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="home-youtube__soon">Скоро</span>
+              </div>
+              <h3 class="home-youtube__title">Реконструкция Минского костела</h3>
+            </article>
+          </li>
+          <li>
+            <article class="home-youtube__card" data-video-placeholder data-video-title="Реконструкция спорткомплекса Динамо">
+              <div class="home-youtube__thumb" aria-hidden="true">
+                <span class="home-youtube__play">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="home-youtube__soon">Скоро</span>
+              </div>
+              <h3 class="home-youtube__title">Реконструкция спорткомплекса Динамо</h3>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Что мы строим -->
+    <section class="what-we-build" aria-labelledby="build-heading">
+      <div class="wrap">
+        <header class="what-we-build__header what-we-build__header--full">
+          <h2 class="what-we-build__title" id="build-heading">Что мы строим? Генподряд</h2>
+          <p class="what-we-build__subtitle">Строим промышленные, складские, административные и коммерческие объекты для бизнеса, предприятий и государственных заказчиков.</p>
+        </header>
+
+        <div class="what-we-build__layout">
+          <div class="what-we-build__left">
+            <a class="build-card build-card--large" href="uslugi/promyshlennye-zdaniya.html" aria-label="Промышленные здания — подробнее">
+              <span class="build-card__media">
+                <img src="assets/images/main/cshto_stroim/1_card.webp" alt="Промышленное здание с подсветкой вечером" width="800" height="600" loading="lazy" decoding="async">
+              </span>
+              <span class="build-card__body">
+                <span class="build-card__icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+                </span>
+                <h3 class="build-card__title">Промышленные здания</h3>
+                <p class="build-card__text">Надёжные здания для производственных и технологических задач.</p>
+                <ul class="build-card__perks">
+                  <li>Надёжные конструкции</li>
+                  <li>Соответствие отраслевым стандартам</li>
+                  <li>Оптимизация сроков и бюджета</li>
+                </ul>
+                <span class="build-card__more">Подробнее<svg class="build-card__more-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </span>
+            </a>
+          </div>
+
+          <div class="build-card-group build-card-group--scroll">
+            <a class="build-card" href="uslugi/stroitelstvo-skladov.html" aria-label="Складские здания — подробнее">
+              <span class="build-card__media">
+                <img src="assets/images/main/cshto_stroim/2_card.webp" alt="Складское здание с погрузочными воротами вечером" width="600" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="build-card__body">
+                <span class="build-card__icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="10" width="18" height="11" rx="1"/><path d="M7 10V6h10v4"/></svg>
+                </span>
+                <h3 class="build-card__title">Складские здания</h3>
+                <p class="build-card__text">Складские объекты для хранения, логистики и бизнеса.</p>
+                <span class="build-card__more">Подробнее<svg class="build-card__more-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </span>
+            </a>
+            <a class="build-card" href="uslugi/stroitelstvo-angarov.html" aria-label="Ангары — подробнее">
+              <span class="build-card__media">
+                <img src="assets/images/main/cshto_stroim/3_card.webp" alt="Современный промышленный ангар с подсветкой" width="600" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="build-card__body">
+                <span class="build-card__icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20h18M4 20l8-14 8 14"/></svg>
+                </span>
+                <h3 class="build-card__title">Ангары</h3>
+                <p class="build-card__text">Просторные ангары для техники, хранения и производственных задач.</p>
+                <span class="build-card__more">Подробнее<svg class="build-card__more-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </span>
+            </a>
+            <a class="build-card" href="uslugi/stroitelstvo-bystrovozvodimyh-zdaniy.html" aria-label="Быстровозводимые здания — подробнее">
+              <span class="build-card__media">
+                <img src="assets/images/main/cshto_stroim/4_card.webp" alt="Быстровозводимое промышленное здание вечером" width="600" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="build-card__body">
+                <span class="build-card__icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v4M8 7h8M6 21h12l-2-14H8L6 21z"/></svg>
+                </span>
+                <h3 class="build-card__title">Быстровозводимые здания</h3>
+                <p class="build-card__text">Быстрые решения для складов, производств и коммерческих объектов.</p>
+                <span class="build-card__more">Подробнее<svg class="build-card__more-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </span>
+            </a>
+            <a class="build-card" href="uslugi/zdaniya-iz-sendvich-paneley.html" aria-label="Здания из сэндвич-панелей — подробнее">
+              <span class="build-card__media">
+                <img src="assets/images/main/cshto_stroim/5_card.webp" alt="Сэндвич-панели для промышленного строительства" width="600" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="build-card__body">
+                <span class="build-card__icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="7" height="14" rx="1"/><rect x="14" y="5" width="7" height="14" rx="1"/></svg>
+                </span>
+                <h3 class="build-card__title">Здания из сэндвич-панелей</h3>
+                <p class="build-card__text">Энергоэффективные здания с современным внешним видом.</p>
+                <span class="build-card__more">Подробнее<svg class="build-card__more-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </span>
+            </a>
+            <a class="build-card build-card--wide" href="uslugi/zdaniya-iz-metallokonstrukciy.html" aria-label="Здания из металлоконструкций — подробнее">
+              <span class="build-card__media">
+                <img src="assets/images/main/cshto_stroim/6_card.webp" alt="Металлический каркас промышленного здания" width="900" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="build-card__body">
+                <span class="build-card__icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V8l8-5 8 5v12"/><path d="M4 12h16"/></svg>
+                </span>
+                <h3 class="build-card__title">Здания из металлоконструкций</h3>
+                <p class="build-card__text">Прочные здания на металлокаркасе под задачи бизнеса.</p>
+                <span class="build-card__more">Подробнее<svg class="build-card__more-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              </span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- промо блок -->
-    <section class="home-section home-section--muted" id="pricing-offer" aria-labelledby="banner-heading">
-      <div class="wrap">
-        <h2 class="visually-hidden" id="banner-heading">Спецпредложение</h2>
-        <div class="home-banner">
-          <div class="home-banner-inner">
-            <div class="home-banner-left">
-              <h3>Комплект рабочей документации — в подарок</h3>
-              <p>Стартовый блок для быстрого согласования ТЗ перед выездом оценочной группы. Условия акции корректируются по объектам промышленного назначения.</p>
-              <button type="button" class="home-btn-solid home-btn-scroll" data-scroll-target="#zakaz-consult">
-                Получить консультацию
-              </button>
-            </div>
-            <div class="home-banner-yellow">
-              <strong>От 1&nbsp;млн ₽</strong>
-              <span>Входящий порог для типового быстровозводимого блока складского назначения.</span>
-              <a href="tel:+375XXXXXXXXX" class="home-btn-solid" style="justify-self:start;">Позвонить</a>
-            </div>
+    <!-- Подрядные работы -->
+    <section class="home-contract-works" id="home-contract-works" aria-labelledby="contract-works-heading">
+      <div class="wrap home-contract-works__inner">
+        <header class="home-contract-works__header home-contract-works__header--centered">
+          <h2 class="home-contract-works__title" id="contract-works-heading">Также выполняем подрядные работы</h2>
+          <p class="home-contract-works__lede">Отдельные виды строительно-монтажных работ для промышленных, складских и коммерческих объектов.</p>
+        </header>
+
+        <ul class="home-contract-works__grid">
+          <li>
+            <a class="contract-work-card" href="uslugi/promyshlennye-betonnye-poly.html">
+              <span class="contract-work-card__content">
+                <h3 class="contract-work-card__title">Промышленные бетонные полы</h3>
+                <p class="contract-work-card__text">Бетонные полы для складов, производств, ангаров и коммерческих объектов.</p>
+                <span class="contract-work-card__icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 14V9h10v5"/></svg>
+                </span>
+              </span>
+              <span class="contract-work-card__visual">
+                <img src="assets/images/main/yslygi/Poly.webp" alt="" width="400" height="300" loading="lazy" decoding="async">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contract-work-card" href="uslugi/zemlyanye-raboty.html">
+              <span class="contract-work-card__content">
+                <h3 class="contract-work-card__title">Земляные работы</h3>
+                <p class="contract-work-card__text">Котлованы, разработка грунта, планировка и подготовка основания.</p>
+                <span class="contract-work-card__icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h16M6 16l3-8h6l3 8"/><path d="M9 12h6"/></svg>
+                </span>
+              </span>
+              <span class="contract-work-card__visual">
+                <img src="assets/images/main/yslygi/Zemlenye.webp" alt="" width="400" height="300" loading="lazy" decoding="async">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contract-work-card" href="uslugi/fundamenty-promyshlennyh-zdaniy.html">
+              <span class="contract-work-card__content">
+                <h3 class="contract-work-card__title">Фундаменты</h3>
+                <p class="contract-work-card__text">Фундаменты под промышленные, складские и коммерческие здания.</p>
+                <span class="contract-work-card__icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="14" width="16" height="6" rx="1"/><path d="M8 14V8h8v6"/></svg>
+                </span>
+              </span>
+              <span class="contract-work-card__visual">
+                <img src="assets/images/main/yslygi/Fundamenty.webp" alt="" width="400" height="300" loading="lazy" decoding="async">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contract-work-card" href="uslugi/montazh-metallokonstrukciy.html">
+              <span class="contract-work-card__content">
+                <h3 class="contract-work-card__title">Металлоконструкции и ЖБ</h3>
+                <p class="contract-work-card__text">Монтаж металлоконструкций, колонн, ферм, балок и ЖБ элементов.</p>
+                <span class="contract-work-card__icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V8l8-5 8 5v12"/><path d="M4 12h16"/></svg>
+                </span>
+              </span>
+              <span class="contract-work-card__visual">
+                <img src="assets/images/main/yslygi/Metallokonstrykcii.webp" alt="" width="400" height="300" loading="lazy" decoding="async">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contract-work-card" href="uslugi/monolitnye-raboty.html">
+              <span class="contract-work-card__content">
+                <h3 class="contract-work-card__title">Монолитные работы</h3>
+                <p class="contract-work-card__text">Монолитный каркас, перекрытия, колонны и железобетонные конструкции.</p>
+                <span class="contract-work-card__icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/></svg>
+                </span>
+              </span>
+              <span class="contract-work-card__visual">
+                <img src="assets/images/main/yslygi/Monolitnye.webp" alt="" width="400" height="300" loading="lazy" decoding="async">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contract-work-card" href="uslugi/krovelnye-raboty.html">
+              <span class="contract-work-card__content">
+                <h3 class="contract-work-card__title">Кровли и фасады</h3>
+                <p class="contract-work-card__text">Кровельные и фасадные системы для промышленных зданий.</p>
+                <span class="contract-work-card__icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20h18M4 20l8-14 8 14"/></svg>
+                </span>
+              </span>
+              <span class="contract-work-card__visual">
+                <img src="assets/images/main/yslygi/Krovlipng.webp" alt="" width="400" height="300" loading="lazy" decoding="async">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contract-work-card" href="uslugi/naruzhnye-inzhenernye-seti.html">
+              <span class="contract-work-card__content">
+                <h3 class="contract-work-card__title">Наружные сети и теплотрассы</h3>
+                <p class="contract-work-card__text">Водопровод, канализация, ливневка, водоотведение и теплотрассы.</p>
+                <span class="contract-work-card__icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12v8H6z"/><path d="M9 8V5h6v3M9 16v3h6v-3"/></svg>
+                </span>
+              </span>
+              <span class="contract-work-card__visual">
+                <img src="assets/images/main/yslygi/Seti.webp" alt="" width="400" height="300" loading="lazy" decoding="async">
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="contract-work-card" href="uslugi/stroitelstvo-dorog-i-ploshchadok.html">
+              <span class="contract-work-card__content">
+                <h3 class="contract-work-card__title">Дороги и благоустройство</h3>
+                <p class="contract-work-card__text">Проезды, площадки, благоустройство территории и усиление конструкций.</p>
+                <span class="contract-work-card__icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20h18M6 20c2-6 4-9 6-9s4 3 6 9"/></svg>
+                </span>
+              </span>
+              <span class="contract-work-card__visual">
+                <img src="assets/images/main/yslygi/Dorogi.webp" alt="" width="400" height="300" loading="lazy" decoding="async">
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="home-contract-works__benefits" aria-label="Преимущества работы с подрядчиком">
+          <li class="home-contract-works__benefit">
+            <span class="home-contract-works__benefit-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>
+            </span>
+            <span>Работаем по договору и графику</span>
+          </li>
+          <li class="home-contract-works__benefit">
+            <span class="home-contract-works__benefit-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </span>
+            <span>Выполняем работы поэтапно и прозрачно</span>
+          </li>
+          <li class="home-contract-works__benefit">
+            <span class="home-contract-works__benefit-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M8 7h8M6 21h12l-2-14H8L6 21z"/></svg>
+            </span>
+            <span>Подбираем решения под конкретный объект</span>
+          </li>
+          <li class="home-contract-works__benefit">
+            <span class="home-contract-works__benefit-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-5 7 5v12"/></svg>
+            </span>
+            <span>Работаем для бизнеса и промышленных заказчиков</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Наша техника -->
+    <section class="home-equipment" id="home-equipment" aria-labelledby="equipment-heading">
+      <div class="wrap home-equipment__head-wrap">
+        <header class="home-equipment__head">
+          <div class="home-equipment__intro">
+            <p class="home-equipment__eyebrow">Техника, используемая ТопАгроБел</p>
+            <h2 class="home-equipment__title" id="equipment-heading">Строительная техника для работ на наших объектах</h2>
           </div>
+          <div class="home-equipment__metric" aria-label="7 единиц собственной техники">
+            <strong class="home-equipment__metric-value">7</strong>
+            <span class="home-equipment__metric-label">единиц</span>
+          </div>
+        </header>
+      </div>
+
+      <div class="home-equipment__gallery-bleed">
+        <ul class="home-equipment__gallery">
+          <li>
+            <article class="home-equipment__panel" tabindex="0">
+              <div class="home-equipment__panel-media">
+                <img src="assets/images/main/yslygi/Zemlenye.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+              </div>
+              <div class="home-equipment__panel-overlay">
+                <h3 class="home-equipment__panel-title">Экскаваторы</h3>
+                <ul class="home-equipment__panel-list">
+                  <li>Котлованы и разработка грунта</li>
+                  <li>Планировка территории</li>
+                  <li>Подготовка основания</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="home-equipment__panel" tabindex="0">
+              <div class="home-equipment__panel-media">
+                <img src="assets/images/main/yslygi/Metallokonstrykcii.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+              </div>
+              <div class="home-equipment__panel-overlay">
+                <h3 class="home-equipment__panel-title">Автокран</h3>
+                <ul class="home-equipment__panel-list">
+                  <li>Монтаж металлоконструкций</li>
+                  <li>Установка ЖБ элементов</li>
+                  <li>Подача материалов на высоту</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="home-equipment__panel" tabindex="0">
+              <div class="home-equipment__panel-media">
+                <img src="assets/images/main/yslygi/Dorogi.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+              </div>
+              <div class="home-equipment__panel-overlay">
+                <h3 class="home-equipment__panel-title">Самосвалы</h3>
+                <ul class="home-equipment__panel-list">
+                  <li>Вывоз грунта</li>
+                  <li>Доставка сыпучих материалов</li>
+                  <li>Логистика по площадке</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="home-equipment__panel" tabindex="0">
+              <div class="home-equipment__panel-media">
+                <img src="assets/images/main/topagrobel-industrial-hero.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+              </div>
+              <div class="home-equipment__panel-overlay">
+                <h3 class="home-equipment__panel-title">Погрузочная техника</h3>
+                <ul class="home-equipment__panel-list">
+                  <li>Погрузка и перемещение</li>
+                  <li>Работа в стеснённых условиях</li>
+                  <li>Подготовка площадки</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+
+      <div class="wrap home-equipment__footer">
+        <a class="home-equipment__link" href="uslugi/arenda-stroitelnoy-tehniki.html">Подробнее об аренде техники</a>
+      </div>
+    </section>
+
+    <!-- Этапы строительства -->
+    <section class="home-section home-section--muted home-stages-section" id="home-stages" aria-labelledby="stages-heading" data-home-stages data-stage-default="1">
+      <div class="wrap">
+        <h2 class="home-section-title" id="stages-heading">Берём на себя ключевые этапы строительства</h2>
+        <p class="home-section-lede">Организуем промышленное строительство по этапам: от анализа задачи и подготовки площадки до монтажа конструкций, инженерных сетей, благоустройства и сдачи объекта.</p>
+
+        <div class="home-stages">
+          <div class="home-stages__desktop">
+            <div class="home-stages-sidebar" role="tablist" aria-label="Этапы строительства"></div>
+            <div class="home-stage-panels"></div>
+          </div>
+          <div class="home-stages__mobile" aria-label="Этапы строительства"></div>
+        </div>
+      </div>
+      <script type="application/json" id="home-stages-json">
+        [
+          {"id":1,"phase":"Подготовка","title":"Анализ задачи","text":"Изучаем назначение объекта, технологические требования, параметры площадки, сроки и бюджетные рамки. Формируем понятную схему работ для промышленного, складского или коммерческого здания.","image":"assets/images/main/cshto_stroim/1_card.webp","alt":"Анализ промышленного строительного объекта"},
+          {"id":2,"phase":"Подготовка","title":"Проектная подготовка","text":"Организуем проектную документацию и согласования в составе строительного процесса — не как отдельную услугу проектирования, а как часть подготовки к реализации объекта.","image":"assets/images/main/project.webp","alt":"Проектная подготовка промышленного объекта"},
+          {"id":3,"phase":"Подготовка","title":"Подготовка площадки","text":"Организуем подъездные пути, временные сети, ограждение и подготовку территории под строительство промышленного, складского или коммерческого объекта.","image":"assets/images/main/cshto_stroim/2_card.webp","alt":"Подготовка строительной площадки"},
+          {"id":4,"phase":"Строительство","title":"Земляные работы","text":"Выполняем разработку котлованов, планировку, вывоз и послойную подготовку грунтов под фундаменты и инженерную инфраструктуру промышленного объекта.","image":"assets/images/main/cshto_stroim/3_card.webp","alt":"Земляные работы на промышленной площадке"},
+          {"id":5,"phase":"Строительство","title":"Фундаменты","text":"Устраиваем фундаменты промышленных зданий с учётом нагрузок от каркаса, оборудования и эксплуатационных требований объекта.","image":"assets/images/main/cshto_stroim/4_card.webp","alt":"Фундаменты промышленного здания"},
+          {"id":6,"phase":"Строительство","title":"Монтаж металлоконструкций","text":"Монтируем каркас здания, связи, фермы и элементы металлоконструкций для складов, ангаров и производственных объектов.","image":"assets/images/main/cshto_stroim/6_card.webp","alt":"Монтаж металлоконструкций промышленного здания"},
+          {"id":7,"phase":"Строительство","title":"Монолитные и ЖБ работы","text":"Выполняем монолитные участки, монтаж сборного железобетона, плиты перекрытий и конструкции, необходимые для промышленного здания.","image":"assets/images/main/cshto_stroim/5_card.webp","alt":"Монолитные и железобетонные работы"},
+          {"id":8,"phase":"Строительство","title":"Кровля и фасады","text":"Монтируем кровлю, фасадные системы и ограждающие конструкции с учётом требований к теплотехнике и эксплуатации промышленного объекта.","image":"assets/images/main/podryadchik.webp","alt":"Кровля и фасады промышленного здания"},
+          {"id":9,"phase":"Строительство","title":"Инженерные сети и благоустройство","text":"Подключаем наружные сети, теплотрассы, благоустройство территории, дороги и площадки вокруг промышленного объекта.","image":"assets/images/main/cshto_stroim/2_card.webp","alt":"Инженерные сети и благоустройство территории"},
+          {"id":10,"phase":"Сдача","title":"Сдача объекта","text":"Проводим финальные проверки, оформляем исполнительную документацию и передаём объект заказчику для ввода в эксплуатацию.","image":"assets/images/main/cshto_stroim/1_card.webp","alt":"Сдача промышленного объекта заказчику"}
+        ]
+      </script>
+    </section>
+
+    <!-- Готовые объекты — карта -->
+    <section class="home-section home-section--muted home-projects-map" id="home-portfolio" aria-labelledby="portfolio-heading">
+      <div class="wrap">
+        <h2 class="home-section-title" id="portfolio-heading">Готовые объекты и выполненные работы</h2>
+        <p class="home-section-lede">География объектов, которые мы строили, реконструировали и модернизировали в Беларуси. Нажмите на метку, чтобы увидеть описание и фото. Жёлтые метки — объекты, синяя — офис компании.</p>
+        <div id="home-yandex-map" class="home-projects-map__canvas" role="region" aria-label="Карта выполненных объектов и офиса компании"></div>
+      </div>
+    </section>
+
+    <!-- Промежуточный CTA -->
+    <section class="home-mid-cta" aria-label="Заказать расчёт">
+      <div class="wrap home-mid-cta__inner">
+        <p class="home-mid-cta__text">Нужен предварительный расчёт по вашему объекту?</p>
+        <a class="home-btn-solid home-btn-scroll" href="#zakaz-consult" data-scroll-target="#zakaz-consult">Получить расчёт</a>
+      </div>
+    </section>
+
+    <!-- Спецпредложение -->
+    <section class="home-promo" aria-labelledby="promo-heading">
+      <div class="home-promo__bg" aria-hidden="true"></div>
+      <div class="wrap home-promo__wrap">
+        <div class="home-promo__layout">
+          <div class="home-promo__offer">
+            <div class="home-promo__offer-copy">
+              <div class="home-promo__offer-top">
+                <div class="home-promo__rule home-promo__rule--top" aria-hidden="true"></div>
+                <p class="home-promo__eyebrow">От проектного отдела ТопАгроБел</p>
+                <h2 class="home-promo__title" id="promo-heading">
+                  <span class="home-promo__title-line">Проектная и рабочая документация</span>
+                  <span class="home-promo__title-line home-promo__title-line--accent">бесплатно</span>
+                </h2>
+              </div>
+              <div class="home-promo__offer-bottom">
+                <p class="home-promo__subline">Разработаем проектную и рабочую документацию</p>
+                <div class="home-promo__rule home-promo__rule--bottom" aria-hidden="true"></div>
+                <p class="home-promo__note">*При заказе комплекса строительных работ от 1 млн BYN</p>
+              </div>
+            </div>
+            <figure class="home-promo__gift" aria-hidden="true">
+              <img src="assets/images/main/skidka.webp" alt="" width="960" height="640" loading="lazy" decoding="async">
+            </figure>
+          </div>
+
+          <aside class="home-promo__cta">
+            <p class="home-promo__cta-lead">Оставьте заявку, чтобы получить ваш подарок</p>
+            <p class="home-promo__cta-bar">от 1 млн BYN</p>
+            <p class="home-promo__cta-title">Закажите консультацию менеджера</p>
+            <p class="home-promo__cta-text">Узнайте подробности получения проектной документации бесплатно</p>
+            <a class="home-promo__phone" href="tel:+375291234567">+375 (29) 123-45-67</a>
+            <a class="home-promo__btn home-btn-scroll" href="#zakaz-consult" data-scroll-target="#zakaz-consult"><span>Оставить заявку</span></a>
+          </aside>
         </div>
       </div>
     </section>
 
-    <!-- техника -->
-    <section class="home-section">
+    <!-- Услуги — топ-8 -->
+    <section class="home-section" id="home-services" aria-labelledby="services-heading">
       <div class="wrap">
-        <div class="home-toolbar">
-          <div>
-            <h2 class="home-section-title" style="margin:0;">Строительная техника под задачу</h2>
-            <p style="margin:8px 0 0;color:var(--muted);">Мобильные решения монтажа: краны автомобильные, погрузчики и вышки доступа под конкретные объёмы.</p>
-          </div>
-          <span class="home-badge-count">Подбор по комплекту</span>
-        </div>
-        <div class="home-gallery">
-          <div class="home-gallery-cell"><span class="home-gallery-caption">Автокран средней грузоподъёмности</span></div>
-          <div class="home-gallery-cell"><span class="home-gallery-caption">Погрузчики складского блока</span></div>
-          <div class="home-gallery-cell"><span class="home-gallery-caption">Монтажные вышки</span></div>
-          <div class="home-gallery-cell"><span class="home-gallery-caption">Доставка длинномерных КМД</span></div>
+        <h2 class="home-section-title" id="services-heading">Основные услуги</h2>
+        <p class="home-section-lede">Ключевые направления строительства и работ. Полный каталог — на отдельной странице.</p>
+
+        <ul class="home-services-teaser">
+          <li>
+            <a class="home-services-teaser__card" href="uslugi/promyshlennye-zdaniya.html">
+              <span class="home-services-teaser__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12"/></svg>
+              </span>
+              <span class="home-services-teaser__title">Промышленные здания</span>
+            </a>
+          </li>
+          <li>
+            <a class="home-services-teaser__card" href="uslugi/stroitelstvo-skladov.html">
+              <span class="home-services-teaser__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="10" width="18" height="11" rx="1"/><path d="M7 10V6h10v4"/></svg>
+              </span>
+              <span class="home-services-teaser__title">Строительство складов</span>
+            </a>
+          </li>
+          <li>
+            <a class="home-services-teaser__card" href="uslugi/stroitelstvo-angarov.html">
+              <span class="home-services-teaser__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20h18M4 20l8-14 8 14"/></svg>
+              </span>
+              <span class="home-services-teaser__title">Строительство ангаров</span>
+            </a>
+          </li>
+          <li>
+            <a class="home-services-teaser__card" href="uslugi/genpodryad.html">
+              <span class="home-services-teaser__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M3 12h18"/></svg>
+              </span>
+              <span class="home-services-teaser__title">Генподряд</span>
+            </a>
+          </li>
+          <li>
+            <a class="home-services-teaser__card" href="uslugi/montazh-metallokonstrukciy.html">
+              <span class="home-services-teaser__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V8l8-5 8 5v12"/><path d="M4 12h16"/></svg>
+              </span>
+              <span class="home-services-teaser__title">Монтаж металлоконструкций</span>
+            </a>
+          </li>
+          <li>
+            <a class="home-services-teaser__card" href="uslugi/krovelnye-raboty.html">
+              <span class="home-services-teaser__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20h18M4 20l8-14 8 14"/></svg>
+              </span>
+              <span class="home-services-teaser__title">Кровельные работы</span>
+            </a>
+          </li>
+          <li>
+            <a class="home-services-teaser__card" href="uslugi/naruzhnye-inzhenernye-seti.html">
+              <span class="home-services-teaser__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12v8H6z"/><path d="M9 8V5h6v3"/></svg>
+              </span>
+              <span class="home-services-teaser__title">Инженерные сети</span>
+            </a>
+          </li>
+          <li>
+            <a class="home-services-teaser__card" href="uslugi/rekonstrukciya-zdaniy.html">
+              <span class="home-services-teaser__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              </span>
+              <span class="home-services-teaser__title">Реконструкция зданий</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="home-services-teaser__footer">
+          <a class="home-btn-outline home-btn-outline--dark" href="uslugi/index.html">Все услуги (28 направлений)</a>
         </div>
       </div>
     </section>
 
-    <!-- Объекты региона -->
-    <section class="home-section home-section--muted" id="objects-showcase" aria-labelledby="region-heading">
+    <!-- Стоимость -->
+    <section class="home-section home-section--muted" id="home-pricing" aria-labelledby="pricing-heading">
       <div class="wrap">
-        <div class="home-split">
-          <div class="home-visual-tall" role="presentation"></div>
-          <div>
-            <h2 class="home-section-title" id="region-heading">Реализованные объекты: Минский регион</h2>
-            <p style="color:var(--muted);line-height:1.6;">Подбор технологических решений с учётом логистики и климата. Ни один отдельный раздел «проектов не делаем» — здесь ключевые преимущества и ссылка в каталог услуг со встроенным портфолио.</p>
-            <ul class="home-bullet-list">
-              <li>Многоскатные блоки производственного склада металлоконструкций + сэндвич-панели.</li>
-              <li>Каркас ангара из ЛМК без «холодных» технологических разрывов.</li>
-              <li>Ввод объектов через акт ввода эксплуатации с передачей отчётов.</li>
-              <li>Техника и бригады выходят синхронно — меньше риска по финальному сроку.</li>
-            </ul>
-            <div class="home-bar-cta">
-              <span>Перейти в карточки услуг с примерами объектов на страницах</span>
-              <a class="home-btn-solid" href="uslugi/stroitelstvo-zdaniy-i-sooruzheniy.html">Смотреть услуги</a>
-            </div>
-          </div>
+        <h2 class="home-section-title" id="pricing-heading">Стоимость рассчитывается под конкретный объект</h2>
+        <p class="home-section-lede">Цена зависит от назначения здания, площади, конструктивного решения, состава работ, инженерных сетей и условий площадки.</p>
+        <div class="home-pricing-box">
+          <ul class="home-pricing-factors">
+            <li><span class="home-pricing-factors__icon" aria-hidden="true">◆</span>назначение объекта</li>
+            <li><span class="home-pricing-factors__icon" aria-hidden="true">◆</span>площадь и высота здания</li>
+            <li><span class="home-pricing-factors__icon" aria-hidden="true">◆</span>тип фундамента</li>
+            <li><span class="home-pricing-factors__icon" aria-hidden="true">◆</span>металлокаркас или ЖБ конструкции</li>
+            <li><span class="home-pricing-factors__icon" aria-hidden="true">◆</span>кровля и фасады</li>
+            <li><span class="home-pricing-factors__icon" aria-hidden="true">◆</span>инженерные сети</li>
+            <li><span class="home-pricing-factors__icon" aria-hidden="true">◆</span>бетонные полы</li>
+            <li><span class="home-pricing-factors__icon" aria-hidden="true">◆</span>дороги, площадки и благоустройство</li>
+            <li><span class="home-pricing-factors__icon" aria-hidden="true">◆</span>сроки и условия строительства</li>
+          </ul>
+          <p class="home-pricing-hint">Пример: склад 1000 м² — стоимость зависит от конструктива и состава работ. Оставьте заявку для предварительной вилки.</p>
+          <a class="home-btn-solid home-btn-scroll" href="#zakaz-consult" data-scroll-target="#zakaz-consult">Получить предварительный расчёт</a>
         </div>
       </div>
     </section>
 
     <!-- Новости -->
-    <section class="home-section home-news">
+    <section class="home-section" id="home-news" aria-labelledby="news-heading">
       <div class="wrap">
-        <div class="home-toolbar">
-          <h2 class="home-section-title" style="margin:0;">Полезная информация и новости</h2>
-          <a href="blog/index.html" class="home-btn-solid" style="padding:10px 16px;font-size:14px;">Блог</a>
-        </div>
-        <div class="swiper home-news-swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <article class="home-news-card">
-                <span class="home-news-meta">Проектирование</span>
-                <span class="home-news-title">Почему ЛСТК выигрывает в быстром времени сборки блока</span>
-                <p class="small" style="color:var(--muted);margin:0;font-size:14px;">Подбор параметров узлов без перегрузки узла примыкания сэндвич-панели.</p>
-              </article>
-            </div>
-            <div class="swiper-slide">
-              <article class="home-news-card">
-                <span class="home-news-meta">Стандарты качества</span>
-                <span class="home-news-title">Контроль сварочных узлов промышленного каркаса</span>
-                <p style="color:var(--muted);margin:0;font-size:14px;">Наши технологические требования к полу автоматической линии и ручному контрольному осмотру.</p>
-              </article>
-            </div>
-            <div class="swiper-slide">
-              <article class="home-news-card">
-                <span class="home-news-meta">Логистика</span>
-                <span class="home-news-title">Как упаковать КМД, чтобы сохранить геометрию узлов</span>
-                <p style="color:var(--muted);margin:0;font-size:14px;">Рекомендации по паллетированию длинномерных КМД и контролью привыкания упаковки.</p>
-              </article>
-            </div>
-            <div class="swiper-slide">
-              <article class="home-news-card">
-                <span class="home-news-meta">Клиенту</span>
-                <span class="home-news-title">Безопасность на промышленной площадке монтажа</span>
-                <p style="color:var(--muted);margin:0;font-size:14px;">Подходящие ограждения, страхование и временные технологические проходы.</p>
-              </article>
-            </div>
+        <div class="home-section-head">
+          <div>
+            <h2 class="home-section-title" id="news-heading">Новости и статьи</h2>
+            <p class="home-section-lede home-section-lede--flush">Полезные материалы о промышленном строительстве.</p>
           </div>
+          <a class="home-section-head__link" href="blog/index.html">Все новости →</a>
         </div>
-        <div class="home-news-swiper-controls">
-          <button type="button" class="home-swiper-prev" aria-label="Предыдущий">&lsaquo;</button>
-          <div class="swiper-pagination home-news-pagination" style="position:static;"></div>
-          <button type="button" class="home-swiper-next" aria-label="Следующий">&rsaquo;</button>
+        <ul class="home-news-grid">
+          <li>
+            <article class="home-news-card">
+              <time class="home-news-meta" datetime="2026-03-15">15 марта 2026</time>
+              <h3 class="home-news-title"><a href="blog/index.html">Как выбрать конструктив для складского здания</a></h3>
+              <p class="home-news-excerpt">Металлокаркас, сэндвич-панели или ЛСТК — сравниваем решения по срокам, бюджету и эксплуатации.</p>
+            </article>
+          </li>
+          <li>
+            <article class="home-news-card">
+              <time class="home-news-meta" datetime="2026-02-28">28 февраля 2026</time>
+              <h3 class="home-news-title"><a href="blog/index.html">Этапы промышленного строительства под ключ</a></h3>
+              <p class="home-news-excerpt">От анализа площадки до сдачи объекта — что входит в каждый этап и от чего зависит срок.</p>
+            </article>
+          </li>
+          <li>
+            <article class="home-news-card">
+              <time class="home-news-meta" datetime="2026-01-10">10 января 2026</time>
+              <h3 class="home-news-title"><a href="blog/index.html">Генподряд vs подряд: что выбрать заказчику</a></h3>
+              <p class="home-news-excerpt">Разбираем разницу в ответственности, координации и бюджете для промышленных объектов.</p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="home-section home-section--muted home-faq-section" aria-labelledby="faq-heading">
+      <div class="wrap">
+        <h2 class="home-section-title" id="faq-heading">Частые вопросы</h2>
+        <div class="faq faq--home">
+          <div class="faq-item">
+            <button type="button" class="faq-q focus-ring" aria-expanded="false">Какие объекты строит ТопАгроБел?</button>
+            <div class="faq-a">Компания занимается промышленным, складским, производственным, административным и коммерческим строительством. Также выполняет отдельные виды строительно-монтажных работ.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q focus-ring" aria-expanded="false">Работаете ли вы с частными домами?</button>
+            <div class="faq-a">Основной фокус сайта — промышленное и коммерческое строительство. Частные дома, коттеджи и бани не являются ключевым направлением.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q focus-ring" aria-expanded="false">Можно ли заказать отдельный вид работ?</button>
+            <div class="faq-a">Да, по ряду направлений можно заказать отдельные работы: земляные работы, фундаменты, монтаж металлоконструкций, кровельные и фасадные работы, бетонные полы, наружные сети и благоустройство.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q focus-ring" aria-expanded="false">Можно ли получить предварительный расчёт стоимости?</button>
+            <div class="faq-a">Да. Для расчёта нужно оставить заявку и описать задачу: тип объекта, площадь, состав работ, местоположение и сроки.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q focus-ring" aria-expanded="false">Вы занимаетесь проектированием?</button>
+            <div class="faq-a">Проектная подготовка может выполняться в составе строительства под ключ. Отдельно готовые проекты компания не продаёт.</div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q focus-ring" aria-expanded="false">В каком регионе работает компания?</button>
+            <div class="faq-a">Основной регион работы — Минск и Минская область.</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ + вопрос -->
-    <section class="home-double" id="zakaz-consult">
-      <div class="wrap home-double-grid">
-        <div>
-          <h2 class="home-section-title" style="color:#fff;">FAQ</h2>
-          <div class="faq">
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Когда выезжаете на объект после заявки?</button>
-              <div class="faq-a">При необходимости — в первый рабочий день согласовывается слот технического специалиста; при недоступности — электронно собираете исходные данные и выезжаем в течение 2–7 дней по сложности.</div>
-            </div>
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Как вы даёте смету без отдельной страницы цен?</button>
-              <div class="faq-a">Структурируем сметную прозрачность внутри посадочных страниц услуг (блок стоимости + этапность оплат).</div>
-            </div>
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Работаете ли по генеральному подряду?</button>
-              <div class="faq-a">Да, включается координированное управление смежниками или полный производственный цикл от проектной части до ввода эксплуатации.</div>
-            </div>
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Как передать объект «под ключ»?</button>
-              <div class="faq-a">Составляют акт выполненных работ, передают полный пакет исполнительной документации и технологические указания эксплуатации.</div>
-            </div>
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Где узнать больше о SEO-схеме сайта?</button>
-              <div class="faq-a">Структурированную карту URL и блоки страниц см. по ссылке <a href="seo-sitemap.html" style="color:var(--home-yellow,#f4be00);">SEO-карта</a>.</div>
-            </div>
-          </div>
+    <!-- Финальный CTA + форма -->
+    <section class="home-cta-final" id="zakaz-consult" aria-labelledby="cta-final-heading">
+      <div class="wrap home-cta-final__grid">
+        <div class="home-cta-final__copy">
+          <h2 class="home-cta-final__title" id="cta-final-heading">Нужно построить склад, ангар, производственное или коммерческое здание?</h2>
+          <p class="home-cta-final__text">Оставьте заявку — уточним задачу, состав работ и подготовим предварительный расчёт стоимости.</p>
+          <p class="home-cta-final__phone">
+            <a href="tel:+375291234567">+375 (29) 123-45-67</a>
+          </p>
         </div>
-        <aside class="home-ask-panel">
-          <h3>Задать вопрос менеджеру</h3>
-          <p style="font-weight:600;margin-bottom:14px;">Коротко опишите назначение здания, площадь участка или желаемую габаритную сетку склада.</p>
-          <ul class="home-ask-list">
-            <li>Tel.: <a href="tel:+375XXXXXXXXX">+375 (XX) XXX-XX-XX</a></li>
-            <li>Почта: <a href="mailto:office@example.by">office@example.by</a></li>
-          </ul>
-          <form class="lead-form" data-contact-form novalidate style="margin-top:16px;display:grid;gap:12px;">
-            <input name="phone" autocomplete="tel" placeholder="Телефон" aria-label="Телефон" style="padding:11px;border-radius:10px;border:1px solid #ccc;font:inherit;">
-            <textarea name="message" placeholder="Вопрос" aria-label="Сообщение" style="min-height:92px;padding:11px;border-radius:10px;border:1px solid #ccc;font:inherit;"></textarea>
-            <button class="home-btn-solid" type="submit" style="width:100%;justify-content:center;">Отправить</button>
-          </form>
-        </aside>
+        <form class="home-cta-form lead-form" data-contact-form novalidate>
+          <div class="home-cta-form__row">
+            <label class="visually-hidden" for="lead-name">Имя</label>
+            <input id="lead-name" name="name" autocomplete="name" placeholder="Имя" required>
+          </div>
+          <div class="home-cta-form__row">
+            <label class="visually-hidden" for="lead-phone">Телефон</label>
+            <input id="lead-phone" name="phone" type="tel" autocomplete="tel" placeholder="+375 (__) ___-__-__" inputmode="tel" required>
+          </div>
+          <div class="home-cta-form__row">
+            <label class="visually-hidden" for="lead-object">Тип объекта</label>
+            <input id="lead-object" name="object" placeholder="Тип объекта / задача">
+          </div>
+          <div class="home-cta-form__row">
+            <label class="visually-hidden" for="lead-message">Комментарий</label>
+            <textarea id="lead-message" name="message" placeholder="Комментарий"></textarea>
+          </div>
+          <label class="home-cta-form__consent">
+            <input type="checkbox" name="consent" required>
+            <span>Согласен на обработку персональных данных в соответствии с законодательством РБ</span>
+          </label>
+          <button class="home-btn-solid home-cta-form__submit" type="submit">Отправить заявку</button>
+        </form>
       </div>
-    </section>
-
-    <!-- Карта -->
-    <section class="home-map" aria-label="Мы на карте">
-      <iframe title="Компания на карте (пример координат Минск)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=27.48%2C53.82%2C27.72%2C53.96&amp;layer=mapnik&amp;marker=53.9%2C27.56"></iframe>
     </section>
   </main>
 
-  <!-- Подвал -->
+  <!-- Sticky CTA (mobile) -->
+  <aside class="home-sticky-cta" id="home-sticky-cta" aria-label="Быстрая заявка" hidden>
+    <a class="home-sticky-cta__btn home-btn-scroll" href="#zakaz-consult" data-scroll-target="#zakaz-consult">Получить расчёт</a>
+  </aside>
+
   <footer class="home-footer">
     <div class="wrap home-footer-inner">
       <div class="home-footer-row1">
-        <a class="home-logo-strong" href="index.html">ТОП<span>АГРО</span>БЕЛ</a>
+        <a class="home-logo-strong home-logo-strong--invert" href="index.html">ТОП<span>АГРО</span>БЕЛ</a>
         <nav class="home-footer-links">
           <a href="uslugi/index.html">Услуги</a>
           <a href="o-kompanii/index.html">Компания</a>
-          <a href="#objects-showcase">Объекты</a>
+          <a href="#home-portfolio">Проекты</a>
           <a href="blog/index.html">Новости</a>
           <a href="kontakty/index.html">Контакты</a>
-          <a href="seo-sitemap.html">SEO-схема</a>
         </nav>
         <div class="home-social">
-          <a href="#" aria-label="VK">VK</a>
-          <a href="#" aria-label="Telegram">TG</a>
-          <a href="#" aria-label="WhatsApp">WA</a>
+          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram">TG</a>
+          <a href="https://wa.me/375291234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+          <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">VK</a>
         </div>
       </div>
+      <div class="home-footer-docs">
+        <a href="partnery/index.html">Партнёры</a>
+        <a href="sertifikaty-i-dokumenty/index.html">Сертификаты</a>
+        <a href="rekvizity/index.html">Реквизиты</a>
+      </div>
       <div class="home-footer-meta">
-        <span>© 2026 ТопАгроБел • строительно-монтажные работы</span>
-        <span>Юридический адрес подставятся здесь после заполнения <a href="rekvizity/index.html">реквизитов</a></span>
+        <span>© 2026 ТопАгроБел · промышленное и складское строительство</span>
+        <span>Минск и Минская область · <a href="kontakty/index.html">Контакты и адрес</a></span>
       </div>
     </div>
   </footer>
-
-
-  <script type="application/json" id="home-stages-json">
-[
-  {"id":"01","title":"Концепция","text":"Выезд технического специалиста, первичное ТЗ, изучение технологической цели будущего здания."},
-  {"id":"02","title":"Подготовка исходных данных","text":"Подбор топографической и геологической информации или работа над вашими готовыми данными клиента."},
-  {"id":"03","title":"Разработка рабочей документации","text":"Авторские решения узлов совместно с технологической командой производства монтажа."},
-  {"id":"04","title":"Производство КМД","text":"Собственное изготовление металлоконструкций, контроль геометрии упакованных элементов перед отгрузкой."},
-  {"id":"05","title":"Подготовка площадки","text":"Текущее состояние площадки: разработка временных дорожек, технологической инфраструктуры и охранная зона (по необходимости)."},
-  {"id":"06","title":"Монтаж каркаса","text":"Сбор каркаса кранами и спецтехникой, сварка и промежуточный контроль геодезической сеткой."},
-  {"id":"07","title":"Ограждающие конструкции","text":"Обшивка сэндвич-панелями / металлоконструкций / комбинация по проекту, герметизация узловых примыканий."},
-  {"id":"08","title":"Инженерные системы","text":"Привлечение лицензированных смежников по задаче или собственными силами ключевые инженерные коридоры склада."},
-  {"id":"09","title":"Финальный контроль","text":"Приём исполнительной документации, финальное фотофиксирующее соответствие ТЗ перед сдачей."},
-  {"id":"10","title":"Сдача эксплуатации","text":"Передача объекта клиенту, поясняющее руководство по эксплуатации и технологической сервисности."}
-]
-  </script>
 
   <style>
     .visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; padding:0; margin:-1px; }
   </style>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=12fcf8e0-ecaa-4a73-aefd-d28ec0384927&lang=ru_RU" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
