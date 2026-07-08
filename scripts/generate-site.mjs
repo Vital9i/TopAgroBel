@@ -14,6 +14,29 @@ const PROJECT_ROOT = path.join(__dirname, "..");
 
 const SITE_ORIGIN = "https://topagrobel.by";
 
+const PHONE_OLEG = {
+  tel: "+375291286217",
+  display: "+375 (29) 128-62-17",
+  label: "Олег",
+};
+
+const PHONE_ROBERT = {
+  tel: "+375296582950",
+  display: "+375 (29) 658-29-50",
+  label: "Робертович",
+};
+
+/** @returns {string} */
+function renderHeaderPhones() {
+  return `<a href="tel:${PHONE_OLEG.tel}">${PHONE_OLEG.display}</a>
+          <a href="tel:${PHONE_ROBERT.tel}">${PHONE_ROBERT.display}</a>`;
+}
+
+/** @returns {string} */
+function renderSrvCtaPhones() {
+  return `<p class="srv-cta-card__phone"><a href="tel:${PHONE_OLEG.tel}">${PHONE_OLEG.label}: ${PHONE_OLEG.display}</a><br><a href="tel:${PHONE_ROBERT.tel}">${PHONE_ROBERT.label}: ${PHONE_ROBERT.display}</a></p>`;
+}
+
 /** @typedef {{ slug: string; title: string; lede?: string; freq?: string; stub?: boolean }} Service */
 
 /** @type {Service[]} */
@@ -241,7 +264,7 @@ function detailedServiceLandingMarkup(detail, slug) {
             <aside class="srv-hero__cta srv-cta-card" aria-label="Обратная связь">
               <strong class="srv-cta-card__title">Получить расчёт</strong>
               <p class="srv-cta-card__sub">Оставьте заявку — подготовим ориентир по срокам и стоимости работ.</p>
-              <p class="srv-cta-card__phone"><a href="tel:+375XXXXXXXXX">+375 (XX) XXX-XX-XX</a></p>
+              ${renderSrvCtaPhones()}
               ${scrollBtn(detail.ctaLabel)}
               <p class="srv-cta-card__hint">Ответ оперативно в рабочее время&nbsp;• пн–пт 09:00–18:00</p>
               <div class="srv-cta-card__avatar" aria-hidden="true"><span>ПК</span></div>
@@ -288,7 +311,7 @@ function detailedServiceLandingMarkup(detail, slug) {
       <section class="srv-projects" aria-labelledby="srv-projects-heading-${slug}">
         <div class="srv-projects-head wrap">
           <h2 id="srv-projects-heading-${slug}" class="srv-projects-title">Примеры выполненных работ</h2>
-          <a href="../index.html#objects-showcase" class="srv-projects-more">На главную — блок проектов</a>
+          <a href="../index.html#home-portfolio" class="srv-projects-more">На главную — готовые объекты</a>
         </div>
         <div class="srv-projects-grid wrap">
           ${[1, 2, 3, 4, 5, 6]
@@ -371,7 +394,7 @@ function stubServiceMarkup(service) {
             <aside class="srv-hero__cta srv-cta-card" aria-label="Обратная связь">
               <strong class="srv-cta-card__title">Связаться с нами</strong>
               <p class="srv-cta-card__sub">Оставьте контакты — сообщим о запуске раздела или подберём технику через менеджера.</p>
-              <p class="srv-cta-card__phone"><a href="tel:+375XXXXXXXXX">+375 (XX) XXX-XX-XX</a></p>
+              ${renderSrvCtaPhones()}
               <a class="srv-cta-solid srv-btn-scroll" href="${scrollLead}" data-scroll-target="${scrollLead}">Связаться с нами</a>
             </aside>
           </div>
@@ -436,12 +459,16 @@ function renderUnifiedHeader({ depth, active = null }) {
   const u = urls(depth);
   const { up } = u;
   const rootIndex = `${up}index.html`;
-  const projectsHref = depth === "root" ? "#objects-showcase" : `${rootIndex}#objects-showcase`;
-  const pricingHref = depth === "root" ? "#pricing-offer" : `${rootIndex}#pricing-offer`;
+  const reviewsHref = depth === "root" ? "#home-reviews" : `${rootIndex}#home-reviews`;
 
   /** @param {string} key */
   const ac = (key) =>
     active != null && active === key ? ' aria-current="page"' : "";
+
+  const homeNavItem =
+    depth === "root"
+      ? `<li><a href="#"${ac("home")}>Главная</a></li>`
+      : `<li><a href="${rootIndex}">Главная</a></li>`;
 
   const navLabel =
     depth === "root"
@@ -464,8 +491,8 @@ function renderUnifiedHeader({ depth, active = null }) {
         <a class="home-logo-strong" href="${rootIndex}">ТОП<span>АГРО</span>БЕЛ</a>
         <div class="home-contacts-strip">
           <span><strong>График:</strong> пн–пт 09:00–18:00</span>
-          <a href="tel:+375XXXXXXXXX">+375 (XX) XXX-XX-XX</a>
-          <span>Минская область, выезд по РБ</span>
+          ${renderHeaderPhones()}
+          <span>Минск и вся РБ</span>
         </div>
         ${callbackMarkup}
       </div>
@@ -477,12 +504,11 @@ function renderUnifiedHeader({ depth, active = null }) {
         </button>
         <nav id="home-main-navigation" class="home-main-nav" data-open="false" aria-label="${navLabel}">
           <ul>
+            ${homeNavItem}
             <li><a href="${up}o-kompanii/index.html"${ac("o-kompanii")}>О компании</a></li>
             <li><a href="${up}uslugi/index.html"${ac("uslugi")}>Услуги</a></li>
-            <li><a href="${projectsHref}">Проекты</a></li>
-            <li><a href="${pricingHref}">Цены</a></li>
+            <li><a href="${reviewsHref}">Отзывы</a></li>
             <li><a href="${up}blog/index.html"${ac("blog")}>Новости</a></li>
-            <li><a href="${up}kontakty/index.html"${ac("kontakty")}>Контакты</a></li>
           </ul>
         </nav>
       </div>
@@ -581,7 +607,7 @@ function serviceLandingMarkup(service) {
   const t = esc(service.title);
   const lede = esc(
     service.lede ??
-      `Услуга «${service.title}»: проектирование, смета, производство работ и сдача объекта по договору. Работаем по Беларуси, ориентир — промышленные и складские объекты в Минском регионе.`,
+      `Услуга «${service.title}»: проектирование, смета, производство работ и сдача объекта по договору. Работаем в Минске и по всей Республике Беларусь.`,
   );
 
   const stagesJson = JSON.stringify(serviceCooperationStages(service)).replace(/</g, "\\u003c");
@@ -609,7 +635,7 @@ function serviceLandingMarkup(service) {
               <ul class="srv-hero-list">
                 <li>Прозрачная смета и этапность выполнения «проект&nbsp;→&nbsp;производство&nbsp;→&nbsp;монтаж».</li>
                 <li>Собственное производство металлоконструкций и контроль поставки на объект.</li>
-                <li>Работаем по Республике Беларусь, приоритет — Минская область и индустриальные кластеры.</li>
+                <li>Работаем в Минске и по всей Республике Беларусь.</li>
                 <li>Выезд на объект или разбор задачи удалённо по пакету документов.</li>
               </ul>
               <p class="srv-hero__lede">${lede}</p>
@@ -617,7 +643,7 @@ function serviceLandingMarkup(service) {
             <aside class="srv-hero__cta srv-cta-card" aria-label="Обратная связь">
               <strong class="srv-cta-card__title">Получить консультацию</strong>
               <p class="srv-cta-card__sub">Подберём решение под ваш объект по направлению «${t}».</p>
-              <p class="srv-cta-card__phone"><a href="tel:+375XXXXXXXXX">+375 (XX) XXX-XX-XX</a></p>
+              ${renderSrvCtaPhones()}
               ${scrollBtn("Оставить заявку")}
               <p class="srv-cta-card__hint">Ответ оперативно в рабочее время&nbsp;• пн–пт 09:00–18:00</p>
               <div class="srv-cta-card__avatar" aria-hidden="true"><span>ПК</span></div>
@@ -680,11 +706,11 @@ function serviceLandingMarkup(service) {
               <ellipse cx="210" cy="148" rx="56" ry="62" fill="rgba(244,190,0,0.38)"/>
               <path stroke="rgba(255,255,255,0.12)" stroke-width="1.2" fill="none" d="M42 208h238M42 174h238M62 208V52M122 208V52"/>
             </svg>
-            <span class="srv-geo-badge">Приоритет: Минский регион</span>
+            <span class="srv-geo-badge">География: Минск и вся РБ</span>
           </div>
           <div class="srv-geo-copy">
             <h2 class="srv-geo-title">География и логистика</h2>
-            <p>ТопАгроБел ведёт проекты по всей территории Беларуси. Для объектов промышленного и складского назначения акцентируем Минский регион как наиболее нагрузочный для логистики КМД и монтажа.</p>
+            <p>ТопАгроБел ведёт проекты в Минске и по всей Республике Беларусь. Планируем логистику поставок и монтаж с учётом удалённости площадки и пропускного режима.</p>
             <ul class="srv-checklist">
               <li>Выезд инженера и разбор технологической схемы на вашей площадке.</li>
               <li>Планируем производственные партии и доставку с учётом пропускного режима и пропускной способности площадки.</li>
@@ -773,7 +799,7 @@ function serviceLandingMarkup(service) {
       <section class="srv-projects" aria-labelledby="srv-projects-heading-${slug}">
         <div class="srv-projects-head wrap">
           <h2 id="srv-projects-heading-${slug}" class="srv-projects-title">Готовые объекты по направлению</h2>
-          <a href="../index.html#objects-showcase" class="srv-projects-more">На главную — блок проектов</a>
+          <a href="../index.html#home-portfolio" class="srv-projects-more">На главную — готовые объекты</a>
         </div>
         <div class="srv-projects-grid wrap">
           ${[1, 2, 3, 4, 5, 6]
@@ -794,7 +820,7 @@ function serviceLandingMarkup(service) {
         <div class="srv-faq-body wrap">
           <div class="faq faq--srv">
             <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">${esc(`Подходит ли ${service.title} для объектов в Минской области?`)}</button>
+              <button type="button" class="faq-q focus-ring" aria-expanded="false">${esc(`Подходит ли ${service.title} для объектов в Минске и по всей РБ?`)}</button>
               <div class="faq-a">Да: страница приземлена под региональный спрос, логистику поставки КМД и типичные климатические нагрузки при проектировании.</div>
             </div>
             <div class="faq-item">
@@ -875,7 +901,7 @@ function serviceHtml(service) {
   } else {
     mainMarkup = serviceLandingMarkup(service);
     pageTitle = `${service.title} — ТопАгроБел`;
-    meta = `${service.title}: строительные работы, прозрачная смета, этапы, готовые объекты (блок), FAQ для Минского региона.`;
+    meta = `${service.title}: строительные работы, прозрачная смета, этапы, готовые объекты (блок), FAQ по Беларуси.`;
   }
 
   return `${baseHead({

@@ -133,10 +133,7 @@
     const setActive = (id) => {
       anchors.forEach((a) => {
         a.classList.toggle("is-active", a.getAttribute("href") === `#${id}`);
-        a.removeAttribute("aria-current");
       });
-      const active = anchors.find((a) => a.getAttribute("href") === `#${id}`);
-      active?.setAttribute("aria-current", "page");
     };
 
     if ("IntersectionObserver" in window) {
@@ -266,45 +263,74 @@
     buttonsById.get(defaultBid)?.click();
   }
 
+  const STAGE_TAB_LABELS = {
+    1: "Анализ",
+    2: "Проект",
+    3: "Площадка",
+    4: "Земляные",
+    5: "Фундамент",
+    6: "Кровля",
+    7: "Полы",
+    8: "Сети",
+    9: "Дороги",
+    10: "Сдача",
+  };
+
+  /** @param {number} id */
+  function renderStageTabIcon(id) {
+    const icons = {
+      1: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4"/><path d="M12 17h.01"/>',
+      2: '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/>',
+      3: '<path d="M3 18h2"/><path d="M19 18h2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M9 18h6"/><path d="M13 8h4l2 4H11z"/><path d="M13 8V5h2v3"/><path d="M5 14h6"/>',
+      4: '<path d="M4 17l4-8 4 5 4-9 4 12"/><path d="M3 20h18"/>',
+      5: '<path d="M3 20h18"/><path d="M5 20V12l7-5 7 5v8"/><path d="M9 20v-4h6v4"/>',
+      6: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-5h6v5"/>',
+      7: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/>',
+      8: '<rect x="6" y="4" width="12" height="16" rx="2"/><circle cx="9.5" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11" r="1" fill="currentColor" stroke="none"/><path d="M12 15v5"/>',
+      9: '<path d="M4 20h16"/><path d="M8 4v16"/><path d="M16 4v16"/><path d="M10.5 8h3M10.5 12h3M10.5 16h3"/>',
+      10: '<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>',
+    };
+    const body = icons[id] ?? '<circle cx="12" cy="12" r="8"/>';
+    return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+  }
+
   /**
-   * @param {{ id: number; title?: string; text?: string; image?: string; alt?: string }} stage
+   * @param {{ id: number; navTitle?: string; heading?: string; paragraphs?: string[]; image?: string; alt?: string }} stage
    * @param {string} bid
    * @param {string} tabDomId
    * @param {string} panelDomId
    */
-  function renderHomeStagePanel(stage, bid, tabDomId, panelDomId, stageIndex, totalStages) {
+  function renderConstructionStepPanel(stage, bid, tabDomId, panelDomId) {
     const img = stage.image ?? "";
-    const alt = stage.alt ?? stage.title ?? "";
-    const prevDisabled = stageIndex <= 0 ? "disabled" : "";
-    const nextDisabled = stageIndex >= totalStages - 1 ? "disabled" : "";
+    const alt = stage.alt ?? stage.heading ?? stage.navTitle ?? "";
+    const title = stage.navTitle ?? stage.heading ?? "";
+    const paragraphs = Array.isArray(stage.paragraphs) ? stage.paragraphs : [];
+    const paragraphsHtml = paragraphs.map((p) => `<p>${p}</p>`).join("");
+
     return `
       <article
-        class="home-stage-panel"
+        class="construction-steps__panel"
         id="${panelDomId}"
         data-stage-bid="${bid}"
         role="tabpanel"
         aria-labelledby="${tabDomId}"
-        data-visible="false"
       >
-        <div class="home-stage-panel__visual">
-          <img src="${img}" alt="${alt}" width="960" height="540" loading="lazy" decoding="async">
-        </div>
-        <div class="home-stage-panel__slant" aria-hidden="true"></div>
-        <div class="home-stage-panel__content">
-          <p class="home-stage-panel__num">${bid}</p>
-          <h3 class="home-stage-panel__title">${stage.title ?? ""}</h3>
-          <p class="home-stage-panel__text">${stage.text ?? ""}</p>
-          <div class="home-stage-panel__nav">
-            <button type="button" class="home-stage-panel__nav-btn" data-stage-prev ${prevDisabled} aria-label="Предыдущий этап">← Назад</button>
-            <button type="button" class="home-stage-panel__nav-btn" data-stage-next ${nextDisabled} aria-label="Следующий этап">Далее →</button>
+        <div class="construction-steps__card">
+          <span class="construction-steps__step-badge">${bid} этап</span>
+          <div class="construction-steps__media">
+            <img class="construction-steps__image" src="${img}" alt="${alt}" width="960" height="540" loading="lazy" decoding="async">
           </div>
-          <a class="home-btn-solid home-btn-scroll home-stage-panel__cta" href="#zakaz-consult" data-scroll-target="#zakaz-consult">Получить расчёт</a>
+          <div class="construction-steps__body">
+            <h3 class="construction-steps__title">${title}</h3>
+            <div class="construction-steps__text">${paragraphsHtml}</div>
+            <a class="home-btn-solid home-btn-scroll construction-steps__button" href="#zakaz-consult" data-scroll-target="#zakaz-consult">Получить расчёт</a>
+          </div>
         </div>
       </article>`;
   }
 
-  function wireHomeConstructionStages(root) {
-    const jsonEl = document.getElementById("home-stages-json");
+  function wireConstructionSteps(root) {
+    const jsonEl = document.getElementById("construction-steps-json");
     if (!root || !jsonEl) return;
 
     let stages = [];
@@ -314,121 +340,170 @@
       stages = [];
     }
 
-    const sidebar = root.querySelector(".home-stages-sidebar");
-    const panelsWrap = root.querySelector(".home-stage-panels");
-    const mobileWrap = root.querySelector(".home-stages__mobile");
-    if (!sidebar || !panelsWrap || !mobileWrap || !stages.length) return;
+    const tabsWrap = root.querySelector(".construction-steps__tabs");
+    const panelsWrap = root.querySelector(".construction-steps__panels");
+    const prevBtn = root.querySelector(".construction-steps__arrow--prev");
+    const nextBtn = root.querySelector(".construction-steps__arrow--next");
+    if (!tabsWrap || !panelsWrap || !prevBtn || !nextBtn || !stages.length) return;
 
     const defaultIdRaw = root.dataset.stageDefault ?? stages[0]?.id;
-    const buttonsById = new Map();
-    let lastPhase = "";
+    const tabsById = new Map();
+    let currentIndex = 0;
 
-    const activateStage = (bid) => {
-      buttonsById.forEach((b, id) => {
-        b.setAttribute("aria-selected", id === bid ? "true" : "false");
+    const setArrowState = () => {
+      const atStart = currentIndex === 0;
+      const atEnd = currentIndex === stages.length - 1;
+      prevBtn.disabled = atStart;
+      nextBtn.disabled = atEnd;
+      prevBtn.classList.toggle("is-hidden", atStart);
+      nextBtn.classList.toggle("is-hidden", atEnd);
+    };
+
+    const scrollActiveTab = (tab, smooth = true) => {
+      if (!tab || !tabsWrap) return;
+      const maxScroll = Math.max(0, tabsWrap.scrollWidth - tabsWrap.clientWidth);
+      const target = tab.offsetLeft - (tabsWrap.clientWidth - tab.offsetWidth) / 2;
+      tabsWrap.scrollTo({
+        left: Math.max(0, Math.min(maxScroll, target)),
+        behavior: smooth ? "smooth" : "instant",
       });
-      panelsWrap.querySelectorAll(".home-stage-panel").forEach((panel) => {
-        panel.dataset.visible = panel.dataset.stageBid === bid ? "true" : "false";
+    };
+
+    const goToIndex = (index, smoothTabScroll = true) => {
+      currentIndex = Math.max(0, Math.min(stages.length - 1, index));
+      const bid = String(stages[currentIndex].id).padStart(2, "0");
+
+      tabsById.forEach((btn, id) => {
+        const isActive = id === bid;
+        btn.classList.toggle("is-active", isActive);
+        btn.setAttribute("aria-selected", isActive ? "true" : "false");
       });
+
+      panelsWrap.querySelectorAll(".construction-steps__panel").forEach((panel) => {
+        panel.classList.toggle("is-active", panel.dataset.stageBid === bid);
+      });
+
+      scrollActiveTab(tabsById.get(bid), smoothTabScroll);
+
+      setArrowState();
     };
 
     stages.forEach((stage, i) => {
       const bid = String(stage.id).padStart(2, "0");
-      const panelDomId = `stage-panel-${bid}`;
-      const tabDomId = `stage-tab-${bid}`;
+      const panelDomId = `construction-step-panel-${bid}`;
+      const tabDomId = `construction-step-tab-${bid}`;
+      const tabLabel =
+        STAGE_TAB_LABELS[stage.id] ?? stage.navTitle ?? stage.heading ?? "";
 
-      if (stage.phase && stage.phase !== lastPhase) {
-        lastPhase = stage.phase;
-        const phaseEl = document.createElement("p");
-        phaseEl.className = "home-stages-phase";
-        phaseEl.textContent = stage.phase;
-        sidebar.append(phaseEl);
-      }
-
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "home-stage-btn";
-      btn.setAttribute("role", "tab");
-      btn.dataset.stageId = bid;
-      btn.id = tabDomId;
-      btn.setAttribute("aria-controls", panelDomId);
-      btn.innerHTML = `<span class="home-stage-num">${bid}</span><span class="home-stage-label">${stage.title ?? ""}</span>`;
-      sidebar.append(btn);
-      buttonsById.set(bid, btn);
+      const tab = document.createElement("button");
+      tab.type = "button";
+      tab.className = "construction-steps__tab";
+      tab.setAttribute("role", "tab");
+      tab.dataset.stageId = bid;
+      tab.id = tabDomId;
+      tab.setAttribute("aria-controls", panelDomId);
+      tab.setAttribute("aria-selected", "false");
+      tab.innerHTML = `
+        <span class="construction-steps__tab-icon">${renderStageTabIcon(stage.id)}</span>
+        <span class="construction-steps__tab-label">${tabLabel}</span>`;
+      tabsWrap.append(tab);
+      tabsById.set(bid, tab);
 
       panelsWrap.insertAdjacentHTML(
         "beforeend",
-        renderHomeStagePanel(stage, bid, tabDomId, panelDomId, i, stages.length),
+        renderConstructionStepPanel(stage, bid, tabDomId, panelDomId),
       );
 
-      const accItem = document.createElement("div");
-      accItem.className = "home-stages-acc-item";
-      accItem.dataset.open = "false";
-      accItem.innerHTML = `
-        <button type="button" class="home-stages-acc-btn" aria-expanded="false" aria-controls="${panelDomId}-mobile">
-          <span class="home-stage-num">${bid}</span>
-          <span class="home-stage-label">${stage.title ?? ""}</span>
-          <span class="home-stages-acc-icon" aria-hidden="true"></span>
-        </button>
-        <div class="home-stages-acc-panel" id="${panelDomId}-mobile">
-          ${renderHomeStagePanel(stage, bid, tabDomId, `${panelDomId}-mobile-inner`, i, stages.length)}
-        </div>`;
-      mobileWrap.append(accItem);
+      tab.addEventListener("click", () => goToIndex(i));
 
-      btn.addEventListener("click", () => activateStage(bid));
-
-      btn.addEventListener("keydown", (ev) => {
-        if (ev.key !== "ArrowDown" && ev.key !== "ArrowUp") return;
+      tab.addEventListener("keydown", (ev) => {
+        if (ev.key !== "ArrowLeft" && ev.key !== "ArrowRight") return;
         ev.preventDefault();
-        const next = ev.key === "ArrowDown" ? i + 1 : i - 1;
+        const next = ev.key === "ArrowRight" ? i + 1 : i - 1;
         const bounded = Math.max(0, Math.min(stages.length - 1, next));
-        const nid = String(stages[bounded].id).padStart(2, "0");
-        buttonsById.get(nid)?.focus();
-        activateStage(nid);
-      });
-
-      const accBtn = accItem.querySelector(".home-stages-acc-btn");
-      accBtn?.addEventListener("click", () => {
-        const isOpen = accItem.getAttribute("data-open") === "true";
-        mobileWrap.querySelectorAll(".home-stages-acc-item").forEach((item) => {
-          item.setAttribute("data-open", "false");
-          item.querySelector(".home-stages-acc-btn")?.setAttribute("aria-expanded", "false");
-        });
-        if (!isOpen) {
-          accItem.setAttribute("data-open", "true");
-          accBtn.setAttribute("aria-expanded", "true");
-        }
+        tabsById.get(String(stages[bounded].id).padStart(2, "0"))?.focus();
+        goToIndex(bounded);
       });
     });
 
-    root.addEventListener("click", (event) => {
-      const prevBtn = event.target.closest("[data-stage-prev]");
-      const nextBtn = event.target.closest("[data-stage-next]");
-      if (!prevBtn && !nextBtn) return;
-      const panel = event.target.closest(".home-stage-panel");
-      if (!panel) return;
-      const currentBid = panel.dataset.stageBid;
-      const currentIndex = stages.findIndex((s) => String(s.id).padStart(2, "0") === currentBid);
-      const targetIndex = prevBtn ? currentIndex - 1 : currentIndex + 1;
-      if (targetIndex < 0 || targetIndex >= stages.length) return;
-      const targetBid = String(stages[targetIndex].id).padStart(2, "0");
-      activateStage(targetBid);
-      buttonsById.get(targetBid)?.focus();
-    });
+    prevBtn.addEventListener("click", () => goToIndex(currentIndex - 1));
+    nextBtn.addEventListener("click", () => goToIndex(currentIndex + 1));
 
     const defaultBid = String(defaultIdRaw).padStart(2, "0");
-    activateStage(defaultBid);
     const defaultIndex = stages.findIndex(
       (s) => String(s.id).padStart(2, "0") === defaultBid,
     );
-    const defaultAccItem = mobileWrap.children[defaultIndex] ?? mobileWrap.firstElementChild;
-    if (defaultAccItem instanceof HTMLElement) {
-      defaultAccItem.setAttribute("data-open", "true");
-      defaultAccItem.querySelector(".home-stages-acc-btn")?.setAttribute("aria-expanded", "true");
-    }
+    goToIndex(defaultIndex >= 0 ? defaultIndex : 0, false);
   }
 
-  wireHomeConstructionStages(document.querySelector("[data-home-stages]"));
+  wireConstructionSteps(document.querySelector("[data-construction-steps]"));
+
+  function wireHomeTopLink() {
+    if (!document.body.classList.contains("home-page")) return;
+
+    const resetHomeScroll = () => {
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname);
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const nav = document.querySelector(".home-main-nav");
+      nav?.setAttribute("data-open", "false");
+      document
+        .querySelector(".home-nav-toggle")
+        ?.setAttribute("aria-expanded", "false");
+    };
+
+    document.querySelectorAll('a[href="index.html"], a[href="#"]').forEach((link) => {
+      if (link.getAttribute("href") === "#" && !link.closest(".home-main-nav")) return;
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        resetHomeScroll();
+      });
+    });
+  }
+
+  wireHomeTopLink();
+
+  function wireReviewsCarousel(root) {
+    if (!root) return;
+
+    const viewport = root.querySelector(".home-reviews__viewport");
+    const prevBtn = root.querySelector(".home-reviews__arrow--prev");
+    const nextBtn = root.querySelector(".home-reviews__arrow--next");
+    if (!viewport || !prevBtn || !nextBtn) return;
+
+    const getScrollStep = () => {
+      const slide = root.querySelector(".home-reviews__slide");
+      if (!slide) return 300;
+      const styles = getComputedStyle(root.querySelector(".home-reviews__track"));
+      const gap = Number.parseFloat(styles.gap || "16") || 16;
+      return slide.offsetWidth + gap;
+    };
+
+    const updateArrows = () => {
+      const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+      const atStart = viewport.scrollLeft <= 4;
+      const atEnd = viewport.scrollLeft >= maxScroll - 4;
+      prevBtn.disabled = atStart;
+      nextBtn.disabled = atEnd;
+      prevBtn.classList.toggle("is-hidden", atStart);
+      nextBtn.classList.toggle("is-hidden", atEnd);
+    };
+
+    prevBtn.addEventListener("click", () => {
+      viewport.scrollBy({ left: -getScrollStep(), behavior: "smooth" });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      viewport.scrollBy({ left: getScrollStep(), behavior: "smooth" });
+    });
+
+    viewport.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows);
+    updateArrows();
+  }
+
+  wireReviewsCarousel(document.querySelector("[data-home-reviews]"));
 
   function wireHomeEquipment() {
     const gallery = document.querySelector(".home-equipment__gallery");
