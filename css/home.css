@@ -4,6 +4,10 @@ body.home-page {
   background: #ffffff;
 }
 
+html.has-fixed-header body.home-page {
+  padding-top: 0;
+}
+
 .home-page.site-shell .site-main {
   padding: 0;
 }
@@ -80,6 +84,10 @@ body.home-page {
   grid-template-columns: 1fr auto;
   gap: clamp(24px, 4vw, 48px);
   align-items: end;
+}
+
+.home-page .home-hero--industrial .home-hero__inner {
+  padding-top: calc(var(--home-header-h, 110px) + clamp(32px, 6vw, 64px));
 }
 
 @media (max-width: 900px) {
@@ -612,9 +620,13 @@ body.home-page {
   pointer-events: none;
 }
 
-.what-we-build .wrap {
+.what-we-build__inner {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-inline: clamp(18px, 4vw, 48px);
 }
 
 .what-we-build__layout {

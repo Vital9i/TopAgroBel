@@ -10,7 +10,7 @@
   <meta property="og:description" content="Строительная компания ТопАгроБел: подряд и генподряд на промышленных, складских и коммерческих объектах в Минске и по всей РБ.">
   <meta property="og:image" content="assets/images/main/topagrobel-industrial-hero.webp">
   <meta property="og:locale" content="ru_BY">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/images/main/favicon.webp" type="image/webp">
   <link rel="preload" href="assets/images/main/topagrobel-industrial-hero.webp" as="image" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,13 +38,24 @@
   <header class="home-header">
     <div class="home-topbar">
       <div class="wrap home-topbar-row">
-        <a class="home-logo-strong" href="index.html">ТОП<span>АГРО</span>БЕЛ</a>
+        <a class="home-logo" href="index.html">
+          <img class="home-logo__img" src="assets/images/main/Logo.webp" alt="ТопАгроБел" width="200" height="56" decoding="async">
+        </a>
         <div class="home-contacts-strip home-contacts-strip--compact">
-          <a class="home-contacts-strip__phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
-          <a class="home-contacts-strip__phone" href="tel:+375296582950">+375 (29) 658-29-50</a>
-          <span class="home-contacts-strip__meta">пн–пт 09:00–18:00 · Минск и вся РБ</span>
+          <div class="home-contacts-strip__person">
+            <span class="home-contacts-strip__name">Олег Олегович</span>
+            <a class="home-contacts-strip__phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
+          </div>
+          <div class="home-contacts-strip__person">
+            <span class="home-contacts-strip__name">Святослав Робертович</span>
+            <a class="home-contacts-strip__phone" href="tel:+375296582950">+375 (29) 658-29-50</a>
+          </div>
+          <div class="home-contacts-strip__region">
+            <span class="home-contacts-strip__region-title">Минск и вся РБ</span>
+            <span class="home-contacts-strip__meta">пн–пт 09:00–18:00</span>
+          </div>
         </div>
-        <button type="button" class="home-btn-callback home-btn-scroll" data-scroll-target="#zakaz-consult">
+        <button type="button" class="home-btn-callback" data-callback-modal>
           Обратный звонок
         </button>
       </div>
@@ -185,47 +196,9 @@
       </div>
     </section>
 
-    <!-- Спецпредложение -->
-    <section class="home-promo" aria-labelledby="promo-heading">
-      <div class="home-promo__bg" aria-hidden="true"></div>
-      <div class="wrap home-promo__wrap">
-        <div class="home-promo__layout">
-          <div class="home-promo__offer">
-            <div class="home-promo__offer-copy">
-              <div class="home-promo__offer-top">
-                <div class="home-promo__rule home-promo__rule--top" aria-hidden="true"></div>
-                <p class="home-promo__eyebrow">От проектного отдела ТопАгроБел</p>
-                <h2 class="home-promo__title" id="promo-heading">
-                  <span class="home-promo__title-line">Проектная и рабочая документация</span>
-                  <span class="home-promo__title-line home-promo__title-line--accent">бесплатно</span>
-                </h2>
-              </div>
-              <div class="home-promo__offer-bottom">
-                <p class="home-promo__subline">Разработаем проектную и рабочую документацию</p>
-                <div class="home-promo__rule home-promo__rule--bottom" aria-hidden="true"></div>
-                <p class="home-promo__note">*При заказе комплекса строительных работ от 1 млн BYN</p>
-              </div>
-            </div>
-            <figure class="home-promo__gift" aria-hidden="true">
-              <img src="assets/images/main/skidka.webp" alt="" width="960" height="640" loading="lazy" decoding="async">
-            </figure>
-          </div>
-
-          <aside class="home-promo__cta">
-            <p class="home-promo__cta-lead">Оставьте заявку, чтобы получить ваш подарок</p>
-            <p class="home-promo__cta-bar">от 1 млн BYN</p>
-            <p class="home-promo__cta-title">Закажите консультацию менеджера</p>
-            <p class="home-promo__cta-text">Узнайте подробности получения проектной документации бесплатно</p>
-            <a class="home-promo__phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
-            <a class="home-promo__btn home-btn-scroll" href="#zakaz-consult" data-scroll-target="#zakaz-consult"><span>Оставить заявку</span></a>
-          </aside>
-        </div>
-      </div>
-    </section>
-
     <!-- Что мы строим -->
     <section class="what-we-build" aria-labelledby="build-heading">
-      <div class="wrap">
+      <div class="what-we-build__inner">
         <header class="what-we-build__header what-we-build__header--full">
           <h2 class="what-we-build__title" id="build-heading">Что мы строим? Генподряд</h2>
           <p class="what-we-build__subtitle">Строим промышленные, складские, административные и коммерческие объекты для бизнеса, предприятий и государственных заказчиков.</p>
@@ -341,7 +314,7 @@
                 <span class="contract-work-card__more">Подробнее<svg class="contract-work-card__more-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               </span>
               <span class="contract-work-card__visual">
-                <img src="assets/images/main/project.webp" alt="" width="600" height="400" loading="lazy" decoding="async">
+                <img src="assets/images/main/yslygi/Rekonstrykcia.webp" alt="Реконструкция промышленных и складских зданий" width="600" height="400" loading="lazy" decoding="async">
               </span>
             </a>
           </li>
@@ -566,7 +539,7 @@
     </section>
 
     <!-- Этапы строительства -->
-    <section class="home-section home-stages" id="home-stages" aria-labelledby="stages-heading" data-construction-steps data-stage-default="5">
+    <section class="home-section home-stages" id="home-stages" aria-labelledby="stages-heading" data-construction-steps data-stage-default="1">
       <div class="wrap">
         <header class="home-stages__header">
           <h2 class="home-section-title" id="stages-heading">Этапы строительства</h2>
@@ -588,16 +561,16 @@
       </div>
       <script type="application/json" id="construction-steps-json">
         [
-          {"id":1,"navTitle":"Анализ задачи","heading":"АНАЛИЗ ЗАДАЧИ","paragraphs":["Изучаем назначение объекта, параметры площадки, требования заказчика и предполагаемый состав работ.","На этом этапе определяем строительную логику проекта, ограничения участка и последовательность дальнейших действий."],"image":"assets/images/stages/stage-01-analysis.webp","alt":"Анализ промышленного строительного объекта"},
-          {"id":2,"navTitle":"Проектная подготовка","heading":"ПРОЕКТНАЯ ПОДГОТОВКА","paragraphs":["Проектная подготовка выполняется в составе строительства под ключ и помогает точно увязать технические решения.","На этом этапе согласуются конструктив, материалы, этапы работ, сроки и организация строительного процесса."],"image":"assets/images/stages/stage-02-project.webp","alt":"Проектная подготовка промышленного объекта"},
-          {"id":3,"navTitle":"Подготовка площадки","heading":"ПОДГОТОВКА ПЛОЩАДКИ","paragraphs":["Готовим участок к началу основных строительных работ: организуем площадку, подъезды, зоны складирования и доступ техники.","Правильная подготовка помогает избежать задержек и выстроить дальнейшие работы по понятному графику."],"image":"assets/images/stages/stage-03-site-prep.webp","alt":"Подготовка строительной площадки"},
-          {"id":4,"navTitle":"Земляные работы","heading":"ЗЕМЛЯНЫЕ РАБОТЫ","paragraphs":["Выполняем разработку грунта, устройство котлованов, планировку участка, подготовку основания и обратную засыпку.","Это базовый этап, от которого зависит качество устройства фундаментов и дальнейшего строительства."],"image":"assets/images/stages/stage-04-earthworks.webp","alt":"Земляные работы на промышленной площадке"},
-          {"id":5,"navTitle":"Фундамент и стены","heading":"ФУНДАМЕНТ И СТЕНЫ","paragraphs":["Устраиваем фундамент под промышленные, складские и коммерческие здания с учётом расчётных нагрузок и условий основания.","Выполняем монолитные конструкции и монтаж железобетонных элементов: стены, колонны, перекрытия и другие части несущего контура здания."],"image":"assets/images/stages/stage-05-foundation.webp","alt":"Фундамент и стены промышленного здания"},
-          {"id":6,"navTitle":"Кровля и фасады","heading":"КРОВЛЯ И ФАСАДЫ","paragraphs":["Устраиваем кровельные системы, фасадные решения, ограждающие конструкции и облицовку здания.","На этом этапе объект получает защиту от внешней среды и завершённый внешний облик."],"image":"assets/images/stages/stage-08-roof-facade.webp","alt":"Кровля и фасады промышленного здания"},
-          {"id":7,"navTitle":"Покрытие пола","heading":"ПОКРЫТИЕ ПОЛА","paragraphs":["Выполняем устройство промышленных напольных покрытий: подготовку основания, армирование, укладку и финишную обработку поверхности.","Полы рассчитываем под нагрузки от техники, стеллажей и технологического оборудования склада или производства."],"image":"assets/images/stages/stage-07-floor.webp","alt":"Покрытие промышленного пола"},
-          {"id":8,"navTitle":"Инженерные сети","heading":"ИНЖЕНЕРНЫЕ СЕТИ","paragraphs":["Выполняем наружные инженерные сети, теплотрассы, водопровод, канализацию, ливневку и другие коммуникации.","Инженерные работы подготавливают объект к эксплуатации и дальнейшему использованию по назначению."],"image":"assets/images/stages/stage-09-networks.webp","alt":"Инженерные сети промышленного объекта"},
-          {"id":9,"navTitle":"Подъездные дороги и благоустройство","heading":"ПОДЪЕЗДНЫЕ ДОРОГИ И БЛАГОУСТРОЙСТВО","paragraphs":["Устраиваем подъездные дороги, проезды, площадки и элементы благоустройства территории промышленного объекта.","Работы выполняем с учётом нагрузки от грузового транспорта, логистики и эксплуатационных требований площадки."],"image":"assets/images/stages/stage-09-roads.webp","alt":"Подъездные дороги и благоустройство территории"},
-          {"id":10,"navTitle":"Сдача объекта","heading":"СДАЧА ОБЪЕКТА","paragraphs":["Проводим финальную проверку выполненных работ, комплектуем документацию и передаём результат заказчику.","Сдача объекта фиксирует завершение строительного процесса и готовность здания к дальнейшей эксплуатации."],"image":"assets/images/stages/stage-10-handover.webp","alt":"Сдача промышленного объекта заказчику"}
+          {"id":1,"navTitle":"Анализ задачи","heading":"АНАЛИЗ ЗАДАЧИ","paragraphs":["Изучаем назначение объекта, параметры площадки, требования заказчика и предполагаемый состав работ.","На этом этапе определяем строительную логику проекта, ограничения участка и последовательность дальнейших действий."],"image":"assets/images/main/workFlow/analiz.webp","alt":"Анализ промышленного строительного объекта"},
+          {"id":2,"navTitle":"Проектная подготовка","heading":"ПРОЕКТНАЯ ПОДГОТОВКА","paragraphs":["Проектная подготовка выполняется в составе строительства под ключ и помогает точно увязать технические решения.","На этом этапе согласуются конструктив, материалы, этапы работ, сроки и организация строительного процесса."],"image":"assets/images/main/project.webp","alt":"Проектная подготовка промышленного объекта"},
+          {"id":3,"navTitle":"Подготовка площадки","heading":"ПОДГОТОВКА ПЛОЩАДКИ","paragraphs":["Готовим участок к началу основных строительных работ: организуем площадку, подъезды, зоны складирования и доступ техники.","Правильная подготовка помогает избежать задержек и выстроить дальнейшие работы по понятному графику."],"image":"assets/images/main/workFlow/podgotovka_ploshchadki.webp","alt":"Подготовка строительной площадки"},
+          {"id":4,"navTitle":"Земляные работы","heading":"ЗЕМЛЯНЫЕ РАБОТЫ","paragraphs":["Выполняем разработку грунта, устройство котлованов, планировку участка, подготовку основания и обратную засыпку.","Это базовый этап, от которого зависит качество устройства фундаментов и дальнейшего строительства."],"image":"assets/images/main/workFlow/zemlyanye_raboty.webp","alt":"Земляные работы на промышленной площадке"},
+          {"id":5,"navTitle":"Фундамент и стены","heading":"ФУНДАМЕНТ И СТЕНЫ","paragraphs":["Устраиваем фундамент под промышленные, складские и коммерческие здания с учётом расчётных нагрузок и условий основания.","Выполняем монолитные конструкции и монтаж железобетонных элементов: стены, колонны, перекрытия и другие части несущего контура здания."],"image":"assets/images/main/workFlow/fundament_i_steny.webp","alt":"Фундамент и стены промышленного здания"},
+          {"id":6,"navTitle":"Кровля и фасады","heading":"КРОВЛЯ И ФАСАДЫ","paragraphs":["Устраиваем кровельные системы, фасадные решения, ограждающие конструкции и облицовку здания.","На этом этапе объект получает защиту от внешней среды и завершённый внешний облик."],"image":"assets/images/main/workFlow/krovlya_i_fasady.webp","alt":"Кровля и фасады промышленного здания"},
+          {"id":7,"navTitle":"Покрытие пола","heading":"ПОКРЫТИЕ ПОЛА","paragraphs":["Выполняем устройство промышленных напольных покрытий: подготовку основания, армирование, укладку и финишную обработку поверхности.","Полы рассчитываем под нагрузки от техники, стеллажей и технологического оборудования склада или производства."],"image":"assets/images/main/workFlow/promyshlennye_poly.webp","alt":"Покрытие промышленного пола"},
+          {"id":8,"navTitle":"Инженерные сети","heading":"ИНЖЕНЕРНЫЕ СЕТИ","paragraphs":["Выполняем наружные инженерные сети, теплотрассы, водопровод, канализацию, ливневку и другие коммуникации.","Инженерные работы подготавливают объект к эксплуатации и дальнейшему использованию по назначению."],"image":"assets/images/main/workFlow/inzhenernye_seti.webp","alt":"Инженерные сети промышленного объекта"},
+          {"id":9,"navTitle":"Подъездные дороги и благоустройство","heading":"ПОДЪЕЗДНЫЕ ДОРОГИ И БЛАГОУСТРОЙСТВО","paragraphs":["Устраиваем подъездные дороги, проезды, площадки и элементы благоустройства территории промышленного объекта.","Работы выполняем с учётом нагрузки от грузового транспорта, логистики и эксплуатационных требований площадки."],"image":"assets/images/main/workFlow/dorogi_i_blagoustroystvo.webp","alt":"Подъездные дороги и благоустройство территории"},
+          {"id":10,"navTitle":"Сдача объекта","heading":"СДАЧА ОБЪЕКТА","paragraphs":["Проводим финальную проверку выполненных работ, комплектуем документацию и передаём результат заказчику.","Сдача объекта фиксирует завершение строительного процесса и готовность здания к дальнейшей эксплуатации."],"image":"assets/images/main/workFlow/sdacha_obekta.webp","alt":"Сдача промышленного объекта заказчику"}
         ]
       </script>
     </section>
@@ -829,7 +802,9 @@
   <footer class="home-footer">
     <div class="wrap home-footer-inner">
       <div class="home-footer-row1">
-        <a class="home-logo-strong home-logo-strong--invert" href="index.html">ТОП<span>АГРО</span>БЕЛ</a>
+        <a class="home-logo home-logo--footer" href="index.html">
+          <img class="home-logo__img" src="assets/images/main/Logo.webp" alt="ТопАгроБел" width="200" height="56" decoding="async">
+        </a>
         <nav class="home-footer-links">
           <a href="#">Главная</a>
           <a href="o-kompanii/index.html">О компании</a>
@@ -859,6 +834,25 @@
   </style>
 
   <script src="https://api-maps.yandex.ru/2.1/?apikey=12fcf8e0-ecaa-4a73-aefd-d28ec0384927&lang=ru_RU" defer></script>
+
+  <div class="callback-modal" id="callback-modal" hidden aria-hidden="true">
+    <div class="callback-modal__backdrop" data-callback-close aria-hidden="true"></div>
+    <div class="callback-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="callback-modal-title">
+      <button type="button" class="callback-modal__close" data-callback-close aria-label="Закрыть">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <h2 id="callback-modal-title" class="callback-modal__title">Обратный звонок</h2>
+      <p class="callback-modal__lede">Оставьте номер — перезвоним в рабочее время, пн–пт 09:00–18:00</p>
+      <form class="callback-modal__form" data-contact-form novalidate>
+        <label class="visually-hidden" for="callback-name">Имя</label>
+        <input id="callback-name" name="name" autocomplete="name" placeholder="Имя (необязательно)">
+        <label class="visually-hidden" for="callback-phone">Телефон</label>
+        <input id="callback-phone" name="phone" type="tel" autocomplete="tel" placeholder="+375 (__) ___-__-__" inputmode="tel" required>
+        <button class="home-btn-solid callback-modal__submit" type="submit">Заказать звонок</button>
+      </form>
+    </div>
+  </div>
+
   <script src="js/main.js" defer></script>
 </body>
 </html>

@@ -18,18 +18,26 @@ const PHONE_OLEG = {
   tel: "+375291286217",
   display: "+375 (29) 128-62-17",
   label: "Олег",
+  name: "Олег Олегович",
 };
 
 const PHONE_ROBERT = {
   tel: "+375296582950",
   display: "+375 (29) 658-29-50",
   label: "Робертович",
+  name: "Святослав Робертович",
 };
 
 /** @returns {string} */
 function renderHeaderPhones() {
-  return `<a href="tel:${PHONE_OLEG.tel}">${PHONE_OLEG.display}</a>
-          <a href="tel:${PHONE_ROBERT.tel}">${PHONE_ROBERT.display}</a>`;
+  return `<div class="home-contacts-strip__person">
+    <span class="home-contacts-strip__name">${PHONE_OLEG.name}</span>
+    <a href="tel:${PHONE_OLEG.tel}">${PHONE_OLEG.display}</a>
+  </div>
+  <div class="home-contacts-strip__person">
+    <span class="home-contacts-strip__name">${PHONE_ROBERT.name}</span>
+    <a href="tel:${PHONE_ROBERT.tel}">${PHONE_ROBERT.display}</a>
+  </div>`;
 }
 
 /** @returns {string} */
@@ -433,7 +441,8 @@ function urls(depth) {
   return {
     css: `${prefix}css/`,
     js: `${prefix}js/`,
-    favicon: `${prefix}assets/favicon.svg`,
+    favicon: `${prefix}assets/images/main/favicon.webp`,
+    logo: `${prefix}assets/images/main/Logo.webp`,
     up: prefix,
   };
 }
@@ -475,20 +484,17 @@ function renderUnifiedHeader({ depth, active = null }) {
       ? "Навигация по главной странице"
       : "Основная навигация по сайту";
 
-  const callbackMarkup =
-    depth === "root"
-      ? `<button type="button" class="home-btn-callback home-btn-scroll" data-scroll-target="#zakaz-consult">
+  const callbackMarkup = `<button type="button" class="home-btn-callback" data-callback-modal>
           Обратный звонок
-        </button>`
-      : `<a class="home-btn-callback" href="${rootIndex}#zakaz-consult">
-          Обратный звонок
-        </a>`;
+        </button>`;
 
   return `
   <header class="home-header">
     <div class="home-topbar">
       <div class="wrap home-topbar-row">
-        <a class="home-logo-strong" href="${rootIndex}">ТОП<span>АГРО</span>БЕЛ</a>
+        <a class="home-logo" href="${rootIndex}">
+          <img class="home-logo__img" src="${u.logo}" alt="ТопАгроБел" width="200" height="56" decoding="async">
+        </a>
         <div class="home-contacts-strip">
           <span><strong>График:</strong> пн–пт 09:00–18:00</span>
           ${renderHeaderPhones()}
@@ -549,16 +555,39 @@ function baseHead({ depth, title, meta }) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(meta)}">
-  <link rel="icon" href="${u.favicon}" type="image/svg+xml">
+  <link rel="icon" href="${u.favicon}" type="image/webp">
   <link rel="stylesheet" href="${u.css}base.css">
   <link rel="stylesheet" href="${u.css}layout.css">
   <link rel="stylesheet" href="${u.css}header-unified.css">
 `;
 }
 
+function renderCallbackModal() {
+  return `
+  <div class="callback-modal" id="callback-modal" hidden aria-hidden="true">
+    <div class="callback-modal__backdrop" data-callback-close aria-hidden="true"></div>
+    <div class="callback-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="callback-modal-title">
+      <button type="button" class="callback-modal__close" data-callback-close aria-label="Закрыть">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <h2 id="callback-modal-title" class="callback-modal__title">Обратный звонок</h2>
+      <p class="callback-modal__lede">Оставьте номер — перезвоним в рабочее время, пн–пт 09:00–18:00</p>
+      <form class="callback-modal__form" data-contact-form novalidate>
+        <label class="visually-hidden" for="callback-name">Имя</label>
+        <input id="callback-name" name="name" autocomplete="name" placeholder="Имя (необязательно)">
+        <label class="visually-hidden" for="callback-phone">Телефон</label>
+        <input id="callback-phone" name="phone" type="tel" autocomplete="tel" placeholder="+375 (__) ___-__-__" inputmode="tel" required>
+        <button class="home-btn-solid callback-modal__submit" type="submit">Заказать звонок</button>
+      </form>
+    </div>
+  </div>`;
+}
+
 function scripts({ depth }) {
   const u = urls(depth);
-  return `\n  <script src="${u.js}main.js" defer></script>\n`;
+  return `${renderCallbackModal()}
+  <script src="${u.js}main.js" defer></script>
+`;
 }
 
 /** JSON для вкладки «этапы сотрудничества» на страницах услуг (Nyutek-стиль). */
@@ -1180,7 +1209,7 @@ function seoSitemapHtml() {
   <link rel="stylesheet" href="${urls("root").css}base.css">
   <link rel="stylesheet" href="${urls("root").css}layout.css">
   <link rel="stylesheet" href="${urls("root").css}header-unified.css">
-  <link rel="icon" href="${urls("root").favicon}" type="image/svg+xml">
+  <link rel="icon" href="${urls("root").favicon}" type="image/webp">
   <link rel="stylesheet" href="${urls("root").css}sitemap.css">
 </head>
 <body class="site-shell">

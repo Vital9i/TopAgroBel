@@ -94,6 +94,9 @@
         "Заявка принята (демо): подключите форму к почте, CRM или бэкенду.",
       );
       form.reset();
+      form.closest("#callback-modal")?.dispatchEvent(
+        new CustomEvent("callback:success", { bubbles: true }),
+      );
     });
   });
 
@@ -115,6 +118,54 @@
   }
 
   wirePhoneMask();
+
+  function wireCallbackModal() {
+    const modal = document.getElementById("callback-modal");
+    if (!modal) return;
+
+    let lastFocus = null;
+
+    const close = () => {
+      modal.hidden = true;
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("callback-modal-open");
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        lastFocus.focus();
+      }
+    };
+
+    const open = () => {
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("callback-modal-open");
+      const phone = modal.querySelector('input[name="phone"]');
+      if (phone) window.setTimeout(() => phone.focus(), 0);
+    };
+
+    document.querySelectorAll("[data-callback-modal], .home-btn-callback").forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.preventDefault();
+        open();
+      });
+    });
+
+    modal.querySelectorAll("[data-callback-close]").forEach((el) => {
+      el.addEventListener("click", close);
+    });
+
+    modal.addEventListener("click", (event) => {
+      if (event.target.classList.contains("callback-modal__backdrop")) close();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !modal.hidden) close();
+    });
+
+    modal.addEventListener("callback:success", close);
+  }
+
+  wireCallbackModal();
 
   function wireScrollSpy() {
     const anchors = [...document.querySelectorAll("[data-nav-anchor]")];
