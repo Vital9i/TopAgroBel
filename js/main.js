@@ -327,8 +327,8 @@
     10: "Сдача",
   };
 
-  /** @param {number} id */
-  function renderStageTabIcon(id) {
+  /** @param {number | { id?: number; icon?: string }} stageOrId */
+  function renderStageTabIcon(stageOrId) {
     const icons = {
       1: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4"/><path d="M12 17h.01"/>',
       2: '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/>',
@@ -340,8 +340,16 @@
       8: '<rect x="6" y="4" width="12" height="16" rx="2"/><circle cx="9.5" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="11" r="1" fill="currentColor" stroke="none"/><path d="M12 15v5"/>',
       9: '<path d="M4 20h16"/><path d="M8 4v16"/><path d="M16 4v16"/><path d="M10.5 8h3M10.5 12h3M10.5 16h3"/>',
       10: '<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>',
+      11: '<path d="M4 12h16"/><path d="M8 8v8M12 6v12M16 8v8"/>',
+      12: '<path d="M12 3v18"/><path d="M5 8h14"/><path d="M7 14c2 3 4 4 5 4s3-1 5-4"/>',
+      13: '<path d="M9 12l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="2"/>',
     };
-    const body = icons[id] ?? '<circle cx="12" cy="12" r="8"/>';
+    const customIcon =
+      stageOrId && typeof stageOrId === "object" && typeof stageOrId.icon === "string"
+        ? stageOrId.icon
+        : "";
+    const id = typeof stageOrId === "number" ? stageOrId : stageOrId?.id;
+    const body = customIcon || icons[id] || '<circle cx="12" cy="12" r="8"/>';
     return `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
   }
 
@@ -350,13 +358,15 @@
    * @param {string} bid
    * @param {string} tabDomId
    * @param {string} panelDomId
+   * @param {string} [ctaTarget]
    */
-  function renderConstructionStepPanel(stage, bid, tabDomId, panelDomId) {
+  function renderConstructionStepPanel(stage, bid, tabDomId, panelDomId, ctaTarget = "#zakaz-consult") {
     const img = stage.image ?? "";
     const alt = stage.alt ?? stage.heading ?? stage.navTitle ?? "";
     const title = stage.navTitle ?? stage.heading ?? "";
     const paragraphs = Array.isArray(stage.paragraphs) ? stage.paragraphs : [];
     const paragraphsHtml = paragraphs.map((p) => `<p>${p}</p>`).join("");
+    const ctaHref = ctaTarget || "#zakaz-consult";
 
     return `
       <article
@@ -374,15 +384,17 @@
           <div class="construction-steps__body">
             <h3 class="construction-steps__title">${title}</h3>
             <div class="construction-steps__text">${paragraphsHtml}</div>
-            <a class="home-btn-solid home-btn-scroll construction-steps__button" href="#zakaz-consult" data-scroll-target="#zakaz-consult">Получить расчёт</a>
+            <a class="home-btn-solid home-btn-scroll construction-steps__button" href="${ctaHref}" data-scroll-target="${ctaHref}">Получить расчёт</a>
           </div>
         </div>
       </article>`;
   }
 
   function wireConstructionSteps(root) {
-    const jsonEl = document.getElementById("construction-steps-json");
+    const jsonId = root?.dataset?.stepsJson || "construction-steps-json";
+    const jsonEl = document.getElementById(jsonId);
     if (!root || !jsonEl) return;
+    const ctaTarget = root.dataset.ctaTarget || "#zakaz-consult";
 
     let stages = [];
     try {
@@ -444,7 +456,11 @@
       const panelDomId = `construction-step-panel-${bid}`;
       const tabDomId = `construction-step-tab-${bid}`;
       const tabLabel =
-        STAGE_TAB_LABELS[stage.id] ?? stage.navTitle ?? stage.heading ?? "";
+        stage.tabLabel ??
+        STAGE_TAB_LABELS[stage.id] ??
+        stage.navTitle ??
+        stage.heading ??
+        "";
 
       const tab = document.createElement("button");
       tab.type = "button";
@@ -455,14 +471,14 @@
       tab.setAttribute("aria-controls", panelDomId);
       tab.setAttribute("aria-selected", "false");
       tab.innerHTML = `
-        <span class="construction-steps__tab-icon">${renderStageTabIcon(stage.id)}</span>
+        <span class="construction-steps__tab-icon">${renderStageTabIcon(stage)}</span>
         <span class="construction-steps__tab-label">${tabLabel}</span>`;
       tabsWrap.append(tab);
       tabsById.set(bid, tab);
 
       panelsWrap.insertAdjacentHTML(
         "beforeend",
-        renderConstructionStepPanel(stage, bid, tabDomId, panelDomId),
+        renderConstructionStepPanel(stage, bid, tabDomId, panelDomId, ctaTarget),
       );
 
       tab.addEventListener("click", () => goToIndex(i));
