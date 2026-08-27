@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Спасибо! — ТопАгроБел</title>
+  <link rel="icon" href="assets/images/main/favicon.webp" type="image/webp">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header-unified.css">
+  <link rel="stylesheet" href="css/floors-landing.css">
+</head>
+<body class="thank-you-page">
+
+  <div class="thank-you-page__backdrop">
+    <div class="callback-modal__dialog thank-you" role="dialog" aria-labelledby="thankYouTitle" aria-modal="true">
+      <h1 class="callback-modal__title thank-you__title" id="thankYouTitle">Спасибо!</h1>
+      <p class="callback-modal__lede thank-you__text">Заявка отправлена. Олег свяжется с вами в ближайшее время.</p>
+      <p class="thank-you__phone" id="thankYouPhone" hidden></p>
+      <a href="index.html" class="btn btn--yellow btn--full thank-you__btn">На главную</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var name = params.get("name") || "";
+      var phone = params.get("phone") || "";
+      var formId = params.get("form") || "";
+      var source = params.get("source") || "";
+
+      var title = document.getElementById("thankYouTitle");
+      var phoneEl = document.getElementById("thankYouPhone");
+
+      if (name && title) title.textContent = name + ", спасибо!";
+      if (phone && phoneEl) {
+        phoneEl.textContent = phone;
+        phoneEl.hidden = false;
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "form_submit_success",
+        pagePath: location.pathname,
+        pageTitle: document.title,
+        pageLocation: location.href,
+        form_id: formId,
+        form_source: source
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Логотип надежного экскаватора</title>
+  <desc>Векторный знак: щит, гусеничный экскаватор и ковш в черно-желтой строительной палитре.</desc>
+  <defs>
+    <style>
+      .black{fill:#15191c}
+      .yellow{fill:#f5b800}
+      .stroke-black{stroke:#15191c;stroke-width:36;stroke-linecap:round;stroke-linejoin:round}
+      .stroke-yellow{stroke:#f5b800;stroke-width:34;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+    <clipPath id="shieldClip">
+      <path d="M512 82C404 142 278 168 172 176V454C172 682 310 832 512 936C714 832 852 682 852 454V176C746 168 620 142 512 82Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Shield (увеличен; экскаватор без изменений) -->
+  <g transform="translate(512 509) scale(1.22) translate(-512 -509)">
+    <path d="M512 82C404 142 278 168 172 176V454C172 682 310 832 512 936C714 832 852 682 852 454V176C746 168 620 142 512 82Z" fill="white"/>
+    <path d="M512 82C404 142 278 168 172 176V454C172 682 310 832 512 936C714 832 852 682 852 454V176C746 168 620 142 512 82Z" class="stroke-black"/>
+    <path d="M215 824L512 938L810 824" stroke="#f5b800" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g clip-path="url(#shieldClip)">
+    <g transform="translate(512 528) scale(1.62) translate(-512 -578)">
+      <!-- Ground / base -->
+      <path d="M250 722H774" class="stroke-black"/>
+      <path d="M310 790H714" class="stroke-black"/>
+      <rect x="326" y="604" width="282" height="82" rx="16" class="black"/>
+      <rect x="286" y="678" width="372" height="66" rx="33" class="black"/>
+      <circle cx="352" cy="711" r="13" fill="white"/>
+      <circle cx="414" cy="711" r="13" fill="white"/>
+      <circle cx="476" cy="711" r="13" fill="white"/>
+      <circle cx="538" cy="711" r="13" fill="white"/>
+      <circle cx="600" cy="711" r="13" fill="white"/>
+
+      <!-- Body and cabin -->
+      <path d="M345 552H520V604H345V552Z" class="black"/>
+      <path d="M520 502H632C654 502 672 520 672 542V604H520V502Z" class="black"/>
+      <path d="M558 530H628V590H558V530Z" fill="white" opacity="0.92"/>
+      <path d="M294 584H346V638H294V584Z" class="black"/>
+      <rect x="320" y="636" width="280" height="26" class="yellow"/>
+
+      <!-- Boom -->
+      <path d="M468 522L594 360" class="stroke-yellow"/>
+      <path d="M594 360L724 432" class="stroke-yellow"/>
+      <path d="M467 523L594 360L725 433" stroke="#15191c" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Hydraulic details -->
+      <path d="M515 501L620 396" stroke="#15191c" stroke-width="13" stroke-linecap="round"/>
+      <circle cx="594" cy="360" r="18" class="yellow" stroke="#15191c" stroke-width="10"/>
+      <circle cx="468" cy="522" r="15" class="yellow" stroke="#15191c" stroke-width="9"/>
+      <circle cx="724" cy="432" r="15" class="yellow" stroke="#15191c" stroke-width="9"/>
+
+      <!-- Bucket -->
+      <path d="M733 430C780 458 803 505 793 555C746 554 704 534 678 501C694 469 712 447 733 430Z" class="black"/>
+      <path d="M682 502C711 524 743 538 790 544" stroke="white" stroke-width="12" stroke-linecap="round" opacity="0.9"/>
+    </g>
+  </g>
+</svg>

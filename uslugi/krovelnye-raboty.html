@@ -3,213 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Кровельные работы для промышленных зданий | ТопАгроБел</title>
-  <meta name="description" content="Устройство и ремонт кровель промышленных, складских, производственных и коммерческих зданий. Кровельные работы под задачи промышленного строительства.">
+  <title>Кровельные работы — ТопАгроБел</title>
+  <meta name="description" content="Кровельные работы — страница в разработке. ТопАгроБел">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://topagrobel.by/uslugi/krovelnye-raboty">
   <link rel="icon" href="../assets/images/main/favicon.webp" type="image/webp">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/header-unified.css">
-
-  <link rel="stylesheet" href="../css/service-page.css">
 </head>
 <body class="site-shell">
 
-  <header class="home-header">
-    <div class="home-topbar">
-      <div class="wrap home-topbar-row">
-                <a class="home-logo" href="../index.html">
-          <img class="home-logo__img" src="../assets/images/main/Logo.webp" alt="ТопАгроБел" width="200" height="56" decoding="async">
-        </a>
+  <header class="site-header" data-site-header>
+    <div class="wrap site-header__inner">
+      <a class="logo" href="../index.html" aria-label="ТопАгроБел — на главную">
+        <img class="logo__img" src="../assets/images/main/Logo.webp" alt="ТопАгроБел" width="160" height="44" decoding="async">
+      </a>
 
-        <div class="home-contacts-strip">
-          <span><strong>График:</strong> пн–пт 09:00–18:00</span>
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Олег Олегович</span>
-            <a href="tel:+375291286217">+375 (29) 128-62-17</a>
-          </div>
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Святослав Робертович</span>
-            <a href="tel:+375296582950">+375 (29) 658-29-50</a>
-          </div>
+      <nav class="nav" aria-label="Основная навигация по сайту">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="../index.html">Главная</a></li>
+          <li><a class="nav__link" href="../o-kompanii/index.html">О компании</a></li>
+          <li><a class="nav__link" href="../uslugi/index.html" aria-current="page">Услуги</a></li>
+          <li><a class="nav__link" href="../index.html#home-reviews">Отзывы</a></li>
+          <li><a class="nav__link" href="../blog/index.html">Новости</a></li>
+        </ul>
+      </nav>
 
-          <span>Минск и вся РБ</span>
+      <div class="header-actions">
+        <div class="header-contact">
+          <div class="header-contact-lines">
+            <a class="header-phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
+            <a class="header-email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+          </div>
+          <div class="header-socials" data-messenger-links data-messenger-compact></div>
         </div>
-                <button type="button" class="home-btn-callback" data-callback-modal>
-          Обратный звонок
-        </button>
+        <button class="btn btn--yellow btn--sm header-actions__callback" type="button" data-callback-modal>Заказать звонок</button>
       </div>
-    </div>
-    <div class="home-navbar">
-      <div class="wrap home-navbar-inner">
-        <button type="button" class="home-nav-toggle" aria-expanded="false" aria-controls="home-main-navigation">
-          Меню
-        </button>
-        <nav id="home-main-navigation" class="home-main-nav" data-open="false" aria-label="Основная навигация по сайту">
-          <ul>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="../o-kompanii/index.html">О компании</a></li>
-            <li><a href="../uslugi/index.html" aria-current="page">Услуги</a></li>            <li><a href="../index.html#home-reviews">Отзывы</a></li>
-            <li><a href="../blog/index.html">Новости</a></li>          </ul>
-        </nav>
-      </div>
+
+      <button
+        class="burger"
+        type="button"
+        data-burger
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main class="site-main site-main--service">
+  <div class="nav-mobile" id="mobile-menu" data-mobile-menu aria-hidden="true">
+    <button type="button" class="nav-mobile__backdrop" data-close-mobile-menu aria-label="Закрыть меню"></button>
+    <nav class="nav-mobile__panel" aria-label="Мобильная навигация">
+      <div class="nav-mobile__head">
+        <span class="nav-mobile__brand">ТопАгроБел</span>
+        <button type="button" class="nav-mobile__close" data-close-mobile-menu aria-label="Закрыть меню">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__links">
+        <a class="nav-mobile__link" href="../index.html" data-close-mobile-menu>Главная</a>
+        <a class="nav-mobile__link" href="../o-kompanii/index.html" data-close-mobile-menu>О компании</a>
+        <a class="nav-mobile__link" href="../uslugi/index.html" data-close-mobile-menu aria-current="page">Услуги</a>
+        <a class="nav-mobile__link" href="../index.html#home-reviews" data-close-mobile-menu>Отзывы</a>
+        <a class="nav-mobile__link" href="../blog/index.html" data-close-mobile-menu>Новости</a>
+      </div>
+      <div class="nav-mobile__actions">
+        <a class="btn btn--yellow btn--full" href="tel:+375291286217">+375 (29) 128-62-17</a>
+        <a class="nav-mobile__email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+        <div data-messenger-links data-messenger-nav></div>
+        <button class="btn btn--dark btn--full" type="button" data-callback-modal data-close-mobile-menu>Заказать звонок</button>
+      </div>
+    </nav>
+  </div>
 
-      <section class="srv-hero" aria-labelledby="srv-hero-heading-krovelnye-raboty">
-        <div class="srv-hero__bg" aria-hidden="true"></div>
-        <div class="srv-hero__inner wrap">
-          <nav class="breadcrumbs breadcrumbs--srv" aria-label="Хлебные крошки">
-            <ol>
-              <li><a href="../index.html">Главная</a></li>
-              <li><a href="index.html">Услуги</a></li>
-              <li aria-current="page">Кровельные работы для промышленных и складских зданий</li>
-            </ol>
-          </nav>
-          <div class="srv-hero__grid">
-            <div class="srv-hero__copy">
-              <p class="srv-hero__label">Строительные услуги ТопАгроБел</p>
-              <h1 id="srv-hero-heading-krovelnye-raboty" class="srv-hero__title">Кровельные работы для промышленных и складских зданий</h1>
-              <ul class="srv-hero-list"><li>Работаем с промышленными, складскими и коммерческими объектами по Беларуси.</li></ul>
-              <p class="srv-hero__lede">Устройство и ремонт кровель промышленных, складских и производственных зданий. Работаем с профлистом, сэндвич-панелями и промышленными кровельными системами.</p>
-            </div>
-            <aside class="srv-hero__cta srv-cta-card" aria-label="Обратная связь">
-              <strong class="srv-cta-card__title">Получить расчёт</strong>
-              <p class="srv-cta-card__sub">Оставьте заявку — подготовим ориентир по срокам и стоимости работ.</p>
-              <p class="srv-cta-card__phone"><a href="tel:+375291286217">Олег: +375 (29) 128-62-17</a><br><a href="tel:+375296582950">Робертович: +375 (29) 658-29-50</a></p>
-              <a class="srv-cta-solid srv-btn-scroll" href="#service-lead-krovelnye-raboty" data-scroll-target="#service-lead-krovelnye-raboty">Рассчитать стоимость кровельных работ</a>
-              <p class="srv-cta-card__hint">Ответ оперативно в рабочее время&nbsp;• пн–пт 09:00–18:00</p>
-              <div class="srv-cta-card__avatar" aria-hidden="true"><span>ПК</span></div>
-            </aside>
-          </div>
-        </div>
-      </section>
+  <main class="site-main">
+    <div class="wrap">
+      <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <ol>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="index.html">Услуги</a></li>
+          <li aria-current="page">Кровельные работы</li>
+        </ol>
+      </nav>
 
-      <section class="srv-detail srv-detail--muted wrap" aria-labelledby="srv-objects-krovelnye-raboty">
-        <h2 id="srv-objects-krovelnye-raboty" class="srv-section-title">Какие кровли выполняем</h2>
-        <ul class="srv-checklist"><li>Кровли складов и логистических комплексов</li><li>Кровли производственных зданий</li><li>Кровли ангаров и быстровозводимых объектов</li><li>Кровли коммерческих зданий</li></ul>
-      </section>
-
-      <section class="srv-feature">
-        <div class="srv-feature-inner wrap">
-          <div class="srv-feature-photo" aria-hidden="true"></div>
-          <div class="srv-feature-body">
-            <h2 class="srv-section-title">Виды работ</h2>
-            <ul class="srv-checklist srv-checklist--light"><li>Устройство новой кровли</li><li>Ремонт и замена покрытия</li><li>Утепление и гидроизоляция</li><li>Устройство водоотведения</li><li>Ремонт узлов примыкания и проходок</li></ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="srv-detail wrap" aria-labelledby="srv-stages-krovelnye-raboty">
-        <h2 id="srv-stages-krovelnye-raboty" class="srv-section-title">Материалы</h2>
-        <ol class="srv-steps-list"><li>Профлист и металлические кровельные системы</li><li>Сэндвич-панели кровельного назначения</li><li>Мембранные и полимерные решения</li><li>Промышленная паро- и гидроизоляция</li><li>Водосточные и снегозадерживающие системы</li></ol>
-      </section>
-
-      <section class="srv-banner" aria-labelledby="srv-pricing-krovelnye-raboty">
-        <div class="srv-banner__bg" aria-hidden="true"></div>
-        <div class="srv-banner__inner wrap">
-          <div class="srv-banner__copy">
-            <h2 id="srv-pricing-krovelnye-raboty" class="srv-banner__title">Стоимость кровельных работ</h2>
-            <ul class="srv-checklist srv-checklist--light"><li>Площадь кровли и уклон</li><li>Тип покрытия и требования к утеплению</li><li>Объём демонтажа старого покрытия</li><li>Высота здания и доступ для монтажа</li></ul>
-          </div>
-          <aside class="srv-banner__cta srv-cta-card srv-cta-card--compact">
-            <strong class="srv-cta-card__title">Коммерческое предложение</strong>
-            <p class="srv-cta-card__sub">Финальную цену закрепляем в договоре после сбора исходных данных по объекту.</p>
-            <a class="srv-cta-solid srv-btn-scroll" href="#service-lead-krovelnye-raboty" data-scroll-target="#service-lead-krovelnye-raboty">Рассчитать стоимость кровельных работ</a>
-          </aside>
-        </div>
-      </section>
-
-      <section class="srv-projects" aria-labelledby="srv-projects-heading-krovelnye-raboty">
-        <div class="srv-projects-head wrap">
-          <h2 id="srv-projects-heading-krovelnye-raboty" class="srv-projects-title">Примеры выполненных работ</h2>
-          <a href="../index.html#home-portfolio" class="srv-projects-more">На главную — готовые объекты</a>
-        </div>
-        <div class="srv-projects-grid wrap">
-          <figure class="srv-project-cell"><figcaption class="visually-hidden">Кровельные работы для промышленных и складских зданий&nbsp;— карточка проекта&nbsp;1</figcaption><span class="srv-project-ph">Фото 1</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Кровельные работы для промышленных и складских зданий&nbsp;— карточка проекта&nbsp;2</figcaption><span class="srv-project-ph">Фото 2</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Кровельные работы для промышленных и складских зданий&nbsp;— карточка проекта&nbsp;3</figcaption><span class="srv-project-ph">Фото 3</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Кровельные работы для промышленных и складских зданий&nbsp;— карточка проекта&nbsp;4</figcaption><span class="srv-project-ph">Фото 4</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Кровельные работы для промышленных и складских зданий&nbsp;— карточка проекта&nbsp;5</figcaption><span class="srv-project-ph">Фото 5</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Кровельные работы для промышленных и складских зданий&nbsp;— карточка проекта&nbsp;6</figcaption><span class="srv-project-ph">Фото 6</span></figure>
-        </div>
-      </section>
-
-      <section class="srv-faq" aria-labelledby="srv-faq-title-krovelnye-raboty">
-        <div class="srv-faq-bar">
-          <h2 id="srv-faq-title-krovelnye-raboty" class="srv-faq-title">Частые вопросы</h2>
-        </div>
-        <div class="srv-faq-body wrap">
-          <div class="faq faq--srv">
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Делаете ли кровлю для частных домов?</button>
-              <div class="faq-a">Нет, специализируемся на промышленных, складских и коммерческих объектах.</div>
-            </div>
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Можно ли заменить кровлю без остановки производства?</button>
-              <div class="faq-a">Поэтапно — с разбивкой на секции и согласованием графика с заказчиком.</div>
-            </div>
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Даёте ли гарантию на кровельные работы?</button>
-              <div class="faq-a">Условия фиксируются в договоре с учётом материалов и режима эксплуатации объекта.</div>
-            </div></div>
-        </div>
-      </section>
-
-      <section class="srv-final strip-cta">
-        <div class="strip-cta__inner wrap">
-          <div>
-            <strong class="strip-cta__title">Рассчитать стоимость кровельных работ</strong>
-            <p class="strip-cta__text">Короткая заявка ниже — технический отдел оценит объём работ и сроки подготовки КП.</p>
-          </div>
-          <a class="srv-cta-solid srv-btn-scroll" href="#service-lead-krovelnye-raboty" data-scroll-target="#service-lead-krovelnye-raboty">Рассчитать стоимость кровельных работ</a>
-        </div>
-      </section>
-
-      
-      <section class="srv-crosslinks wrap" aria-labelledby="srv-crosslinks-Смежные-услуги">
-        <h2 class="srv-section-title srv-section-title--center">Смежные услуги</h2>
-        <ul class="srv-crosslinks-grid"><li><a class="srv-crosslink" href="fasadnye-raboty.html">Фасадные работы</a></li><li><a class="srv-crosslink" href="stroitelstvo-angarov.html">Строительство ангаров</a></li><li><a class="srv-crosslink" href="rekonstrukciya-zdaniy.html">Реконструкция зданий</a></li></ul>
-      </section>
-
-      <article id="service-lead-krovelnye-raboty" class="srv-lead" aria-labelledby="srv-lead-title-krovelnye-raboty">
-        <div class="srv-lead-inner wrap">
-          <h2 id="srv-lead-title-krovelnye-raboty" class="srv-section-title">Форма заявки</h2>
-          <p class="srv-section-lede">Опишите объект, площадь и сроки — свяжемся для уточнения деталей.</p>
-          <form class="lead-form lead-form--srv" data-contact-form novalidate>
-            <div class="field-row">
-              <label for="lead-name-krovelnye-raboty">Компания / ФИО</label>
-              <input id="lead-name-krovelnye-raboty" name="name" autocomplete="organization" placeholder="Как к вам обращаться">
-            </div>
-            <div class="field-row">
-              <label for="lead-phone-krovelnye-raboty">Телефон</label>
-              <input id="lead-phone-krovelnye-raboty" name="phone" autocomplete="tel" placeholder="+375…">
-            </div>
-            <div class="field-row">
-              <label for="lead-msg-krovelnye-raboty">Задача</label>
-              <textarea id="lead-msg-krovelnye-raboty" name="message" placeholder="Площадь, назначение объекта, срок КП"></textarea>
-            </div>
-            <div>
-              <button class="srv-cta-solid srv-lead-submit" type="submit">Рассчитать стоимость кровельных работ</button>
-            </div>
-          </form>
-        </div>
-      </article>
+      <h1 class="page-title">Страница находится в разработке!</h1>
+      <p class="page-lede" style="margin-top:14px">Раздел «Кровельные работы» скоро появится. Пока можно позвонить нам или оставить заявку через «Заказать звонок».</p>
+    </div>
   </main>
 
+  <footer class="site-footer">
+    <div class="wrap site-footer-inner">
+      <section>
+        <p class="footer-title">Строительство</p>
+        <p class="footer-muted">Отдельных разделов «Стоимость», «Объекты» и «Проекты» нет по архитектуре: как на SEO-схеме они оформляются блоками внутри страниц услуг.</p>
+      </section>
+      <section>
+        <p class="footer-title">Навигация</p>
+        <ul class="footer-links">
+          <li><a class="focus-ring" href="index.html">Каталог услуг</a></li>
+          <li><a class="focus-ring" href="../seo-sitemap.html">SEO-карта</a></li>
+          <li><a class="focus-ring" href="../rekvizity/index.html">Реквизиты</a></li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+  <div class="mobile-call-bar">
+    <a href="tel:+375291286217" class="mobile-call-bar__phone" aria-label="Позвонить +375 29 128-62-17">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      <span>Позвонить Олегу</span>
+    </a>
+    <div data-messenger-links data-messenger-compact></div>
+  </div>
 
-      <footer class="site-footer">
-        <div class="wrap site-footer-inner">
-          <section>
-            <p class="footer-title">Строительство</p>
-            <p class="footer-muted">Отдельных разделов «Стоимость», «Объекты» и «Проекты» нет по архитектуре: как на SEO-схеме они оформляются блоками внутри страниц услуг.</p>
-          </section>
-          <section>
-            <p class="footer-title">Навигация</p>
-            <ul class="footer-links">
-              <li><a class="focus-ring" href="../uslugi/index.html">Каталог услуг</a></li>
-              <li><a class="focus-ring" href="../seo-sitemap.html">SEO-карта</a></li>
-              <li><a class="focus-ring" href="../rekvizity/index.html">Реквизиты</a></li>
-            </ul>
-          </section>
-        </div>
-      </footer>
   <div class="callback-modal" id="callback-modal" hidden aria-hidden="true">
     <div class="callback-modal__backdrop" data-callback-close aria-hidden="true"></div>
     <div class="callback-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="callback-modal-title">
@@ -228,9 +135,9 @@
     </div>
   </div>
 
-
-
+  <script src="../js/config.js"></script>
+  <script src="../js/telegram.js"></script>
+  <script src="../js/leads.js" defer></script>
   <script src="../js/main.js" defer></script>
-
 </body>
 </html>

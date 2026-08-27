@@ -1,129 +1,331 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Аренда строительной техники | ТопАгроБел</title>
-  <meta name="description" content="Аренда строительной техники для земляных, погрузочных, демонтажных и строительных работ. Страница находится в разработке.">
+  <title>ТОПАГРОБЕЛ — Аренда спецтехники в Минске, Минской области, Кобрине и Бресте</title>
+  <meta name="description" content="Аренда спецтехники с машинистом: LGCE, Lonking, ЕК-12. 7 единиц техники. Минск, Минская область, Кобрин, Брест. +375 29 128-62-17, Олег.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="canonical" href="https://topagrobel.by/uslugi/arenda-stroitelnoy-tehniki">
   <link rel="icon" href="../assets/images/main/favicon.webp" type="image/webp">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/rental-landing.css">
   <link rel="stylesheet" href="../css/header-unified.css">
-
-  <link rel="stylesheet" href="../css/service-page.css">
 </head>
-<body class="site-shell">
+<body id="top" class="site-shell rental-landing">
+  
+  <header class="site-header" data-site-header>
+    <div class="wrap site-header__inner">
+      <a class="logo" href="../index.html" aria-label="ТопАгроБел — на главную">
+        <img class="logo__img" src="../assets/images/main/Logo.webp" alt="ТопАгроБел" width="160" height="44" decoding="async">
+      </a>
 
-  <header class="home-header">
-    <div class="home-topbar">
-      <div class="wrap home-topbar-row">
-                <a class="home-logo" href="../index.html">
-          <img class="home-logo__img" src="../assets/images/main/Logo.webp" alt="ТопАгроБел" width="200" height="56" decoding="async">
-        </a>
+      <nav class="nav" aria-label="Основная навигация по сайту">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="../index.html">Главная</a></li>
+          <li><a class="nav__link" href="../o-kompanii/index.html">О компании</a></li>
+          <li><a class="nav__link" href="../uslugi/index.html" aria-current="page">Услуги</a></li>
+          <li><a class="nav__link" href="../index.html#home-reviews">Отзывы</a></li>
+          <li><a class="nav__link" href="../blog/index.html">Новости</a></li>
+        </ul>
+      </nav>
 
-        <div class="home-contacts-strip">
-          <span><strong>График:</strong> пн–пт 09:00–18:00</span>
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Олег Олегович</span>
-            <a href="tel:+375291286217">+375 (29) 128-62-17</a>
+      <div class="header-actions">
+        <div class="header-contact">
+          <div class="header-contact-lines">
+            <a class="header-phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
+            <a class="header-email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
           </div>
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Святослав Робертович</span>
-            <a href="tel:+375296582950">+375 (29) 658-29-50</a>
-          </div>
-
-          <span>Минск и вся РБ</span>
+          <div class="header-socials" data-messenger-links data-messenger-compact></div>
         </div>
-                <button type="button" class="home-btn-callback" data-callback-modal>
-          Обратный звонок
-        </button>
+        <button class="btn btn--yellow btn--sm header-actions__callback" type="button" data-callback-modal>Заказать звонок</button>
       </div>
+
+      <button
+        class="burger"
+        type="button"
+        data-burger
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="home-navbar">
-      <div class="wrap home-navbar-inner">
-        <button type="button" class="home-nav-toggle" aria-expanded="false" aria-controls="home-main-navigation">
-          Меню
-        </button>
-        <nav id="home-main-navigation" class="home-main-nav" data-open="false" aria-label="Основная навигация по сайту">
-          <ul>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="../o-kompanii/index.html">О компании</a></li>
-            <li><a href="../uslugi/index.html" aria-current="page">Услуги</a></li>            <li><a href="../index.html#home-reviews">Отзывы</a></li>
-            <li><a href="../blog/index.html">Новости</a></li>          </ul>
+
+    <div class="site-header__sub">
+      <div class="wrap site-header__sub-inner">
+        <nav class="site-subnav" aria-label="Раздел услуг">
+          <p class="site-subnav__trail">
+            <span class="site-subnav__here">Вы здесь</span>
+            <a href="../index.html">Главная</a>
+            <span class="site-subnav__sep" aria-hidden="true">›</span>
+            <a href="index.html">Услуги</a>
+            <span class="site-subnav__sep" aria-hidden="true">›</span>
+            <span aria-current="page">Аренда техники</span>
+          </p>
+          <div class="site-subnav__switch">
+            <span class="site-subnav__switch-label">Направления</span>
+            <ul class="site-subnav__list">
+              <li><a class="site-subnav__link" href="index.html">Все услуги</a></li>
+              <li><a class="site-subnav__link" href="promyshlennye-betonnye-poly.html">Полы</a></li>
+              <li><a class="site-subnav__link" href="naruzhnye-inzhenernye-seti.html">Сети</a></li>
+              <li><a class="site-subnav__link" href="arenda-stroitelnoy-tehniki.html" aria-current="page">Аренда</a></li>
+            </ul>
+          </div>
         </nav>
       </div>
     </div>
   </header>
 
-  <main class="site-main site-main--service">
-
-      <section class="srv-hero" aria-labelledby="srv-hero-heading-arenda-stroitelnoy-tehniki">
-        <div class="srv-hero__bg" aria-hidden="true"></div>
-        <div class="srv-hero__inner wrap">
-          <nav class="breadcrumbs breadcrumbs--srv" aria-label="Хлебные крошки">
-            <ol>
-              <li><a href="../index.html">Главная</a></li>
-              <li><a href="index.html">Услуги</a></li>
-              <li aria-current="page">Аренда строительной техники</li>
-            </ol>
-          </nav>
-          <div class="srv-hero__grid">
-            <div class="srv-hero__copy">
-              <p class="srv-hero__label">Строительные услуги ТопАгроБел</p>
-              <h1 id="srv-hero-heading-arenda-stroitelnoy-tehniki" class="srv-hero__title">Аренда строительной техники</h1>
-              <p class="srv-hero__lede">Раздел находится в разработке. Скоро здесь появится информация об аренде строительной техники.</p>
-            </div>
-            <aside class="srv-hero__cta srv-cta-card" aria-label="Обратная связь">
-              <strong class="srv-cta-card__title">Связаться с нами</strong>
-              <p class="srv-cta-card__sub">Оставьте контакты — сообщим о запуске раздела или подберём технику через менеджера.</p>
-              <p class="srv-cta-card__phone"><a href="tel:+375291286217">Олег: +375 (29) 128-62-17</a><br><a href="tel:+375296582950">Робертович: +375 (29) 658-29-50</a></p>
-              <a class="srv-cta-solid srv-btn-scroll" href="#service-lead-arenda-stroitelnoy-tehniki" data-scroll-target="#service-lead-arenda-stroitelnoy-tehniki">Связаться с нами</a>
-            </aside>
-          </div>
+  <div class="nav-mobile" id="mobile-menu" data-mobile-menu aria-hidden="true">
+    <button type="button" class="nav-mobile__backdrop" data-close-mobile-menu aria-label="Закрыть меню"></button>
+    <nav class="nav-mobile__panel" aria-label="Мобильная навигация">
+      <div class="nav-mobile__head">
+        <span class="nav-mobile__brand">ТопАгроБел</span>
+        <button type="button" class="nav-mobile__close" data-close-mobile-menu aria-label="Закрыть меню">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__links">
+        <a class="nav-mobile__link" href="../index.html" data-close-mobile-menu>Главная</a>
+        <a class="nav-mobile__link" href="../o-kompanii/index.html" data-close-mobile-menu>О компании</a>
+        <a class="nav-mobile__link" href="../uslugi/index.html" data-close-mobile-menu aria-current="page">Услуги</a>
+        <a class="nav-mobile__link" href="../index.html#home-reviews" data-close-mobile-menu>Отзывы</a>
+        <a class="nav-mobile__link" href="../blog/index.html" data-close-mobile-menu>Новости</a>
+        <div class="nav-mobile__sub" aria-label="Рабочие направления">
+          <p class="nav-mobile__sub-label">Направления</p>
+          <a class="nav-mobile__link" href="index.html" data-close-mobile-menu>Все услуги</a>
+          <a class="nav-mobile__link" href="promyshlennye-betonnye-poly.html" data-close-mobile-menu>Полы</a>
+          <a class="nav-mobile__link" href="naruzhnye-inzhenernye-seti.html" data-close-mobile-menu>Сети</a>
+          <a class="nav-mobile__link" href="arenda-stroitelnoy-tehniki.html" data-close-mobile-menu aria-current="page">Аренда</a>
         </div>
-      </section>
+      </div>
+      <div class="nav-mobile__actions">
+        <a class="btn btn--yellow btn--full" href="tel:+375291286217">+375 (29) 128-62-17</a>
+        <a class="nav-mobile__email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+        <div data-messenger-links data-messenger-nav></div>
+        <button class="btn btn--dark btn--full" type="button" data-callback-modal data-close-mobile-menu>Заказать звонок</button>
+      </div>
+    </nav>
+  </div>
 
-      <article id="service-lead-arenda-stroitelnoy-tehniki" class="srv-lead" aria-labelledby="srv-lead-title-arenda-stroitelnoy-tehniki">
-        <div class="srv-lead-inner wrap">
-          <h2 id="srv-lead-title-arenda-stroitelnoy-tehniki" class="srv-section-title">Форма заявки</h2>
-          <form class="lead-form lead-form--srv" data-contact-form novalidate>
-            <div class="field-row">
-              <label for="lead-name-arenda-stroitelnoy-tehniki">Компания / ФИО</label>
-              <input id="lead-name-arenda-stroitelnoy-tehniki" name="name" autocomplete="organization" placeholder="Как к вам обращаться">
+<!-- Hero: баннер-слайдер -->
+  <section class="hero-banner screen-section section--bg-a" id="hero">
+    <div class="swiper hero-banner-swiper">
+      <div class="swiper-wrapper" id="heroBannerWrapper"></div>
+      <div class="hero-banner__controls">
+        <div class="hero-banner__nav">
+          <button class="hero-banner__arrow hero-banner__arrow--prev" aria-label="Предыдущий слайд">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          </button>
+          <button class="hero-banner__arrow hero-banner__arrow--next" aria-label="Следующий слайд">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+          </button>
+        </div>
+        <div class="hero-banner__pagination swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog -->
+  <section class="catalog section screen-section section--bg-b" id="catalog" aria-labelledby="catalogTitle">
+    <div class="container">
+      <h1 class="catalog__title" id="catalogTitle">Аренда техники для физ и юр лиц</h1>
+      <p class="catalog__lead">С физическими лицами — по договору, с юридическими — безнал с НДС</p>
+      <div class="catalog-grid" id="catalogGridEquipment"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-text screen-section section--bg-a" id="about">
+    <div class="container">
+      <h2 class="section-title">Аренда спецтехники в Минске, Минской области, Кобрине и Бресте</h2>
+      <div class="about-text__grid" id="aboutCardsGrid"></div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="factory-video screen-section section--bg-b" id="portfolio">
+    <div class="container factory-video__inner">
+      <h2 class="section-title">Наши операторы</h2>
+      <div class="factory-video__drivers" id="factoryDrivers" aria-label="Наши операторы"></div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="compare screen-section section--bg-a" id="services">
+    <div class="container">
+      <h2 class="section-title">Почему мы</h2>
+      <div class="compare__grid">
+        <article class="compare__card">
+          <div class="compare__image">
+            <img src="../assets/rental/competitors.webp" alt="Проблемы аренды техники у других компаний" loading="lazy">
+          </div>
+          <div class="compare__list compare__list--backtext">
+            <h3 class="compare__card-title">У других компаний</h3>
+            <ul class="compare__items compare__items--bad">
+              <li>Техника на объекте с неисправностями</li>
+              <li>Задержки подачи и срыв сроков</li>
+              <li>Скрытые доплаты в договоре</li>
+              <li>Нет связи с диспетчером</li>
+              <li>Машинисты без допусков</li>
+              <li>Нет нужной модели в срок</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="compare__card">
+          <div class="compare__image">
+            <img src="../assets/rental/us.webp" alt="Парк спецтехники ТОПАГРОБЕЛ" loading="lazy">
+          </div>
+          <div class="compare__list compare__list--backtext">
+            <h3 class="compare__card-title">У ТОПАГРОБЕЛ</h3>
+            <ol class="compare__items compare__items--good">
+              <li><strong>Свой парк</strong> — 7 единиц LGCE, Lonking, ЕК-12</li>
+              <li><strong>Закреплённые машинисты</strong> — у каждой техники свой оператор</li>
+              <li><strong>Быстрая подача</strong> — Минск, Минская область, Кобрин, Брест, от 2 часов</li>
+              <li><strong>Честные цены</strong> — без скрытых платежей</li>
+              <li><strong>Для физлиц и юрлиц</strong> — с физическими лицами работаем по договору, с юридическими — безналичный расчёт с НДС</li>
+            </ol>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation -->
+  <section class="consultation screen-section section--bg-b" id="cta">
+    <div class="container">
+      <h2 class="section-title">Остались вопросы?</h2>
+      <p class="consultation__lead">Олег ответит на любой вопрос, поможет подобрать технику под ваши задачи, рассчитает сроки и стоимость аренды. Звоните или оставьте заявку — свяжемся в ближайшее время.</p>
+      <div class="consultation__inner">
+        <div class="consultation__left">
+          <div class="consultation__contacts">
+            <div class="contact-item">
+              <div class="contact-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+              <div>
+                <p class="contact-item__label">Телефон</p>
+                <a href="tel:+375291286217" class="contact-item__value">+375 29 128-62-17</a>
+                <div data-messenger-links></div>
+              </div>
             </div>
-            <div class="field-row">
-              <label for="lead-phone-arenda-stroitelnoy-tehniki">Телефон</label>
-              <input id="lead-phone-arenda-stroitelnoy-tehniki" name="phone" autocomplete="tel" placeholder="+375…">
+            <div class="contact-item">
+              <div class="contact-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6l8 7 8-7"/><rect x="4" y="7" width="16" height="12" rx="2"/></svg></div>
+              <div>
+                <p class="contact-item__label">E-mail</p>
+                <a href="mailto:topagrobel@mail.ru" class="contact-item__value">topagrobel@mail.ru</a>
+              </div>
             </div>
-            <div class="field-row">
-              <label for="lead-msg-arenda-stroitelnoy-tehniki">Сообщение</label>
-              <textarea id="lead-msg-arenda-stroitelnoy-tehniki" name="message" placeholder="Интересующая техника или вопрос"></textarea>
+            <div class="contact-item">
+              <div class="contact-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+              <div>
+                <p class="contact-item__label">Регион</p>
+                <p class="contact-item__value">Минск, Минская область, Кобрин, Брест</p>
+              </div>
             </div>
-            <div>
-              <button class="srv-cta-solid srv-lead-submit" type="submit">Отправить заявку</button>
+            <div class="contact-item">
+              <div class="contact-item__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3z"/></svg></div>
+              <div>
+                <p class="contact-item__label">Контакт</p>
+                <p class="contact-item__value">Олег</p>
+              </div>
             </div>
+          </div>
+          <form class="consultation__form" id="ctaForm" data-source="Консультация">
+            <p class="consultation__form-title">Оставить заявку</p>
+            <input type="text" name="name" placeholder="Имя (необязательно)" autocomplete="name">
+            <input type="tel" name="phone" placeholder="+375 (29) 128-62-17" inputmode="tel" autocomplete="tel" required>
+            <button type="submit" class="btn btn--brown btn--full">Отправить</button>
           </form>
         </div>
-      </article>
-  </main>
-
-
-      <footer class="site-footer">
-        <div class="wrap site-footer-inner">
-          <section>
-            <p class="footer-title">Строительство</p>
-            <p class="footer-muted">Отдельных разделов «Стоимость», «Объекты» и «Проекты» нет по архитектуре: как на SEO-схеме они оформляются блоками внутри страниц услуг.</p>
-          </section>
-          <section>
-            <p class="footer-title">Навигация</p>
-            <ul class="footer-links">
-              <li><a class="focus-ring" href="../uslugi/index.html">Каталог услуг</a></li>
-              <li><a class="focus-ring" href="../seo-sitemap.html">SEO-карта</a></li>
-              <li><a class="focus-ring" href="../rekvizity/index.html">Реквизиты</a></li>
-            </ul>
-          </section>
+        <div class="consultation__photo">
+          <div class="consultation__photo-frame">
+            <img src="../assets/rental/Cast/Oleg.webp" alt="Олег — менеджер ТОПАГРОБЕЛ" loading="lazy" width="500" height="600">
+          </div>
         </div>
-      </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map + footer -->
+  <div class="site-bottom section--bg-a" id="contacts">
+    <div class="container site-bottom__inner">
+      <section class="map-section">
+        <div class="map-section__head">
+          <h2 class="map-section__title">Наша техника на карте</h2>
+          <p class="map-section__hint">Посмотрите, может, мы сейчас недалеко от вас</p>
+        </div>
+        <div id="yandexMap" class="map-section__map" aria-label="Карта расположения техники ТОПАГРОБЕЛ"></div>
+      </section>
+    </div>
+
+    <footer class="home-footer">
+    <div class="wrap home-footer-inner">
+      <div class="home-footer-row1">
+        <a class="home-logo home-logo--footer" href="../index.html">
+          <img class="home-logo__img" src="../assets/images/main/Logo.webp" alt="ТопАгроБел" width="200" height="56" decoding="async">
+        </a>
+        <nav class="home-footer-links">
+          <a href="../index.html">Главная</a>
+          <a href="../o-kompanii/index.html">О компании</a>
+          <a href="../uslugi/index.html">Услуги</a>
+          <a href="../blog/index.html">Новости</a>
+        </nav>
+        <div class="home-social">
+          <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram">TG</a>
+          <a href="https://wa.me/375291286217" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+          <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">VK</a>
+        </div>
+      </div>
+      <div class="home-footer-docs">
+        <a href="../partnery/index.html">Партнёры</a>
+        <a href="../sertifikaty-i-dokumenty/index.html">Сертификаты</a>
+        <a href="../rekvizity/index.html">Реквизиты</a>
+      </div>
+      <div class="home-footer-meta">
+        <span>© 2026 ТопАгроБел · промышленное и складское строительство</span>
+        <span>Минск и вся РБ · <a href="../kontakty/index.html">Контакты и адрес</a></span>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+  <!-- Modal: характеристики -->
+  <div class="modal" id="equipmentModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog">
+      <button class="modal__close" data-close-modal aria-label="Закрыть">&times;</button>
+      <div class="modal__content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Modal: заказ -->
+  <div class="modal" id="orderModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-order-modal></div>
+    <div class="modal__dialog modal__dialog--order">
+      <button class="modal__close" data-close-order-modal aria-label="Закрыть">&times;</button>
+      <form class="order-form" id="orderForm" data-source="Модальное окно">
+        <p class="order-form__title">Заказать технику</p>
+        <input type="text" name="name" placeholder="Имя (необязательно)" autocomplete="name">
+        <input type="tel" name="phone" placeholder="+375 (29) 128-62-17" inputmode="tel" autocomplete="tel" required>
+        <button type="submit" class="btn btn--brown btn--full">Отправить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="mobile-call-bar">
+    <a href="tel:+375291286217" class="mobile-call-bar__phone" aria-label="Позвонить +375 29 128-62-17">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      <span>Позвонить Олегу</span>
+    </a>
+    <div data-messenger-links data-messenger-compact></div>
+  </div>
+
   <div class="callback-modal" id="callback-modal" hidden aria-hidden="true">
     <div class="callback-modal__backdrop" data-callback-close aria-hidden="true"></div>
     <div class="callback-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="callback-modal-title">
@@ -142,9 +344,13 @@
     </div>
   </div>
 
-
-
+  <script src="../js/config.js"></script>
+  <script src="../js/rental-equipment.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="../js/rental-map.js"></script>
+  <script src="../js/telegram.js"></script>
+  <script src="../js/leads.js"></script>
+  <script src="../js/rental-page.js"></script>
   <script src="../js/main.js" defer></script>
-
 </body>
 </html>

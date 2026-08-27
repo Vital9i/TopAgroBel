@@ -4,336 +4,119 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Строительство ангаров — ТопАгроБел</title>
-  <meta name="description" content="Строительство ангаров: строительные работы, прозрачная смета, этапы, готовые объекты (блок), FAQ по Беларуси.">
+  <meta name="description" content="Строительство ангаров — страница в разработке. ТопАгроБел">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://topagrobel.by/uslugi/stroitelstvo-angarov">
   <link rel="icon" href="../assets/images/main/favicon.webp" type="image/webp">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/header-unified.css">
-
-  <link rel="stylesheet" href="../css/service-page.css">
 </head>
 <body class="site-shell">
 
-  <header class="home-header">
-    <div class="home-topbar">
-      <div class="wrap home-topbar-row">
-                <a class="home-logo" href="../index.html">
-          <img class="home-logo__img" src="../assets/images/main/Logo.webp" alt="ТопАгроБел" width="200" height="56" decoding="async">
-        </a>
+  <header class="site-header" data-site-header>
+    <div class="wrap site-header__inner">
+      <a class="logo" href="../index.html" aria-label="ТопАгроБел — на главную">
+        <img class="logo__img" src="../assets/images/main/Logo.webp" alt="ТопАгроБел" width="160" height="44" decoding="async">
+      </a>
 
-        <div class="home-contacts-strip">
-          <span><strong>График:</strong> пн–пт 09:00–18:00</span>
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Олег Олегович</span>
-            <a href="tel:+375291286217">+375 (29) 128-62-17</a>
-          </div>
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Святослав Робертович</span>
-            <a href="tel:+375296582950">+375 (29) 658-29-50</a>
-          </div>
+      <nav class="nav" aria-label="Основная навигация по сайту">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="../index.html">Главная</a></li>
+          <li><a class="nav__link" href="../o-kompanii/index.html">О компании</a></li>
+          <li><a class="nav__link" href="../uslugi/index.html" aria-current="page">Услуги</a></li>
+          <li><a class="nav__link" href="../index.html#home-reviews">Отзывы</a></li>
+          <li><a class="nav__link" href="../blog/index.html">Новости</a></li>
+        </ul>
+      </nav>
 
-          <span>Минск и вся РБ</span>
+      <div class="header-actions">
+        <div class="header-contact">
+          <div class="header-contact-lines">
+            <a class="header-phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
+            <a class="header-email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+          </div>
+          <div class="header-socials" data-messenger-links data-messenger-compact></div>
         </div>
-                <button type="button" class="home-btn-callback" data-callback-modal>
-          Обратный звонок
-        </button>
+        <button class="btn btn--yellow btn--sm header-actions__callback" type="button" data-callback-modal>Заказать звонок</button>
       </div>
-    </div>
-    <div class="home-navbar">
-      <div class="wrap home-navbar-inner">
-        <button type="button" class="home-nav-toggle" aria-expanded="false" aria-controls="home-main-navigation">
-          Меню
-        </button>
-        <nav id="home-main-navigation" class="home-main-nav" data-open="false" aria-label="Основная навигация по сайту">
-          <ul>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="../o-kompanii/index.html">О компании</a></li>
-            <li><a href="../uslugi/index.html" aria-current="page">Услуги</a></li>            <li><a href="../index.html#home-reviews">Отзывы</a></li>
-            <li><a href="../blog/index.html">Новости</a></li>          </ul>
-        </nav>
-      </div>
+
+      <button
+        class="burger"
+        type="button"
+        data-burger
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main class="site-main site-main--service">
+  <div class="nav-mobile" id="mobile-menu" data-mobile-menu aria-hidden="true">
+    <button type="button" class="nav-mobile__backdrop" data-close-mobile-menu aria-label="Закрыть меню"></button>
+    <nav class="nav-mobile__panel" aria-label="Мобильная навигация">
+      <div class="nav-mobile__head">
+        <span class="nav-mobile__brand">ТопАгроБел</span>
+        <button type="button" class="nav-mobile__close" data-close-mobile-menu aria-label="Закрыть меню">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__links">
+        <a class="nav-mobile__link" href="../index.html" data-close-mobile-menu>Главная</a>
+        <a class="nav-mobile__link" href="../o-kompanii/index.html" data-close-mobile-menu>О компании</a>
+        <a class="nav-mobile__link" href="../uslugi/index.html" data-close-mobile-menu aria-current="page">Услуги</a>
+        <a class="nav-mobile__link" href="../index.html#home-reviews" data-close-mobile-menu>Отзывы</a>
+        <a class="nav-mobile__link" href="../blog/index.html" data-close-mobile-menu>Новости</a>
+      </div>
+      <div class="nav-mobile__actions">
+        <a class="btn btn--yellow btn--full" href="tel:+375291286217">+375 (29) 128-62-17</a>
+        <a class="nav-mobile__email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+        <div data-messenger-links data-messenger-nav></div>
+        <button class="btn btn--dark btn--full" type="button" data-callback-modal data-close-mobile-menu>Заказать звонок</button>
+      </div>
+    </nav>
+  </div>
 
-      <section class="srv-hero" aria-labelledby="srv-hero-heading-stroitelstvo-angarov">
-        <div class="srv-hero__bg" aria-hidden="true"></div>
-        <div class="srv-hero__inner wrap">
-          <nav class="breadcrumbs breadcrumbs--srv" aria-label="Хлебные крошки">
-            <ol>
-              <li><a href="../index.html">Главная</a></li>
-              <li><a href="index.html">Услуги</a></li>
-              <li aria-current="page">Строительство ангаров</li>
-            </ol>
-          </nav>
-          <div class="srv-hero__grid">
-            <div class="srv-hero__copy">
-              <p class="srv-hero__label">Строительные услуги ТопАгроБел</p>
-              <h1 id="srv-hero-heading-stroitelstvo-angarov" class="srv-hero__title">Строительство ангаров</h1>
-              <ul class="srv-hero-list">
-                <li>Прозрачная смета и этапность выполнения «проект&nbsp;→&nbsp;производство&nbsp;→&nbsp;монтаж».</li>
-                <li>Собственное производство металлоконструкций и контроль поставки на объект.</li>
-                <li>Работаем в Минске и по всей Республике Беларусь.</li>
-                <li>Выезд на объект или разбор задачи удалённо по пакету документов.</li>
-              </ul>
-              <p class="srv-hero__lede">Услуга «Строительство ангаров»: проектирование, смета, производство работ и сдача объекта по договору. Работаем по Беларуси, работаем в Минске и по всей Республике Беларусь.</p>
-            </div>
-            <aside class="srv-hero__cta srv-cta-card" aria-label="Обратная связь">
-              <strong class="srv-cta-card__title">Получить консультацию</strong>
-              <p class="srv-cta-card__sub">Подберём решение под ваш объект по направлению «Строительство ангаров».</p>
-              <p class="srv-cta-card__phone"><a href="tel:+375291286217">Олег: +375 (29) 128-62-17</a><br><a href="tel:+375296582950">Робертович: +375 (29) 658-29-50</a></p>
-              <a class="srv-cta-solid srv-btn-scroll" href="#service-lead-stroitelstvo-angarov" data-scroll-target="#service-lead-stroitelstvo-angarov">Оставить заявку</a>
-              <p class="srv-cta-card__hint">Ответ оперативно в рабочее время&nbsp;• пн–пт 09:00–18:00</p>
-              <div class="srv-cta-card__avatar" aria-hidden="true"><span>ПК</span></div>
-            </aside>
-          </div>
-        </div>
-      </section>
+  <main class="site-main">
+    <div class="wrap">
+      <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <ol>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="index.html">Услуги</a></li>
+          <li aria-current="page">Строительство ангаров</li>
+        </ol>
+      </nav>
 
-      <section class="srv-section srv-calculator" aria-labelledby="srv-calc-title-stroitelstvo-angarov" data-service-calc data-service-slug="stroitelstvo-angarov">
-        <div class="srv-calculator-inner wrap">
-          <h2 id="srv-calc-title-stroitelstvo-angarov" class="srv-section-title srv-section-title--dark">Запросите расчёт ориентира по параметрам объекта</h2>
-          <p class="srv-section-lede">Демонстрационный блок: выберите сценарий и заполните поля — итоговая стоимость рассчитывается после выгрузки ТЗ заказчиком на этапе продакшна.</p>
-          <div class="srv-calc-shell" role="tablist" aria-label="Сценарий расчёта">
-            <button type="button" class="srv-calc-tab" role="tab" aria-selected="true" data-srv-tab="1">
-              <span class="srv-calc-tab-icon" aria-hidden="true"></span><span>Проект + КМД</span>
-            </button>
-            <button type="button" class="srv-calc-tab" role="tab" aria-selected="false" data-srv-tab="2">
-              <span class="srv-calc-tab-icon srv-calc-tab-icon--steel" aria-hidden="true"></span><span>Производство и монтаж</span>
-            </button>
-            <button type="button" class="srv-calc-tab" role="tab" aria-selected="false" data-srv-tab="3">
-              <span class="srv-calc-tab-icon srv-calc-tab-icon--key" aria-hidden="true"></span><span>Под ключ</span>
-            </button>
-          </div>
-          <div class="srv-calc-panels">
-            <div class="srv-calc-panel" data-srv-panel="1" role="tabpanel">
-              <div class="srv-calc-fields">
-                <label class="srv-field"><span class="srv-field__l">Общая площадь, м²</span><input type="text" placeholder="например, 2800"></label>
-                <label class="srv-field"><span class="srv-field__l">Протяжённость, м</span><input type="text" placeholder="фасады / торцы"></label>
-                <label class="srv-field"><span class="srv-field__l">Высота здания, м</span><input type="text" placeholder="по ключу потолков"></label>
-              </div>
-            </div>
-            <div class="srv-calc-panel" data-srv-panel="2" role="tabpanel" hidden>
-              <div class="srv-calc-fields">
-                <label class="srv-field"><span class="srv-field__l">Объём МК в тоннах (ориентир)</span><input type="text" placeholder="оценочно"></label>
-                <label class="srv-field"><span class="srv-field__l">Срок поставки</span><input type="text" placeholder="недели / месяцы"></label>
-                <label class="srv-field"><span class="srv-field__l">Тип навесного ограждения</span><input type="text" placeholder="сэндвич / профлист …"></label>
-              </div>
-            </div>
-            <div class="srv-calc-panel" data-srv-panel="3" role="tabpanel" hidden>
-              <div class="srv-calc-fields">
-                <label class="srv-field"><span class="srv-field__l">Назначение объекта</span><input type="text" placeholder="Строительство ангаров"></label>
-                <label class="srv-field"><span class="srv-field__l">Срок КП до</span><input type="text" placeholder="дата / бюджетный квартал"></label>
-                <label class="srv-field"><span class="srv-field__l">Адрес / район</span><input type="text" placeholder="область, населённый пункт"></label>
-              </div>
-            </div>
-          </div>
-          <div class="srv-calc-actions">
-            <button type="button" class="srv-calc-submit srv-btn-scroll" data-scroll-target="#service-lead-stroitelstvo-angarov">Передать параметры менеджеру</button>
-          </div>
-          <p class="srv-calc-disclaimer"><strong>Важно:</strong> финальную цену закрепляют в приложении к договору после сборки исходных данных.</p>
-        </div>
-      </section>
-
-      <section class="srv-geo">
-        <div class="srv-geo-inner wrap">
-          <div class="srv-geo-map" aria-hidden="true">
-            <svg class="srv-by-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" aria-hidden="true">
-              <rect width="320" height="260" rx="14" fill="#252830"/>
-              <ellipse cx="120" cy="120" rx="90" ry="78" fill="rgba(244,190,0,0.16)"/>
-              <ellipse cx="210" cy="148" rx="56" ry="62" fill="rgba(244,190,0,0.38)"/>
-              <path stroke="rgba(255,255,255,0.12)" stroke-width="1.2" fill="none" d="M42 208h238M42 174h238M62 208V52M122 208V52"/>
-            </svg>
-            <span class="srv-geo-badge">География: Минск и вся РБ</span>
-          </div>
-          <div class="srv-geo-copy">
-            <h2 class="srv-geo-title">География и логистика</h2>
-            <p>ТопАгроБел ведёт проекты в Минске и по всей Республике Беларусь. Планируем логистику поставок и монтаж с учётом удалённости площадки и пропускного режима.</p>
-            <ul class="srv-checklist">
-              <li>Выезд инженера и разбор технологической схемы на вашей площадке.</li>
-              <li>Планируем производственные партии и доставку с учётом пропускного режима и пропускной способности площадки.</li>
-              <li>Операции «Строительство ангаров» ведём в связке со смежными подрядчиками по сценарию генерального подряда или координированным тендером.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="srv-cooperation wrap" aria-labelledby="srv-stage-title-stroitelstvo-angarov">
-        <h2 id="srv-stage-title-stroitelstvo-angarov" class="srv-section-title srv-section-title--center">Этапы сотрудничества</h2>
-        <div class="srv-stages srv-stages--nyutek" data-service-stages="stroitelstvo-angarov" data-stage-default="03" aria-label="Этапы сотрудничества">
-          <div class="srv-stages-layout">
-            <aside class="srv-stages-sidebar" role="tablist" aria-label="Шаг процесса"></aside>
-            <div class="srv-stages-pane">
-              <div class="srv-stage-photo" aria-hidden="true"></div>
-              <div class="srv-stage-inner">
-                <div class="srv-stage-skew">
-                  <div class="srv-stage-panels"></div>
-                  <a class="srv-cta-solid srv-btn-scroll srv-stage-cta" href="#service-lead-stroitelstvo-angarov" data-scroll-target="#service-lead-stroitelstvo-angarov">Узнать подробнее</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <script type="application/json" id="service-stages-json-stroitelstvo-angarov">[{"id":1,"title":"Заявка и обследование","text":"Принимаем задачу по направлению «Строительство ангаров»: исходные данные, габариты, график ввода, особые технические условия и ограничения площадки."},{"id":2,"title":"Расчёт и КП","text":"Предварительное коммерческое предложение: технологическая схема, ключевые материалы и объёмы работ, ориентир по срокам производства и монтажа."},{"id":3,"title":"Договор и проектирование","text":"Согласование условий, этапов оплат, объёма авторского надзора. При необходимости выпуск дополнительной рабочей документации и синхронизация с закупками."},{"id":4,"title":"Производство и логистика","text":"Изготовление металлоконструкций, КМД, контроль геометрии партий и поставки на объект в соответствии с графиком строительства."},{"id":5,"title":"Монтаж и сдача","text":"Работы на объекте, контроль качества, промежуточные акты и передача исполнительной документации; объект готовит к выпуску в эксплуатацию."}]</script>
-
-      <section class="srv-feature">
-        <div class="srv-feature-inner wrap">
-          <div class="srv-feature-photo" aria-hidden="true"></div>
-          <div class="srv-feature-body">
-            <h2 class="srv-section-title">Технологии и качество производства работ</h2>
-            <p class="srv-section-lede">Для услуги «Строительство ангаров» подбираем конструктив и материалы с учётом нормативной базы Беларуси, коррозионной активности и нагрузок.</p>
-            <ul class="srv-checklist srv-checklist--light">
-              <li>Разделение производственного блока строительно-монтажных работ и авторского наблюдения где это требуется ТЗ.</li>
-              <li>Стандартизация узлов там, где позволяет проект — выше качество монтажа и ниже брак при стыковании партий КМД.</li>
-              <li>Отчётность по этапам: акты промежуточных работ, промежуточные оплаты по графику договора.</li>
-            </ul>
-            <a class="srv-cta-solid srv-btn-scroll" href="#service-lead-stroitelstvo-angarov" data-scroll-target="#service-lead-stroitelstvo-angarov">Оставить заявку</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="srv-banner" aria-labelledby="srv-banner-heading-stroitelstvo-angarov">
-        <div class="srv-banner__bg" aria-hidden="true"></div>
-        <div class="srv-banner__inner wrap">
-          <div class="srv-banner__copy">
-            <h2 id="srv-banner-heading-stroitelstvo-angarov" class="srv-banner__title">Полная прозрачность смет и сроков</h2>
-            <p>В отдельных разделах «Стоимость» или «Объекты» на сайте блоки представлены внутри каждой посадочной страницы услуги&nbsp;— согласно архитектуре SEO-схемы ТопАгроБел.</p>
-          </div>
-          <aside class="srv-banner__cta srv-cta-card srv-cta-card--compact">
-            <strong class="srv-cta-card__title">Консультация по вашему ТЗ</strong>
-            <p class="srv-cta-card__sub">Пришлите габариты, назначение и желаемый срок&nbsp;— подготовим структурированное КП по «Строительство ангаров».</p>
-            <a class="srv-cta-solid srv-btn-scroll" href="#service-lead-stroitelstvo-angarov" data-scroll-target="#service-lead-stroitelstvo-angarov">Оставить заявку</a>
-          </aside>
-        </div>
-      </section>
-
-      <section class="srv-stats wrap" aria-labelledby="srv-stats-title">
-        <h2 id="srv-stats-title" class="srv-section-title srv-section-title--center">Почему нас выбирают</h2>
-        <div class="srv-stats-grid">
-          <article class="srv-stat">
-            <b class="srv-stat__num"><span class="srv-stat__accent">13+</span> лет</b>
-            <p>На рынке промышленного строительства и монтажа.</p>
-          </article>
-          <article class="srv-stat">
-            <b class="srv-stat__num"><span class="srv-stat__accent">200 000&nbsp;м²</span></b>
-            <p>Выполненных объектов суммарно и под обслуживанием.</p>
-          </article>
-          <article class="srv-stat">
-            <b class="srv-stat__num"><span class="srv-stat__accent">50+</span> специалистов</b>
-            <p>Штат производственного блока и инженеры сопровождения.</p>
-          </article>
-        </div>
-        <div class="srv-stats-foot">
-          <p>Строительно-монтажные блоки выполняются с понятными критериями приёмки; исполнительная документация передаётся вместе с объектом.</p>
-          <ul class="srv-inline-list">
-            <li>Собственный парк техники ·</li>
-            <li>КИП на площадке ·</li>
-            <li>Юридически понятное закрытие этапов</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="srv-projects" aria-labelledby="srv-projects-heading-stroitelstvo-angarov">
-        <div class="srv-projects-head wrap">
-          <h2 id="srv-projects-heading-stroitelstvo-angarov" class="srv-projects-title">Готовые объекты по направлению</h2>
-          <a href="../index.html#home-portfolio" class="srv-projects-more">На главную — готовые объекты</a>
-        </div>
-        <div class="srv-projects-grid wrap">
-          <figure class="srv-project-cell"><figcaption class="visually-hidden">Строительство ангаров&nbsp;— карточка проекта&nbsp;1</figcaption><span class="srv-project-ph">Фото 1</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Строительство ангаров&nbsp;— карточка проекта&nbsp;2</figcaption><span class="srv-project-ph">Фото 2</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Строительство ангаров&nbsp;— карточка проекта&nbsp;3</figcaption><span class="srv-project-ph">Фото 3</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Строительство ангаров&nbsp;— карточка проекта&nbsp;4</figcaption><span class="srv-project-ph">Фото 4</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Строительство ангаров&nbsp;— карточка проекта&nbsp;5</figcaption><span class="srv-project-ph">Фото 5</span></figure><figure class="srv-project-cell"><figcaption class="visually-hidden">Строительство ангаров&nbsp;— карточка проекта&nbsp;6</figcaption><span class="srv-project-ph">Фото 6</span></figure>
-        </div>
-      </section>
-
-      
-
-      <section class="srv-faq" aria-labelledby="srv-faq-title-stroitelstvo-angarov">
-        <div class="srv-faq-bar">
-          <h2 id="srv-faq-title-stroitelstvo-angarov" class="srv-faq-title">Частые вопросы</h2>
-        </div>
-        <div class="srv-faq-body wrap">
-          <div class="faq faq--srv">
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Подходит ли Строительство ангаров для объектов в Минске и по всей РБ?</button>
-              <div class="faq-a">Да: страница приземлена под региональный спрос, логистику поставки КМД и типичные климатические нагрузки при проектировании.</div>
-            </div>
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">Можно ли «под ключ» со смежными подрядами?</button>
-              <div class="faq-a">Да — берём производственное ядро, координируем смежников по графику и смете или выступаем генподрядчиком.</div>
-            </div>
-            <div class="faq-item">
-              <button type="button" class="faq-q focus-ring" aria-expanded="false">За какой срок можно получить детализированное КП?</button>
-              <div class="faq-a">Ориентир 3–14 рабочих дней после сбора исходных данных; простые типовые сценарии ускоряются.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="srv-final strip-cta">
-        <div class="strip-cta__inner wrap">
-          <div>
-            <strong class="strip-cta__title">Обсудим ваш объект уже сегодня</strong>
-            <p class="strip-cta__text">Короткая заявка ниже помогает техническому отделу сразу оценить габариты, технологию и приоритет сроков.</p>
-          </div>
-          <a class="srv-cta-solid srv-btn-scroll" href="#service-lead-stroitelstvo-angarov" data-scroll-target="#service-lead-stroitelstvo-angarov">Оставить заявку</a>
-        </div>
-      </section>
-
-      <section class="srv-maps-section wrap" aria-label="Локации на карте">
-        <div class="srv-map-grid">
-          <div class="srv-map-slot">
-            <p class="srv-map-slot__ttl">Офис / официальное присутствие</p>
-            <div class="srv-map-frame" aria-hidden="true"><span>Виджет карты</span></div>
-          </div>
-          <div class="srv-map-slot">
-            <p class="srv-map-slot__ttl">Производство КМД / отгрузка</p>
-            <div class="srv-map-frame" aria-hidden="true"><span>Виджет карты</span></div>
-          </div>
-        </div>
-      </section>
-
-      <article id="service-lead-stroitelstvo-angarov" class="srv-lead" aria-labelledby="srv-lead-title-stroitelstvo-angarov">
-        <div class="srv-lead-inner wrap">
-          <h2 id="srv-lead-title-stroitelstvo-angarov" class="srv-section-title">Форма заявки по услуге</h2>
-          <p class="srv-section-lede">Форма демонстрационная без бэкенда; при отправке показывается уведомление. Позже здесь можно подключить почту, CRM или API.</p>
-          <form class="lead-form lead-form--srv" data-contact-form novalidate>
-            <div class="field-row">
-              <label for="lead-name-stroitelstvo-angarov">Компания / ФИО</label>
-              <input id="lead-name-stroitelstvo-angarov" name="name" autocomplete="organization" placeholder="Как к вам обращаться">
-            </div>
-            <div class="field-row">
-              <label for="lead-phone-stroitelstvo-angarov">Телефон</label>
-              <input id="lead-phone-stroitelstvo-angarov" name="phone" autocomplete="tel" placeholder="+375…">
-            </div>
-            <div class="field-row">
-              <label for="lead-msg-stroitelstvo-angarov">Объём и срок задачи по «Строительство ангаров»</label>
-              <textarea id="lead-msg-stroitelstvo-angarov" name="message" placeholder="Площадь, технология, срок КП или вопрос специалисту"></textarea>
-            </div>
-            <div>
-              <button class="srv-cta-solid srv-lead-submit" type="submit">Отправить заявку</button>
-            </div>
-          </form>
-        </div>
-      </article>
+      <h1 class="page-title">Страница находится в разработке!</h1>
+      <p class="page-lede" style="margin-top:14px">Раздел «Строительство ангаров» скоро появится. Пока можно позвонить нам или оставить заявку через «Заказать звонок».</p>
+    </div>
   </main>
 
+  <footer class="site-footer">
+    <div class="wrap site-footer-inner">
+      <section>
+        <p class="footer-title">Строительство</p>
+        <p class="footer-muted">Отдельных разделов «Стоимость», «Объекты» и «Проекты» нет по архитектуре: как на SEO-схеме они оформляются блоками внутри страниц услуг.</p>
+      </section>
+      <section>
+        <p class="footer-title">Навигация</p>
+        <ul class="footer-links">
+          <li><a class="focus-ring" href="index.html">Каталог услуг</a></li>
+          <li><a class="focus-ring" href="../seo-sitemap.html">SEO-карта</a></li>
+          <li><a class="focus-ring" href="../rekvizity/index.html">Реквизиты</a></li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+  <div class="mobile-call-bar">
+    <a href="tel:+375291286217" class="mobile-call-bar__phone" aria-label="Позвонить +375 29 128-62-17">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      <span>Позвонить Олегу</span>
+    </a>
+    <div data-messenger-links data-messenger-compact></div>
+  </div>
 
-      <footer class="site-footer">
-        <div class="wrap site-footer-inner">
-          <section>
-            <p class="footer-title">Строительство</p>
-            <p class="footer-muted">Отдельных разделов «Стоимость», «Объекты» и «Проекты» нет по архитектуре: как на SEO-схеме они оформляются блоками внутри страниц услуг.</p>
-          </section>
-          <section>
-            <p class="footer-title">Навигация</p>
-            <ul class="footer-links">
-              <li><a class="focus-ring" href="../uslugi/index.html">Каталог услуг</a></li>
-              <li><a class="focus-ring" href="../seo-sitemap.html">SEO-карта</a></li>
-              <li><a class="focus-ring" href="../rekvizity/index.html">Реквизиты</a></li>
-            </ul>
-          </section>
-        </div>
-      </footer>
   <div class="callback-modal" id="callback-modal" hidden aria-hidden="true">
     <div class="callback-modal__backdrop" data-callback-close aria-hidden="true"></div>
     <div class="callback-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="callback-modal-title">
@@ -352,9 +135,9 @@
     </div>
   </div>
 
-
-
+  <script src="../js/config.js"></script>
+  <script src="../js/telegram.js"></script>
+  <script src="../js/leads.js" defer></script>
   <script src="../js/main.js" defer></script>
-
 </body>
 </html>

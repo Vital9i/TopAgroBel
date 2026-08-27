@@ -14,46 +14,98 @@
 </head>
 <body class="site-shell">
 
-  <header class="home-header">
-    <div class="home-topbar">
-      <div class="wrap home-topbar-row">
-                <a class="home-logo" href="../index.html">
-          <img class="home-logo__img" src="../assets/images/main/Logo.webp" alt="ТопАгроБел" width="200" height="56" decoding="async">
-        </a>
+      <header class="site-header" data-site-header>
+    <div class="wrap site-header__inner">
+      <a class="logo" href="../index.html" aria-label="ТопАгроБел — на главную">
+        <img class="logo__img" src="../assets/images/main/Logo.webp" alt="ТопАгроБел" width="160" height="44" decoding="async">
+      </a>
 
-        <div class="home-contacts-strip">
-          <span><strong>График:</strong> пн–пт 09:00–18:00</span>
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Олег Олегович</span>
-            <a href="tel:+375291286217">+375 (29) 128-62-17</a>
-          </div>
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Святослав Робертович</span>
-            <a href="tel:+375296582950">+375 (29) 658-29-50</a>
-          </div>
+      <nav class="nav" aria-label="Основная навигация по сайту">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="../index.html">Главная</a></li>
+          <li><a class="nav__link" href="../o-kompanii/index.html">О компании</a></li>
+          <li><a class="nav__link" href="../uslugi/index.html" aria-current="page">Услуги</a></li>
+          <li><a class="nav__link" href="../index.html#home-reviews">Отзывы</a></li>
+          <li><a class="nav__link" href="../blog/index.html">Новости</a></li>
+        </ul>
+      </nav>
 
-          <span>Минск и вся РБ</span>
+      <div class="header-actions">
+        <div class="header-contact">
+          <div class="header-contact-lines">
+            <a class="header-phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
+            <a class="header-email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+          </div>
+          <div class="header-socials" data-messenger-links data-messenger-compact></div>
         </div>
-                <button type="button" class="home-btn-callback" data-callback-modal>
-          Обратный звонок
-        </button>
+        <button class="btn btn--yellow btn--sm header-actions__callback" type="button" data-callback-modal>Заказать звонок</button>
       </div>
+
+      <button
+        class="burger"
+        type="button"
+        data-burger
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="home-navbar">
-      <div class="wrap home-navbar-inner">
-        <button type="button" class="home-nav-toggle" aria-expanded="false" aria-controls="home-main-navigation">
-          Меню
-        </button>
-        <nav id="home-main-navigation" class="home-main-nav" data-open="false" aria-label="Основная навигация по сайту">
-          <ul>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="../o-kompanii/index.html">О компании</a></li>
-            <li><a href="../uslugi/index.html" aria-current="page">Услуги</a></li>            <li><a href="../index.html#home-reviews">Отзывы</a></li>
-            <li><a href="../blog/index.html">Новости</a></li>          </ul>
+
+    <div class="site-header__sub">
+      <div class="wrap site-header__sub-inner">
+        <nav class="site-subnav" aria-label="Раздел услуг">
+          <p class="site-subnav__trail">
+            <span class="site-subnav__here">Вы здесь</span>
+            <a href="../index.html">Главная</a>
+            <span class="site-subnav__sep" aria-hidden="true">›</span>
+            <span aria-current="page">Услуги</span>
+          </p>
+          <div class="site-subnav__switch">
+            <span class="site-subnav__switch-label">Направления</span>
+            <ul class="site-subnav__list">
+              <li><a class="site-subnav__link" href="index.html" aria-current="page">Все услуги</a></li>
+              <li><a class="site-subnav__link" href="promyshlennye-betonnye-poly.html">Полы</a></li>
+              <li><a class="site-subnav__link" href="naruzhnye-inzhenernye-seti.html">Сети</a></li>
+              <li><a class="site-subnav__link" href="arenda-stroitelnoy-tehniki.html">Аренда</a></li>
+            </ul>
+          </div>
         </nav>
       </div>
     </div>
   </header>
+
+  <div class="nav-mobile" id="mobile-menu" data-mobile-menu aria-hidden="true">
+    <button type="button" class="nav-mobile__backdrop" data-close-mobile-menu aria-label="Закрыть меню"></button>
+    <nav class="nav-mobile__panel" aria-label="Мобильная навигация">
+      <div class="nav-mobile__head">
+        <span class="nav-mobile__brand">ТопАгроБел</span>
+        <button type="button" class="nav-mobile__close" data-close-mobile-menu aria-label="Закрыть меню">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__links">
+        <a class="nav-mobile__link" href="../index.html" data-close-mobile-menu>Главная</a>
+        <a class="nav-mobile__link" href="../o-kompanii/index.html" data-close-mobile-menu>О компании</a>
+        <a class="nav-mobile__link" href="../uslugi/index.html" data-close-mobile-menu aria-current="page">Услуги</a>
+        <a class="nav-mobile__link" href="../index.html#home-reviews" data-close-mobile-menu>Отзывы</a>
+        <a class="nav-mobile__link" href="../blog/index.html" data-close-mobile-menu>Новости</a>
+        <div class="nav-mobile__sub" aria-label="Рабочие направления">
+          <p class="nav-mobile__sub-label">Направления</p>
+          <a class="nav-mobile__link" href="index.html" data-close-mobile-menu aria-current="page">Все услуги</a>
+          <a class="nav-mobile__link" href="promyshlennye-betonnye-poly.html" data-close-mobile-menu>Полы</a>
+          <a class="nav-mobile__link" href="naruzhnye-inzhenernye-seti.html" data-close-mobile-menu>Сети</a>
+          <a class="nav-mobile__link" href="arenda-stroitelnoy-tehniki.html" data-close-mobile-menu>Аренда</a>
+        </div>
+      </div>
+      <div class="nav-mobile__actions">
+        <a class="btn btn--yellow btn--full" href="tel:+375291286217">+375 (29) 128-62-17</a>
+        <a class="nav-mobile__email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+        <div data-messenger-links data-messenger-nav></div>
+        <button class="btn btn--dark btn--full" type="button" data-callback-modal data-close-mobile-menu>Заказать звонок</button>
+      </div>
+    </nav>
+  </div>
 
   <main class="site-main">
     <div class="wrap">
@@ -64,134 +116,201 @@
         </ol>
       </nav>
       <h1 class="page-title">Строительные услуги</h1>
-      <p class="page-lede">Каталог посадочных страниц: строительство промышленных, складских и коммерческих объектов и отдельные виды строительно-монтажных работ.</p>
-
-      <div class="hero">
-        <h2 style="margin:0 0 10px;font-size:20px;">Схема проекта и правила блоков на услуге</h2>
-        <p style="margin:0;color:#565656;font-weight:650;">Инфографический макет: <a href="../seo-sitemap.html">SEO-карта сайта</a>.</p>
-      </div>
     </div>
 
       <section class="wrap uslugi-group" style="margin-top:16px;">
         <h2 class="page-title" style="font-size:22px;">Строительство объектов</h2>
         <div class="card-grid cols-3">
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="stroitelstvo-zdaniy-i-sooruzheniy.html">Строительство зданий и сооружений</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/stroitelstvo-zdaniy-i-sooruzheniy</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="promyshlennoe-stroitelstvo.html">Промышленное строительство</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/promyshlennoe-stroitelstvo</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="promyshlennye-zdaniya.html">Промышленные здания</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/promyshlennye-zdaniya</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="stroitelstvo-skladov.html">Строительство складов</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/stroitelstvo-skladov</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="stroitelstvo-angarov.html">Строительство ангаров</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/stroitelstvo-angarov</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="stroitelstvo-bystrovozvodimyh-zdaniy.html">Быстровозводимые здания</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/stroitelstvo-bystrovozvodimyh-zdaniy</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="angary-iz-sendvich-paneley.html">Ангары из сэндвич-панелей</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/angary-iz-sendvich-paneley</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="zdaniya-iz-sendvich-paneley.html">Здания из сэндвич-панелей</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/zdaniya-iz-sendvich-paneley</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="zdaniya-iz-metallokonstrukciy.html">Здания из металлоконструкций</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/zdaniya-iz-metallokonstrukciy</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="zdaniya-iz-lstk.html">Здания из ЛСТК</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/zdaniya-iz-lstk</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="modulnye-zdaniya.html">Модульные здания</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/modulnye-zdaniya</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="genpodryad.html">Генподряд</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/genpodryad</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="rekonstrukciya-zdaniy.html">Реконструкция зданий</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/rekonstrukciya-zdaniy</p>
-          </section>
+          <a class="link-card link-card--tile link-card--wip" href="stroitelstvo-zdaniy-i-sooruzheniy.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Строительство зданий и сооружений</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="promyshlennoe-stroitelstvo.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Промышленное строительство</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="promyshlennye-zdaniya.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Промышленные здания</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="stroitelstvo-skladov.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Строительство складов</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="stroitelstvo-angarov.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Строительство ангаров</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="stroitelstvo-bystrovozvodimyh-zdaniy.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Быстровозводимые здания</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="angary-iz-sendvich-paneley.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Ангары из сэндвич-панелей</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="zdaniya-iz-sendvich-paneley.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Здания из сэндвич-панелей</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="zdaniya-iz-metallokonstrukciy.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Здания из металлоконструкций</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="zdaniya-iz-lstk.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Здания из ЛСТК</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="modulnye-zdaniya.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Модульные здания</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="genpodryad.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Генподряд</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="rekonstrukciya-zdaniy.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Реконструкция зданий</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
         </div>
       </section>
       <section class="wrap uslugi-group" style="margin-top:16px;">
         <h2 class="page-title" style="font-size:22px;">Виды работ</h2>
         <div class="card-grid cols-3">
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="stroitelno-montazhnye-raboty.html">Строительно-монтажные работы</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/stroitelno-montazhnye-raboty</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="promyshlennye-betonnye-poly.html">Промышленные бетонные полы</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/promyshlennye-betonnye-poly</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="zemlyanye-raboty.html">Земляные работы</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/zemlyanye-raboty</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="fundamenty-promyshlennyh-zdaniy.html">Фундаменты промышленных зданий</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/fundamenty-promyshlennyh-zdaniy</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="montazh-metallokonstrukciy.html">Монтаж металлоконструкций</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/montazh-metallokonstrukciy</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="montazh-sbornogo-zhelezobetona.html">Монтаж сборного железобетона</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/montazh-sbornogo-zhelezobetona</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="monolitnye-raboty.html">Монолитные работы</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/monolitnye-raboty</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="krovelnye-raboty.html">Кровельные работы</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/krovelnye-raboty</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="fasadnye-raboty.html">Фасадные работы</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/fasadnye-raboty</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="naruzhnye-inzhenernye-seti.html">Наружные инженерные сети</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/naruzhnye-inzhenernye-seti</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="teplotrassy.html">Теплотрассы</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/teplotrassy</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="stroitelstvo-dorog-i-ploshchadok.html">Строительство дорог, проездов и площадок</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/stroitelstvo-dorog-i-ploshchadok</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="blagoustroystvo-territorii.html">Благоустройство территории</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/blagoustroystvo-territorii</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="usilenie-konstrukciy.html">Усиление конструкций</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/usilenie-konstrukciy</p>
-          </section>
-          <section class="link-card">
-            <h3 style="margin:0 0 8px;"><a href="arenda-stroitelnoy-tehniki.html">Аренда строительной техники</a></h3>
-            <p style="margin:0;color:#565656">/uslugi/arenda-stroitelnoy-tehniki</p>
-          </section>
+          <a class="link-card link-card--tile link-card--wip" href="stroitelno-montazhnye-raboty.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Строительно-монтажные работы</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--live" href="promyshlennye-betonnye-poly.html">
+            <span class="link-card__media">
+              <img src="../assets/floors/images/hero/hero-poster.webp" alt="" width="640" height="400" loading="lazy" decoding="async">
+            </span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Промышленные бетонные полы</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="zemlyanye-raboty.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Земляные работы</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="fundamenty-promyshlennyh-zdaniy.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Фундаменты промышленных зданий</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="montazh-metallokonstrukciy.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Монтаж металлоконструкций</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="montazh-sbornogo-zhelezobetona.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Монтаж сборного железобетона</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="monolitnye-raboty.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Монолитные работы</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="krovelnye-raboty.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Кровельные работы</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="fasadnye-raboty.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Фасадные работы</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--live" href="naruzhnye-inzhenernye-seti.html">
+            <span class="link-card__media">
+              <img src="../assets/networks/images/hero/hero-poster.webp" alt="" width="640" height="400" loading="lazy" decoding="async">
+            </span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Наружные инженерные сети</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="stroitelstvo-dorog-i-ploshchadok.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Строительство дорог, проездов и площадок</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--wip" href="usilenie-konstrukciy.html">
+            <span class="link-card__media" aria-hidden="true"></span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Усиление конструкций</span>
+              <span class="link-card__status">В разработке</span>
+            </span>
+          </a>
+          <a class="link-card link-card--tile link-card--live link-card--rental" href="arenda-stroitelnoy-tehniki.html">
+            <span class="link-card__media">
+              <img src="../assets/rental/backhoe-lgce-b877f.webp" alt="" width="640" height="400" loading="lazy" decoding="async">
+            </span>
+            <span class="link-card__overlay">
+              <span class="link-card__title">Аренда строительной техники</span>
+            </span>
+          </a>
         </div>
       </section>
 
@@ -203,6 +322,7 @@
           <section>
             <p class="footer-title">Строительство</p>
             <p class="footer-muted">Отдельных разделов «Стоимость», «Объекты» и «Проекты» нет по архитектуре: как на SEO-схеме они оформляются блоками внутри страниц услуг.</p>
+            <p class="footer-muted"><a href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a></p>
           </section>
           <section>
             <p class="footer-title">Навигация</p>
@@ -214,6 +334,14 @@
           </section>
         </div>
       </footer>
+    <div class="mobile-call-bar">
+    <a href="tel:+375291286217" class="mobile-call-bar__phone" aria-label="Позвонить +375 29 128-62-17">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      <span>Позвонить Олегу</span>
+    </a>
+    <div data-messenger-links data-messenger-compact></div>
+  </div>
+
   <div class="callback-modal" id="callback-modal" hidden aria-hidden="true">
     <div class="callback-modal__backdrop" data-callback-close aria-hidden="true"></div>
     <div class="callback-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="callback-modal-title">
@@ -234,6 +362,9 @@
 
 
 
+  <script src="../js/config.js"></script>
+  <script src="../js/telegram.js"></script>
+  <script src="../js/leads.js" defer></script>
   <script src="../js/main.js" defer></script>
 
 </body>

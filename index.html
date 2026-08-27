@@ -29,54 +29,76 @@
     "areaServed": "Минск и вся РБ",
     "url": "https://topagrobel.by/",
     "telephone": "+375-29-128-62-17",
+    "email": "topagrobel@mail.ru",
     "openingHours": "Mo-Fr 09:00-18:00"
   }
   </script>
 </head>
 <body class="site-shell home-page">
 
-  <header class="home-header">
-    <div class="home-topbar">
-      <div class="wrap home-topbar-row">
-        <a class="home-logo" href="index.html">
-          <img class="home-logo__img" src="assets/images/main/Logo.webp" alt="ТопАгроБел" width="200" height="56" decoding="async">
-        </a>
-        <div class="home-contacts-strip home-contacts-strip--compact">
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Олег Олегович</span>
-            <a class="home-contacts-strip__phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
+      <header class="site-header" data-site-header>
+    <div class="wrap site-header__inner">
+      <a class="logo" href="index.html" aria-label="ТопАгроБел — на главную">
+        <img class="logo__img" src="assets/images/main/Logo.webp" alt="ТопАгроБел" width="160" height="44" decoding="async">
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация по сайту">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html" aria-current="page">Главная</a></li>
+          <li><a class="nav__link" href="o-kompanii/index.html">О компании</a></li>
+          <li><a class="nav__link" href="uslugi/index.html">Услуги</a></li>
+          <li><a class="nav__link" href="#home-reviews">Отзывы</a></li>
+          <li><a class="nav__link" href="blog/index.html">Новости</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="header-contact">
+          <div class="header-contact-lines">
+            <a class="header-phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
+            <a class="header-email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
           </div>
-          <div class="home-contacts-strip__person">
-            <span class="home-contacts-strip__name">Святослав Робертович</span>
-            <a class="home-contacts-strip__phone" href="tel:+375296582950">+375 (29) 658-29-50</a>
-          </div>
-          <div class="home-contacts-strip__region">
-            <span class="home-contacts-strip__region-title">Минск и вся РБ</span>
-            <span class="home-contacts-strip__meta">пн–пт 09:00–18:00</span>
-          </div>
+          <div class="header-socials" data-messenger-links data-messenger-compact></div>
         </div>
-        <button type="button" class="home-btn-callback" data-callback-modal>
-          Обратный звонок
-        </button>
+        <button class="btn btn--yellow btn--sm header-actions__callback" type="button" data-callback-modal>Заказать звонок</button>
       </div>
-    </div>
-    <div class="home-navbar">
-      <div class="wrap home-navbar-inner">
-        <button type="button" class="home-nav-toggle" aria-expanded="false" aria-controls="home-main-navigation">
-          Меню
-        </button>
-        <nav id="home-main-navigation" class="home-main-nav" data-open="false" aria-label="Навигация по главной странице">
-          <ul>
-            <li><a href="#" aria-current="page">Главная</a></li>
-            <li><a href="o-kompanii/index.html">О компании</a></li>
-            <li><a href="uslugi/index.html">Услуги</a></li>
-            <li><a href="#home-reviews" data-nav-anchor>Отзывы</a></li>
-            <li><a href="blog/index.html">Новости</a></li>
-          </ul>
-        </nav>
-      </div>
+
+      <button
+        class="burger"
+        type="button"
+        data-burger
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <div class="nav-mobile" id="mobile-menu" data-mobile-menu aria-hidden="true">
+    <button type="button" class="nav-mobile__backdrop" data-close-mobile-menu aria-label="Закрыть меню"></button>
+    <nav class="nav-mobile__panel" aria-label="Мобильная навигация">
+      <div class="nav-mobile__head">
+        <span class="nav-mobile__brand">ТопАгроБел</span>
+        <button type="button" class="nav-mobile__close" data-close-mobile-menu aria-label="Закрыть меню">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+      <div class="nav-mobile__links">
+        <a class="nav-mobile__link" href="index.html" data-close-mobile-menu aria-current="page">Главная</a>
+        <a class="nav-mobile__link" href="o-kompanii/index.html" data-close-mobile-menu>О компании</a>
+        <a class="nav-mobile__link" href="uslugi/index.html" data-close-mobile-menu>Услуги</a>
+        <a class="nav-mobile__link" href="#home-reviews" data-close-mobile-menu>Отзывы</a>
+        <a class="nav-mobile__link" href="blog/index.html" data-close-mobile-menu>Новости</a>
+      </div>
+      <div class="nav-mobile__actions">
+        <a class="btn btn--yellow btn--full" href="tel:+375291286217">+375 (29) 128-62-17</a>
+        <a class="nav-mobile__email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+        <div data-messenger-links data-messenger-nav></div>
+        <button class="btn btn--dark btn--full" type="button" data-callback-modal data-close-mobile-menu>Заказать звонок</button>
+      </div>
+    </nav>
+  </div>
 
   <main class="site-main">
 
@@ -778,7 +800,7 @@
             </a>
             </div>
           </div>
-          <form class="home-cta-form lead-form" data-contact-form novalidate>
+          <form class="home-cta-form lead-form" data-contact-form data-lead-source="Консультация" novalidate>
           <div class="home-cta-form__row">
             <label class="visually-hidden" for="lead-name">Имя</label>
             <input id="lead-name" name="name" autocomplete="name" placeholder="Имя (необязательно)">
@@ -824,7 +846,7 @@
       </div>
       <div class="home-footer-meta">
         <span>© 2026 ТопАгроБел · промышленное и складское строительство</span>
-        <span>Минск и вся РБ · <a href="kontakty/index.html">Контакты и адрес</a></span>
+        <span>Минск и вся РБ · <a href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a> · <a href="kontakty/index.html">Контакты</a></span>
       </div>
     </div>
   </footer>
@@ -835,6 +857,14 @@
 
   <script src="https://api-maps.yandex.ru/2.1/?apikey=12fcf8e0-ecaa-4a73-aefd-d28ec0384927&lang=ru_RU" defer></script>
 
+    <div class="mobile-call-bar">
+    <a href="tel:+375291286217" class="mobile-call-bar__phone" aria-label="Позвонить +375 29 128-62-17">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      <span>Позвонить Олегу</span>
+    </a>
+    <div data-messenger-links data-messenger-compact></div>
+  </div>
+
   <div class="callback-modal" id="callback-modal" hidden aria-hidden="true">
     <div class="callback-modal__backdrop" data-callback-close aria-hidden="true"></div>
     <div class="callback-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="callback-modal-title">
@@ -843,7 +873,7 @@
       </button>
       <h2 id="callback-modal-title" class="callback-modal__title">Обратный звонок</h2>
       <p class="callback-modal__lede">Оставьте номер — перезвоним в рабочее время, пн–пт 09:00–18:00</p>
-      <form class="callback-modal__form" data-contact-form novalidate>
+      <form class="callback-modal__form" data-contact-form data-lead-source="Обратный звонок" novalidate>
         <label class="visually-hidden" for="callback-name">Имя</label>
         <input id="callback-name" name="name" autocomplete="name" placeholder="Имя (необязательно)">
         <label class="visually-hidden" for="callback-phone">Телефон</label>
@@ -853,6 +883,9 @@
     </div>
   </div>
 
+  <script src="js/config.js"></script>
+  <script src="js/telegram.js"></script>
+  <script src="js/leads.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

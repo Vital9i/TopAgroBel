@@ -2,29 +2,51 @@
  * Навигация, аккордеон FAQ, формы и интерактив главной (этапы, Swiper).
  */
 (() => {
-  function wireMobileNav(nav, toggle) {
-    if (!toggle || !nav) return;
-    toggle.addEventListener("click", () => {
-      const open = nav.getAttribute("data-open") === "true";
-      nav.setAttribute("data-open", String(!open));
-      toggle.setAttribute("aria-expanded", String(!open));
+  const CONTACT = {
+    olegPhone: "+375291286217",
+    email: "topagrobel@mail.ru",
+    whatsappUrl: "https://wa.me/375291286217",
+    telegramUrl: "https://t.me/+375291286217",
+    viberUrl: "viber://chat?number=%2B375296200314",
+  };
+
+  function buildMessengerLinksHtml(container) {
+    const compact = container.hasAttribute("data-messenger-compact");
+    const nav = container.hasAttribute("data-messenger-nav");
+    const classes = ["messenger-links"];
+    if (compact) classes.push("messenger-links--compact");
+    if (nav) classes.push("messenger-links--nav");
+
+    return `
+      <div class="${classes.join(" ")}" role="group" aria-label="Написать Олегу">
+        <a href="${CONTACT.whatsappUrl}" class="messenger-link messenger-link--whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="${CONTACT.telegramUrl}" class="messenger-link messenger-link--telegram" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+        <a href="${CONTACT.viberUrl}" class="messenger-link messenger-link--viber" target="_blank" rel="noopener noreferrer" aria-label="Viber">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.177.693 6.698.623 9.82c-.06 2.724-.13 7.837 4.777 9.203h.004l-.004 2.315s-.037.98.588 1.177c.75.233 1.2-.484 1.912-1.254.395-.43.944-1.054 1.356-1.536 3.736.323 6.598-.414 6.92-.525.752-.247 5.026-.793 5.726-6.504.744-6.037-.358-9.868-2.317-11.52C19.586.442 15.669.016 11.398.002zm.093 1.947c3.883.015 7.244.39 8.858 1.689 1.533 1.227 2.402 4.597 1.767 9.718-.566 4.578-3.814 4.988-4.527 5.213-.276.09-2.778.724-5.932.412 0 0-2.348 2.826-3.078 3.552-.115.117-.247.163-.338.152-.117-.015-.15-.168-.148-.375l.021-3.676c-3.923-1.036-3.686-5.338-3.634-7.605.055-2.468.523-4.654 1.93-6.017C6.9 2.367 10.385 1.964 11.491 1.949zM12.062 5.5c-.094 0-.184.013-.27.037-.456.126-.718.588-.582 1.044.135.456.588.718 1.044.582.456-.135.718-.588.582-1.044a.832.832 0 0 0-.774-.619zm-2.562 1.01a.832.832 0 0 0-.619 1.394c1.877 1.877 1.877 4.926 0 6.803a.832.832 0 1 0 1.177 1.177c2.512-2.512 2.512-6.645 0-9.157a.828.828 0 0 0-.558-.217zm5.124 0c-.2 0-.401.076-.558.217-2.512 2.512-2.512 6.645 0 9.157a.832.832 0 1 0 1.177-1.177c-1.877-1.877-1.877-4.926 0-6.803a.832.832 0 0 0-.619-1.394zm-2.562 1.562c-.094 0-.184.013-.27.037-.456.126-.718.588-.582 1.044.338 1.138.338 2.366 0 3.504-.135.456.126.909.582 1.044.456.135.909-.126 1.044-.582a5.18 5.18 0 0 0 0-5.468.832.832 0 0 0-.774-.579z"/></svg>
+        </a>
+      </div>
+    `;
+  }
+
+  function initMessengerLinks() {
+    document.querySelectorAll("[data-messenger-links]").forEach((container) => {
+      container.innerHTML = buildMessengerLinksHtml(container);
     });
   }
 
-  wireMobileNav(
-    document.querySelector(".home-main-nav"),
-    document.querySelector(".home-nav-toggle"),
-  );
-
-  function wireAutoHideHeader() {
-    const header = document.querySelector(".home-header");
+  function initSiteHeader() {
+    const header = document.querySelector("[data-site-header], .site-header");
     if (!header) return;
 
     const root = document.documentElement;
     root.classList.add("has-fixed-header");
 
-    const nav = document.querySelector(".home-main-nav");
-    const toggle = document.querySelector(".home-nav-toggle");
+    const burger = document.querySelector("[data-burger]");
+    const menu = document.querySelector("[data-mobile-menu]");
 
     const syncHeaderHeight = () => {
       root.style.setProperty("--home-header-h", `${header.offsetHeight}px`);
@@ -33,16 +55,45 @@
     syncHeaderHeight();
     window.addEventListener("resize", syncHeaderHeight, { passive: true });
 
+    const closeMenu = () => {
+      if (!menu || !burger) return;
+      menu.classList.remove("is-open");
+      menu.setAttribute("aria-hidden", "true");
+      burger.setAttribute("aria-expanded", "false");
+      burger.classList.remove("is-active");
+      document.body.classList.remove("is-menu-open");
+    };
+
+    const openMenu = () => {
+      if (!menu || !burger) return;
+      header.classList.remove("site-header--hidden");
+      menu.classList.add("is-open");
+      menu.setAttribute("aria-hidden", "false");
+      burger.setAttribute("aria-expanded", "true");
+      burger.classList.add("is-active");
+      document.body.classList.add("is-menu-open");
+    };
+
+    if (burger && menu) {
+      burger.addEventListener("click", () => {
+        if (menu.classList.contains("is-open")) closeMenu();
+        else openMenu();
+      });
+      menu.querySelectorAll("[data-close-mobile-menu]").forEach((el) => {
+        el.addEventListener("click", closeMenu);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && menu.classList.contains("is-open")) {
+          closeMenu();
+          burger.focus();
+        }
+      });
+    }
+
     let lastY = window.scrollY;
     let ticking = false;
     const topZone = 64;
     const minDelta = 6;
-
-    const closeMobileNav = () => {
-      if (!nav || nav.getAttribute("data-open") !== "true") return;
-      nav.setAttribute("data-open", "false");
-      toggle?.setAttribute("aria-expanded", "false");
-    };
 
     window.addEventListener(
       "scroll",
@@ -51,14 +102,17 @@
         ticking = true;
         requestAnimationFrame(() => {
           const y = window.scrollY;
+          header.classList.toggle("site-header--scrolled", y > 12);
 
-          if (y <= topZone) {
-            header.classList.remove("home-header--hidden");
+          if (document.body.classList.contains("is-menu-open") || document.body.classList.contains("callback-modal-open")) {
+            header.classList.remove("site-header--hidden");
+          } else if (y <= topZone) {
+            header.classList.remove("site-header--hidden");
           } else if (y > lastY + minDelta) {
-            header.classList.add("home-header--hidden");
-            closeMobileNav();
+            header.classList.add("site-header--hidden");
+            closeMenu();
           } else if (y < lastY - minDelta) {
-            header.classList.remove("home-header--hidden");
+            header.classList.remove("site-header--hidden");
           }
 
           lastY = y;
@@ -69,7 +123,8 @@
     );
   }
 
-  wireAutoHideHeader();
+  initMessengerLinks();
+  initSiteHeader();
 
   document.querySelectorAll(".faq-item").forEach((item) => {
     const btn = item.querySelector(".faq-q");
@@ -78,25 +133,6 @@
       const isOpen = item.getAttribute("data-open") === "true";
       item.setAttribute("data-open", String(!isOpen));
       btn.setAttribute("aria-expanded", String(!isOpen));
-    });
-  });
-
-  document.querySelectorAll("[data-contact-form]").forEach((form) => {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const consent = form.querySelector('input[name="consent"]');
-      if (consent && !consent.checked) {
-        window.alert("Подтвердите согласие на обработку персональных данных.");
-        consent.focus();
-        return;
-      }
-      window.alert(
-        "Заявка принята (демо): подключите форму к почте, CRM или бэкенду.",
-      );
-      form.reset();
-      form.closest("#callback-modal")?.dispatchEvent(
-        new CustomEvent("callback:success", { bubbles: true }),
-      );
     });
   });
 
@@ -513,15 +549,17 @@
         history.replaceState(null, "", window.location.pathname);
       }
       window.scrollTo({ top: 0, behavior: "smooth" });
-      const nav = document.querySelector(".home-main-nav");
-      nav?.setAttribute("data-open", "false");
-      document
-        .querySelector(".home-nav-toggle")
-        ?.setAttribute("aria-expanded", "false");
+      const burger = document.querySelector("[data-burger]");
+      const menu = document.querySelector("[data-mobile-menu]");
+      menu?.classList.remove("is-open");
+      menu?.setAttribute("aria-hidden", "true");
+      burger?.setAttribute("aria-expanded", "false");
+      burger?.classList.remove("is-active");
+      document.body.classList.remove("is-menu-open");
     };
 
     document.querySelectorAll('a[href="index.html"], a[href="#"]').forEach((link) => {
-      if (link.getAttribute("href") === "#" && !link.closest(".home-main-nav")) return;
+      if (link.getAttribute("href") === "#" && !link.closest(".nav, .nav-mobile")) return;
       link.addEventListener("click", (event) => {
         event.preventDefault();
         resetHomeScroll();

@@ -21,6 +21,8 @@ const PHONE_OLEG = {
   name: "Олег Олегович",
 };
 
+const SITE_EMAIL = "topagrobel@mail.ru";
+
 const PHONE_ROBERT = {
   tel: "+375296582950",
   display: "+375 (29) 658-29-50",
@@ -37,6 +39,10 @@ function renderHeaderPhones() {
   <div class="home-contacts-strip__person">
     <span class="home-contacts-strip__name">${PHONE_ROBERT.name}</span>
     <a href="tel:${PHONE_ROBERT.tel}">${PHONE_ROBERT.display}</a>
+  </div>
+  <div class="home-contacts-strip__person">
+    <span class="home-contacts-strip__name">E-mail</span>
+    <a href="mailto:${SITE_EMAIL}">${SITE_EMAIL}</a>
   </div>`;
 }
 
@@ -143,14 +149,9 @@ const WORK_TYPES = [
     slug: "naruzhnye-inzhenernye-seti",
     title: "Наружные инженерные сети",
   },
-  { slug: "teplotrassy", title: "Теплотрассы" },
   {
     slug: "stroitelstvo-dorog-i-ploshchadok",
     title: "Строительство дорог, проездов и площадок",
-  },
-  {
-    slug: "blagoustroystvo-territorii",
-    title: "Благоустройство территории",
   },
   { slug: "usilenie-konstrukciy", title: "Усиление конструкций" },
   {
@@ -533,6 +534,7 @@ function renderFooter(depth) {
           <section>
             <p class="footer-title">Строительство</p>
             <p class="footer-muted">Отдельных разделов «Стоимость», «Объекты» и «Проекты» нет по архитектуре: как на SEO-схеме они оформляются блоками внутри страниц услуг.</p>
+            <p class="footer-muted"><a href="mailto:${SITE_EMAIL}">${SITE_EMAIL}</a></p>
           </section>
           <section>
             <p class="footer-title">Навигация</p>
@@ -586,6 +588,9 @@ function renderCallbackModal() {
 function scripts({ depth }) {
   const u = urls(depth);
   return `${renderCallbackModal()}
+  <script src="${u.js}config.js"></script>
+  <script src="${u.js}telegram.js"></script>
+  <script src="${u.js}leads.js" defer></script>
   <script src="${u.js}main.js" defer></script>
 `;
 }
