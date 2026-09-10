@@ -74,7 +74,8 @@
       document.body.classList.add("is-menu-open");
     };
 
-    if (burger && menu) {
+    if (burger && menu && !burger.dataset.menuBound) {
+      burger.dataset.menuBound = "true";
       burger.addEventListener("click", () => {
         if (menu.classList.contains("is-open")) closeMenu();
         else openMenu();

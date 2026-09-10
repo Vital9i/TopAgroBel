@@ -24,6 +24,7 @@ function buildLeadSource(pageSource) {
 const LEAD_PAGE_LABELS = {
   "home-page": "Главная",
   "networks-landing": "Сети и благоустройство",
+  "earthworks-landing": "Земляные работы",
   "floors-landing": "Бетонные полы",
   "rental-landing": "Аренда техники",
 };

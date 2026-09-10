@@ -53,6 +53,7 @@ function resolve_lead_page(array $data): string
     $map = [
         'home-page' => 'Главная',
         'networks-landing' => 'Сети и благоустройство',
+        'earthworks-landing' => 'Земляные работы',
         'floors-landing' => 'Бетонные полы',
         'rental-landing' => 'Аренда техники',
     ];

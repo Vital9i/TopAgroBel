@@ -463,6 +463,17 @@ html.has-fixed-header body.home-page {
   min-height: 100%;
 }
 
+.home-youtube__player {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.1);
+}
+
+.home-youtube__player.yt-player {
+  border-radius: 14px;
+}
+
 .home-youtube__thumb {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -529,10 +540,19 @@ html.has-fixed-header body.home-page {
   border-radius: 999px;
   background: var(--home-charcoal);
   color: var(--home-yellow);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 900;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+.home-youtube__note {
+  margin: -4px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
 }
 
 .home-youtube__title {
@@ -1927,10 +1947,19 @@ html.has-fixed-header body.home-page {
   border-radius: 999px;
   background: var(--home-charcoal);
   color: var(--home-yellow);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 900;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+.home-reviews__note {
+  margin: -4px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
 }
 
 .home-reviews__title {

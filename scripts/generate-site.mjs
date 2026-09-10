@@ -39,10 +39,6 @@ function renderHeaderPhones() {
   <div class="home-contacts-strip__person">
     <span class="home-contacts-strip__name">${PHONE_ROBERT.name}</span>
     <a href="tel:${PHONE_ROBERT.tel}">${PHONE_ROBERT.display}</a>
-  </div>
-  <div class="home-contacts-strip__person">
-    <span class="home-contacts-strip__name">E-mail</span>
-    <a href="mailto:${SITE_EMAIL}">${SITE_EMAIL}</a>
   </div>`;
 }
 

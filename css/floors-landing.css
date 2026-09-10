@@ -2354,6 +2354,21 @@ body.floors-landing .hero__perks li::before {
   font-weight: 900;
 }
 
+.review-card__status {
+  position: absolute;
+  inset: auto 10px 10px;
+  z-index: 2;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(18, 19, 24, 0.92);
+  color: var(--color-yellow);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  pointer-events: none;
+}
+
 .review-card__name {
   margin: 0 0 4px;
   font-weight: 800;
@@ -3111,7 +3126,7 @@ a.contact-item__value:hover {
 
 @media (max-width: 768px) {
   body.floors-landing {
-    padding-bottom: var(--mobile-bar-h);
+    padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-call-bar {
@@ -3119,7 +3134,7 @@ a.contact-item__value:hover {
   }
 
   .back-top {
-    bottom: calc(var(--mobile-bar-h) + 12px);
+    bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px) + 12px);
     z-index: 95;
   }
 }

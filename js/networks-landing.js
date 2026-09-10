@@ -6,7 +6,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   captureMarketingParams();
   initStickyHeader();
-  initMobileMenu();
   initMessengerLinks();
   initSmoothScroll();
   initHeroMedia();

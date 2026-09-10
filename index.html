@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/header-unified.css">
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/construction-steps.css">
+  <link rel="stylesheet" href="css/youtube-player.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,12 +56,18 @@
       <div class="header-actions">
         <div class="header-contact">
           <div class="header-contact-lines">
-            <a class="header-phone" href="tel:+375291286217">+375 (29) 128-62-17</a>
-            <a class="header-email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+            <a class="header-phone-row" href="tel:+375291286217">
+              <span class="header-phone-row__name">Олег Олегович</span>
+              <span class="header-phone-row__num">+375 (29) 128-62-17</span>
+            </a>
+            <a class="header-phone-row" href="tel:+375296582950">
+              <span class="header-phone-row__name">Святослав Робертович</span>
+              <span class="header-phone-row__num">+375 (29) 658-29-50</span>
+            </a>
           </div>
-          <div class="header-socials" data-messenger-links data-messenger-compact></div>
         </div>
         <button class="btn btn--yellow btn--sm header-actions__callback" type="button" data-callback-modal>Заказать звонок</button>
+        <div class="header-socials" data-messenger-links data-messenger-compact></div>
       </div>
 
       <button
@@ -92,8 +99,16 @@
         <a class="nav-mobile__link" href="blog/index.html" data-close-mobile-menu>Новости</a>
       </div>
       <div class="nav-mobile__actions">
-        <a class="btn btn--yellow btn--full" href="tel:+375291286217">+375 (29) 128-62-17</a>
-        <a class="nav-mobile__email" href="mailto:topagrobel@mail.ru">topagrobel@mail.ru</a>
+        <div class="nav-mobile__phones">
+          <a class="nav-mobile__phone" href="tel:+375291286217">
+            <span class="nav-mobile__phone-name">Олег Олегович</span>
+            <span class="nav-mobile__phone-num">+375 (29) 128-62-17</span>
+          </a>
+          <a class="nav-mobile__phone" href="tel:+375296582950">
+            <span class="nav-mobile__phone-name">Святослав Робертович</span>
+            <span class="nav-mobile__phone-num">+375 (29) 658-29-50</span>
+          </a>
+        </div>
         <div data-messenger-links data-messenger-nav></div>
         <button class="btn btn--dark btn--full" type="button" data-callback-modal data-close-mobile-menu>Заказать звонок</button>
       </div>
@@ -166,52 +181,28 @@
       <div class="wrap">
         <header class="home-youtube__header">
           <h2 class="home-section-title" id="about-heading">Кто мы такие?</h2>
-          <p class="home-section-lede home-section-lede--flush">Доверие в строительстве приобретают не обещаниями, а результатом. Посмотрите наши объекты — и решите сами, можно ли нам доверять.</p>
+          <p class="home-section-lede home-section-lede--flush">Доверие в строительстве приобретают не обещаниями, а результатом. Посмотрите наши объекты в работе — строительство завода и реконструкция.</p>
         </header>
 
         <ul class="home-youtube__grid">
           <li>
-            <article class="home-youtube__card" data-video-placeholder data-video-title="Знакомство. Почему именно мы?">
-              <div class="home-youtube__thumb" aria-hidden="true">
-                <span class="home-youtube__play">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="home-youtube__soon">Скоро</span>
-              </div>
-              <h3 class="home-youtube__title">Знакомство. Почему именно мы?</h3>
-            </article>
-          </li>
-          <li>
-            <article class="home-youtube__card" data-video-placeholder data-video-title="Строим завод в Кобрине">
-              <div class="home-youtube__thumb" aria-hidden="true">
-                <span class="home-youtube__play">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="home-youtube__soon">Скоро</span>
-              </div>
+            <article class="home-youtube__card">
+              <div
+                class="home-youtube__player yt-player"
+                data-youtube="https://youtu.be/45l_G34juvc"
+                data-youtube-title="Компания ТопАгроБел строит завод"
+                data-youtube-mode="inline"></div>
               <h3 class="home-youtube__title">Строим завод в Кобрине</h3>
             </article>
           </li>
           <li>
-            <article class="home-youtube__card" data-video-placeholder data-video-title="Реконструкция Минского костела">
-              <div class="home-youtube__thumb" aria-hidden="true">
-                <span class="home-youtube__play">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="home-youtube__soon">Скоро</span>
-              </div>
-              <h3 class="home-youtube__title">Реконструкция Минского костела</h3>
-            </article>
-          </li>
-          <li>
-            <article class="home-youtube__card" data-video-placeholder data-video-title="Реконструкция спорткомплекса Динамо">
-              <div class="home-youtube__thumb" aria-hidden="true">
-                <span class="home-youtube__play">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-                <span class="home-youtube__soon">Скоро</span>
-              </div>
-              <h3 class="home-youtube__title">Реконструкция спорткомплекса Динамо</h3>
+            <article class="home-youtube__card">
+              <div
+                class="home-youtube__player yt-player"
+                data-youtube="https://youtu.be/ug5DOZeLnQs"
+                data-youtube-title="Реконструкция склада"
+                data-youtube-mode="inline"></div>
+              <h3 class="home-youtube__title">Реконструкция склада</h3>
             </article>
           </li>
         </ul>
@@ -415,8 +406,8 @@
           <li class="home-contract-works__grid-item">
             <a class="contract-work-card" href="uslugi/naruzhnye-inzhenernye-seti.html">
               <span class="contract-work-card__content">
-                <h3 class="contract-work-card__title">Наружные сети и теплотрассы</h3>
-                <p class="contract-work-card__text">Водопровод, канализация, ливневка, водоотведение и теплотрассы.</p>
+                <h3 class="contract-work-card__title">Наружные сети, благоустройство, дороги и подъезды</h3>
+                <p class="contract-work-card__text">Водопровод, канализация, ливневка, водоотведение, дороги, проезды и благоустройство.</p>
                 <span class="contract-work-card__more">Подробнее<svg class="contract-work-card__more-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               </span>
               <span class="contract-work-card__visual">
@@ -611,7 +602,7 @@
       <div class="wrap">
         <header class="home-reviews__header">
           <h2 class="home-section-title" id="reviews-heading">Видеоотзывы заказчиков</h2>
-          <p class="home-section-lede home-section-lede--flush">Реальные отзывы о строительстве и реконструкции промышленных, складских и коммерческих объектов. Видео появятся на YouTube в ближайшее время.</p>
+          <p class="home-section-lede home-section-lede--flush">Реальные отзывы о строительстве и реконструкции промышленных, складских и коммерческих объектов. Материал снят — ролики на этапе монтажа.</p>
         </header>
 
         <div class="home-reviews__carousel">
@@ -627,9 +618,10 @@
                     <span class="home-reviews__play">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
                     </span>
-                    <span class="home-reviews__soon">Скоро</span>
+                    <span class="home-reviews__soon">На монтаже</span>
                   </div>
                   <h3 class="home-reviews__title">Отзыв о строительстве склада</h3>
+                  <p class="home-reviews__note">Материал снят и находится на этапе монтажа.</p>
                   <p class="home-reviews__meta">Логистическая компания · Минская область</p>
                 </article>
               </li>
@@ -639,9 +631,10 @@
                     <span class="home-reviews__play">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
                     </span>
-                    <span class="home-reviews__soon">Скоро</span>
+                    <span class="home-reviews__soon">На монтаже</span>
                   </div>
                   <h3 class="home-reviews__title">Генподряд производственного цеха</h3>
+                  <p class="home-reviews__note">Материал снят и находится на этапе монтажа.</p>
                   <p class="home-reviews__meta">Промышленное предприятие · Беларусь</p>
                 </article>
               </li>
@@ -651,9 +644,10 @@
                     <span class="home-reviews__play">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
                     </span>
-                    <span class="home-reviews__soon">Скоро</span>
+                    <span class="home-reviews__soon">На монтаже</span>
                   </div>
                   <h3 class="home-reviews__title">Реконструкция промышленного объекта</h3>
+                  <p class="home-reviews__note">Материал снят и находится на этапе монтажа.</p>
                   <p class="home-reviews__meta">Складской комплекс · Минск</p>
                 </article>
               </li>
@@ -663,9 +657,10 @@
                     <span class="home-reviews__play">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
                     </span>
-                    <span class="home-reviews__soon">Скоро</span>
+                    <span class="home-reviews__soon">На монтаже</span>
                   </div>
                   <h3 class="home-reviews__title">Сроки и качество работ</h3>
+                  <p class="home-reviews__note">Материал снят и находится на этапе монтажа.</p>
                   <p class="home-reviews__meta">Коммерческий объект · РБ</p>
                 </article>
               </li>
@@ -675,9 +670,10 @@
                     <span class="home-reviews__play">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
                     </span>
-                    <span class="home-reviews__soon">Скоро</span>
+                    <span class="home-reviews__soon">На монтаже</span>
                   </div>
                   <h3 class="home-reviews__title">Работа с заказчиком на объекте</h3>
+                  <p class="home-reviews__note">Материал снят и находится на этапе монтажа.</p>
                   <p class="home-reviews__meta">Производственная площадка · Гродненская область</p>
                 </article>
               </li>
@@ -795,7 +791,7 @@
             <a class="home-cta-social__btn home-cta-social__btn--instagram" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
             </a>
-            <a class="home-cta-social__btn home-cta-social__btn--youtube" href="https://youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <a class="home-cta-social__btn home-cta-social__btn--youtube" href="https://www.youtube.com/@%D0%A2%D0%BE%D0%BF%D0%90%D0%B3%D1%80%D0%BE%D0%91%D0%B5%D0%BB.%D0%B1%D0%B0%D0%B9" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
               <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             </a>
             </div>
@@ -886,6 +882,7 @@
   <script src="js/config.js"></script>
   <script src="js/telegram.js"></script>
   <script src="js/leads.js" defer></script>
+  <script src="js/youtube-player.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

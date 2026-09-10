@@ -2,6 +2,7 @@
 
 :root {
   --header-h: 72px;
+  --mobile-bar-h: 56px;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   --radius: 10px;
   --radius-lg: 16px;
@@ -118,14 +119,62 @@ html.has-fixed-header body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
+}
+
+.header-actions .header-socials {
+  align-self: center;
 }
 
 .header-contact-lines {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  column-gap: 10px;
+  row-gap: 4px;
+  justify-content: end;
+  align-items: baseline;
+}
+
+.header-phone-row {
+  display: contents;
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-phone-row__name {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #565656;
+  text-align: right;
+  white-space: nowrap;
+  justify-self: end;
+}
+
+.header-phone-row__num {
+  font-weight: 900;
+  font-size: clamp(13px, 1.35vw, 16px);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+  color: var(--text);
+  justify-self: end;
+}
+
+.header-phone-row:hover .header-phone-row__num {
+  color: #9a7800;
+}
+
+@media (min-width: 1024px) {
+  .header-phone-row {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .header-phone-row:hover .header-phone-row__num {
+    color: var(--text);
+  }
 }
 
 .header-phone {
@@ -143,7 +192,7 @@ html.has-fixed-header body {
   color: #9a7800;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .header-phone {
     pointer-events: none;
     cursor: default;
@@ -435,6 +484,48 @@ html.has-fixed-header body {
   justify-content: center;
 }
 
+.nav-mobile__phones {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.nav-mobile__phone {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--soft);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-mobile__phone-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #565656;
+}
+
+.nav-mobile__phone-num {
+  font-size: 14px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+.nav-mobile__phone:hover {
+  border-color: rgba(244, 190, 0, 0.45);
+  background: #fff;
+}
+
+.nav-mobile__phone:hover .nav-mobile__phone-num {
+  color: #9a7800;
+}
+
 .nav-mobile__email {
   display: block;
   text-align: center;
@@ -486,6 +577,8 @@ html.has-fixed-header body {
     display: flex;
     grid-column: 3;
     grid-row: 1;
+    position: relative;
+    z-index: 3;
   }
 
   .site-header .logo {
@@ -499,6 +592,21 @@ html.has-fixed-header body {
     justify-self: end;
     gap: 8px;
   }
+
+  .header-socials {
+    display: none;
+  }
+
+  .site-header .header-phone,
+  .site-header .header-phone-row {
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(154, 120, 0, 0.15);
+  }
+
+  .home-page .header-contact-lines {
+    display: none;
+  }
 }
 
 .mobile-call-bar {
@@ -507,12 +615,13 @@ html.has-fixed-header body {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 90;
-  height: 56px;
+  z-index: 120;
+  box-sizing: border-box;
+  min-height: var(--mobile-bar-h);
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding: 0 12px;
+  gap: 8px;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
   background: var(--black);
   color: var(--white);
   box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.18);
@@ -522,16 +631,25 @@ html.has-fixed-header body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  flex: 1;
+  gap: 8px;
+  flex: 1 1 auto;
   min-width: 0;
-  height: 100%;
+  min-height: 40px;
   font-weight: 800;
-  font-size: 14px;
+  font-size: clamp(11px, 3.2vw, 14px);
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   text-decoration: none;
   color: var(--white);
+}
+
+.mobile-call-bar__phone span {
+  white-space: nowrap;
+}
+
+.mobile-call-bar__phone svg {
+  flex-shrink: 0;
 }
 
 .mobile-call-bar__phone:hover {
@@ -540,11 +658,17 @@ html.has-fixed-header body {
 
 .mobile-call-bar .messenger-links {
   flex-shrink: 0;
+  gap: 4px;
+}
+
+.mobile-call-bar .messenger-link {
+  width: 28px;
+  height: 28px;
 }
 
 @media (max-width: 768px) {
   html.has-fixed-header body {
-    padding-bottom: 56px;
+    padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-call-bar {
@@ -559,7 +683,8 @@ html.has-fixed-header body {
     gap: 4px;
   }
 
-  .header-phone {
+  .header-phone,
+  .header-phone-row__num {
     font-size: 13px;
   }
 
@@ -800,13 +925,6 @@ html.has-fixed-header body.rental-landing {
   padding-top: 0;
 }
 
-@media (min-width: 769px) {
-  body.rental-landing .site-header a[href^="tel:"] {
-    pointer-events: auto;
-    cursor: pointer;
-  }
-}
-
 /* --- Второй уровень: цепочка раздела услуг --- */
 .site-header__sub {
   border-top: 1px solid rgba(0, 0, 0, 0.06);
@@ -962,6 +1080,65 @@ html.has-fixed-header body.rental-landing {
 
   .site-subnav__list {
     flex: 1 1 auto;
+  }
+}
+
+/* Лендинги услуг (полы, сети): мобильная шапка как в BetonnyePoly */
+@media (max-width: 1023px) {
+  body.floors-landing .header-actions,
+  body.networks-landing .header-actions,
+  body.earthworks-landing .header-actions {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    gap: 8px;
+  }
+
+  body.floors-landing .header-actions__callback,
+  body.networks-landing .header-actions__callback,
+  body.earthworks-landing .header-actions__callback {
+    display: none;
+  }
+
+  body.floors-landing .site-header__sub,
+  body.networks-landing .site-header__sub,
+  body.earthworks-landing .site-header__sub {
+    display: none;
+  }
+
+  body.floors-landing .header-contact,
+  body.networks-landing .header-contact,
+  body.earthworks-landing .header-contact {
+    align-items: flex-end;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.floors-landing .header-phone,
+  body.networks-landing .header-phone,
+  body.earthworks-landing .header-phone {
+    font-size: clamp(15px, 4.2vw, 17px);
+    line-height: 1.1;
+  }
+
+  body.floors-landing,
+  body.networks-landing,
+  body.earthworks-landing {
+    padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.floors-landing .logo__img,
+  body.networks-landing .logo__img,
+  body.earthworks-landing .logo__img {
+    height: 34px;
+    max-width: min(140px, 36vw);
+  }
+
+  body.floors-landing .back-top,
+  body.networks-landing .back-top,
+  body.earthworks-landing .back-top {
+    bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px) + 12px);
   }
 }
 

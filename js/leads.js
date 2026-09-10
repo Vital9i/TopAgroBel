@@ -2,19 +2,27 @@
  * Общая логика заявок: валидация, отправка, редирект на thank-you.
  */
 
+const LEAD_RETURN_KEY = "leadReturnUrl";
+
 function getThankYouUrl() {
-  return /\/uslugi\//.test(window.location.pathname)
-    ? "thank-you.html"
-    : "thank-you.html";
+  const inUslugi = /\/uslugi(?:\/|$)/.test(window.location.pathname);
+  return inUslugi ? "/uslugi/thank-you.html" : "/thank-you.html";
 }
 
 function redirectToThankYou({ name, phone, formId, source, equipment } = {}) {
+  try {
+    sessionStorage.setItem(LEAD_RETURN_KEY, window.location.href);
+  } catch (_) {}
+
   const params = new URLSearchParams();
   if (name) params.set("name", name);
   if (phone) params.set("phone", phone);
   if (formId) params.set("form", formId);
   if (source) params.set("source", source);
   if (equipment) params.set("equipment", equipment);
+
+  const returnPath = `${window.location.pathname}${window.location.search}`;
+  if (returnPath && returnPath !== "/") params.set("return", returnPath);
 
   const qs = params.toString();
   window.location.href = `${getThankYouUrl()}${qs ? `?${qs}` : ""}`;
@@ -37,6 +45,7 @@ function resolveLeadPage(form) {
   if (document.body.dataset.leadPage) return document.body.dataset.leadPage.trim();
   if (document.body.classList.contains("home-page")) return "Главная";
   if (document.body.classList.contains("networks-landing")) return "Сети и благоустройство";
+  if (document.body.classList.contains("earthworks-landing")) return "Земляные работы";
   if (document.body.classList.contains("floors-landing")) return "Бетонные полы";
   if (document.body.classList.contains("rental-landing")) return "Аренда техники";
   return "";
