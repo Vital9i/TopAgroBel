@@ -7,6 +7,10 @@ import {
   PAGE_EXTRA_GROUPS,
   MONOLIT_KARKAS_BLOCK,
 } from "./service-content.mjs";
+import {
+  renderSiteHeaderAndMobile,
+  SERVICE_LABEL_BY_SLUG,
+} from "./site-header.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -456,7 +460,8 @@ function corpNavActive(folder) {
 }
 
 /**
- * Шапка как на главной: белый топбар + тёмная навигация.
+ * Legacy home-header (topbar + dark nav). Prefer `renderSiteHeaderAndMobile`
+ * from `./site-header.mjs` for live site-header pages (see serviceHtml / uslugiIndexHtml).
  * @param {object} p
  * @param {"root" | "subdir"} p.depth
  * @param {"o-kompanii" | "uslugi" | "blog" | "kontakty" | null | undefined} p.active
@@ -942,9 +947,12 @@ function serviceHtml(service) {
   <link rel="stylesheet" href="${urls("subdir").css}service-page.css">
 </head>
 <body class="site-shell">
-${renderUnifiedHeader({
-  depth: "subdir",
+${renderSiteHeaderAndMobile({
+  depth: "uslugi",
   active: "uslugi",
+  trailLabel: SERVICE_LABEL_BY_SLUG.get(service.slug) ?? service.title,
+  trailSlug: service.slug,
+  phonesMode: "single",
 })}
 
   <main class="site-main site-main--service">
@@ -988,9 +996,12 @@ function uslugiIndexHtml() {
   <link rel="stylesheet" href="${urls("subdir").css}service-page.css">
 </head>
 <body class="site-shell">
-${renderUnifiedHeader({
-  depth: "subdir",
+${renderSiteHeaderAndMobile({
+  depth: "uslugi",
   active: "uslugi",
+  trailLabel: "Все услуги",
+  trailSlug: null,
+  phonesMode: "single",
 })}
 
   <main class="site-main">
