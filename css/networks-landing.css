@@ -458,8 +458,8 @@ body.networks-landing .networks-tech-steps .home-section-title {
 
 .nav__list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px 16px;
+  flex-wrap: nowrap;
+  gap: 6px 12px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -3500,6 +3500,51 @@ a.contact-item__value:hover {
   letter-spacing: 0.01em;
 }
 
+.site-footer__brand .footer-youtube {
+  margin-top: 12px;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.footer-socials .footer-youtube {
+  margin-top: 0;
+}
+
+.footer-socials .messenger-link {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-youtube {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ff0000;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.footer-youtube:hover {
+  color: #fff;
+  background: #e60000;
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.footer-youtube svg {
+  display: block;
+}
+
 .site-footer__nav,
 .site-footer__extra {
   min-width: 0;
@@ -3528,7 +3573,6 @@ a.contact-item__value:hover {
 
 .site-footer .logo__img {
   height: 36px;
-  filter: brightness(0) invert(1);
 }
 
 .back-top {

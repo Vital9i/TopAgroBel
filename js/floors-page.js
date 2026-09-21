@@ -354,6 +354,11 @@
     const paragraphs = Array.isArray(stage.paragraphs) ? stage.paragraphs : [];
     const paragraphsHtml = paragraphs.map((p) => `<p>${p}</p>`).join("");
     const ctaHref = ctaTarget || "#zakaz-consult";
+    const isOptional = Boolean(stage.optional);
+    const stepBadge = isOptional ? `${bid} этап · опционально` : `${bid} этап`;
+    const optionalChip = isOptional
+      ? `<span class="construction-steps__optional">Опционально</span>`
+      : "";
 
     return `
       <article
@@ -363,13 +368,13 @@
         role="tabpanel"
         aria-labelledby="${tabDomId}"
       >
-        <div class="construction-steps__card">
-          <span class="construction-steps__step-badge">${bid} этап</span>
+        <div class="construction-steps__card${isOptional ? " construction-steps__card--optional" : ""}">
+          <span class="construction-steps__step-badge">${stepBadge}</span>
           <div class="construction-steps__media">
             <img class="construction-steps__image" src="${img}" alt="${alt}" width="960" height="540" loading="lazy" decoding="async">
           </div>
           <div class="construction-steps__body">
-            <h3 class="construction-steps__title">${title}</h3>
+            <h3 class="construction-steps__title">${title}${optionalChip}</h3>
             <div class="construction-steps__text">${paragraphsHtml}</div>
             <a class="home-btn-solid home-btn-scroll construction-steps__button" href="${ctaHref}" data-scroll-target="${ctaHref}">Получить расчёт</a>
           </div>
@@ -459,7 +464,11 @@
       tab.setAttribute("aria-selected", "false");
       tab.innerHTML = `
         <span class="construction-steps__tab-icon">${renderStageTabIcon(stage)}</span>
-        <span class="construction-steps__tab-label">${tabLabel}</span>`;
+        <span class="construction-steps__tab-label">${tabLabel}</span>${
+          stage.optional
+            ? `<span class="construction-steps__tab-optional">опц.</span>`
+            : ""
+        }`;
       tabsWrap.append(tab);
       tabsById.set(bid, tab);
 

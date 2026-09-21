@@ -48,10 +48,15 @@ html.has-fixed-header body {
 
 .site-header__inner {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 16px;
   min-height: var(--header-h);
+}
+
+/* Шире стандартного .wrap (1120), иначе меню ломается на две строки */
+.site-header > .wrap.site-header__inner {
+  width: min(1280px, calc(100% - 36px));
 }
 
 .site-header .logo {
@@ -84,9 +89,9 @@ html.has-fixed-header body {
 
 .nav__list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0 14px;
+  gap: 0 12px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -754,7 +759,7 @@ html.has-fixed-header body {
 
 @media (min-width: 1024px) {
   .site-header__inner {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
   }
 
   .header-phone {
@@ -772,6 +777,35 @@ html.has-fixed-header body {
 
   .nav {
     display: flex;
+  }
+}
+
+/* На средних десктопах ужимаем правый блок, чтобы навигация не переносилась */
+@media (max-width: 1240px) and (min-width: 1024px) {
+  .site-header .header-socials {
+    display: none;
+  }
+
+  .header-phone-row__name {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+
+  .header-contact-lines {
+    column-gap: 8px;
+  }
+}
+
+@media (max-width: 1120px) and (min-width: 1024px) {
+  .site-header .header-actions__callback {
+    display: none;
+  }
+
+  .nav__list {
+    gap: 0 10px;
   }
 }
 
@@ -816,7 +850,9 @@ html.has-fixed-header body {
     -webkit-tap-highlight-color: rgba(154, 120, 0, 0.15);
   }
 
-  .home-page .header-contact-lines {
+  .home-page .header-contact-lines,
+  .page-about .header-contact-lines,
+  .page-objects .header-contact-lines {
     display: none;
   }
 }
@@ -879,16 +915,37 @@ html.has-fixed-header body {
 }
 
 @media (max-width: 768px) {
-  html.has-fixed-header body {
+  html.has-fixed-header body:is(.networks-landing, .floors-landing, .earthworks-landing, .rental-landing, .page-uslugi) {
     padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px));
   }
 
-  .mobile-call-bar {
+  body:is(.networks-landing, .floors-landing, .earthworks-landing, .rental-landing, .page-uslugi) .mobile-call-bar {
     display: flex;
   }
 
   .header-actions__callback {
     display: none;
+  }
+
+  body:is(.home-page, .page-about, .page-objects) .header-actions__callback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: nowrap;
+    max-width: 42vw;
+  }
+
+  body:is(.home-page, .page-about, .page-objects) .site-header .logo__img {
+    height: 32px;
+    max-width: min(120px, 32vw);
+  }
+
+  body:is(.home-page, .page-about, .page-objects) .site-header__inner {
+    gap: 8px;
+    padding-block: 10px;
   }
 
   .header-contact {
@@ -1090,6 +1147,41 @@ body.is-menu-open {
 
 .home-social a:hover {
   background: rgba(244, 190, 0, 0.25);
+}
+
+.home-social .footer-youtube {
+  background: #ff0000;
+  color: #fff;
+}
+
+.home-social .footer-youtube:hover {
+  background: #e60000;
+  color: #fff;
+}
+
+.home-footer-phones {
+  display: grid;
+  gap: 6px;
+}
+
+.home-footer-phones a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.home-footer-phones a:hover {
+  color: #f4be00;
+}
+
+.home-social .messenger-link {
+  width: 36px;
+  height: 36px;
+}
+
+.site-footer__brand .footer-youtube {
+  margin-top: 12px;
 }
 
 .home-footer-meta {
@@ -1299,7 +1391,8 @@ html.has-fixed-header body.rental-landing {
 @media (max-width: 1023px) {
   body.floors-landing .header-actions,
   body.networks-landing .header-actions,
-  body.earthworks-landing .header-actions {
+  body.earthworks-landing .header-actions,
+  body.rental-landing .header-actions {
     grid-column: 2;
     grid-row: 1;
     justify-self: end;
@@ -1308,19 +1401,22 @@ html.has-fixed-header body.rental-landing {
 
   body.floors-landing .header-actions__callback,
   body.networks-landing .header-actions__callback,
-  body.earthworks-landing .header-actions__callback {
+  body.earthworks-landing .header-actions__callback,
+  body.rental-landing .header-actions__callback {
     display: none;
   }
 
   body.floors-landing .site-header__sub,
   body.networks-landing .site-header__sub,
-  body.earthworks-landing .site-header__sub {
+  body.earthworks-landing .site-header__sub,
+  body.rental-landing .site-header__sub {
     display: none;
   }
 
   body.floors-landing .header-contact,
   body.networks-landing .header-contact,
-  body.earthworks-landing .header-contact {
+  body.earthworks-landing .header-contact,
+  body.rental-landing .header-contact {
     align-items: center;
     gap: 8px;
   }
@@ -1329,27 +1425,42 @@ html.has-fixed-header body.rental-landing {
 @media (max-width: 768px) {
   body.floors-landing .header-phone,
   body.networks-landing .header-phone,
-  body.earthworks-landing .header-phone {
-    font-size: clamp(15px, 4.2vw, 17px);
+  body.earthworks-landing .header-phone,
+  body.rental-landing .header-phone {
+    font-size: clamp(14px, 3.8vw, 16px);
     line-height: 1.1;
+    white-space: nowrap;
   }
 
   body.floors-landing,
   body.networks-landing,
-  body.earthworks-landing {
+  body.earthworks-landing,
+  body.rental-landing {
     padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.floors-landing .site-header .logo,
+  body.networks-landing .site-header .logo,
+  body.earthworks-landing .site-header .logo,
+  body.rental-landing .site-header .logo {
+    max-width: min(112px, 29vw);
+    min-width: 0;
+    overflow: hidden;
   }
 
   body.floors-landing .logo__img,
   body.networks-landing .logo__img,
-  body.earthworks-landing .logo__img {
-    height: 34px;
-    max-width: min(140px, 36vw);
+  body.earthworks-landing .logo__img,
+  body.rental-landing .logo__img {
+    height: 32px;
+    max-width: 100%;
+    width: auto;
   }
 
   body.floors-landing .back-top,
   body.networks-landing .back-top,
-  body.earthworks-landing .back-top {
+  body.earthworks-landing .back-top,
+  body.rental-landing .back-top {
     bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px) + 12px);
   }
 }

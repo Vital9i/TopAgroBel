@@ -112,6 +112,68 @@
   font-weight: 700;
 }
 
+.footer-youtube-wrap {
+  margin: 12px 0 0;
+}
+
+.footer-youtube {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ff0000;
+  color: #fff !important;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.footer-youtube:hover {
+  color: #fff !important;
+  background: #e60000;
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.footer-youtube svg {
+  display: block;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.footer-socials .footer-youtube {
+  margin-top: 0;
+}
+
+.footer-socials .messenger-links {
+  gap: 8px;
+}
+
+.footer-socials .messenger-link {
+  width: 40px;
+  height: 40px;
+}
+
+.site-footer__brand .footer-youtube {
+  margin-top: 12px;
+}
+
+.site-footer__brand .footer-socials {
+  margin-top: 12px;
+}
+
+.site-footer__brand .site-footer__phone + .site-footer__phone {
+  margin-top: 4px;
+  font-size: 16px;
+}
+
 .hero {
   border: 2px solid var(--yellow);
   border-radius: 12px;

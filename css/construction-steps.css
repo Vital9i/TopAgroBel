@@ -327,6 +327,11 @@
 @media (max-width: 520px) {
   .construction-steps__tabs {
     justify-content: flex-start;
+    margin-left: -4px;
+    margin-right: -4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    scroll-padding-inline: 4px;
   }
 
   .construction-steps__slider {
@@ -353,7 +358,20 @@
   }
 
   .construction-steps__card {
-    padding-bottom: 64px;
+    padding: 16px 16px 64px;
+  }
+
+  .construction-steps__media,
+  .construction-steps__image {
+    min-height: 200px;
+  }
+
+  .construction-steps__title {
+    font-size: 18px;
+  }
+
+  .construction-steps__text p {
+    font-size: 14px;
   }
 }
 

@@ -137,7 +137,7 @@ input, button, select { font-family: inherit; font-size: inherit; }
 .btn--sm { padding: 10px 20px; font-size: 12px; }
 .btn--full { width: 100%; }
 
-/* Legacy .header only — do not override unified .site-header */
+/* Legacy .header only â do not override unified .site-header */
 .header .logo { display: flex; align-items: center; gap: 12px; }
 .header .logo__img {
   display: block;
@@ -523,7 +523,7 @@ input, button, select { font-family: inherit; font-size: inherit; }
   object-fit: contain;
 }
 
-/* Убирает белый/светлый фон у локальных PNG/WebP на белой части карточки */
+/* Ð£Ð±Ð¸ÑÐ°ÐµÑ Ð±ÐµÐ»ÑÐ¹/ÑÐ²ÐµÑÐ»ÑÐ¹ ÑÐ¾Ð½ Ñ Ð»Ð¾ÐºÐ°Ð»ÑÐ½ÑÑ PNG/WebP Ð½Ð° Ð±ÐµÐ»Ð¾Ð¹ ÑÐ°ÑÑÐ¸ ÐºÐ°ÑÑÐ¾ÑÐºÐ¸ */
 .hero-banner__equipment--knockout {
   mix-blend-mode: multiply;
   -webkit-mask-image: radial-gradient(
@@ -885,7 +885,7 @@ body.nav-open {
   max-height: 142px;
 }
 
-/* Убирает белый/серый фон у фото техники на BackCard */
+/* Ð£Ð±Ð¸ÑÐ°ÐµÑ Ð±ÐµÐ»ÑÐ¹/ÑÐµÑÑÐ¹ ÑÐ¾Ð½ Ñ ÑÐ¾ÑÐ¾ ÑÐµÑÐ½Ð¸ÐºÐ¸ Ð½Ð° BackCard */
 .product-card__image img.product-card__img--knockout {
   mix-blend-mode: multiply;
   filter: none;
@@ -1230,7 +1230,7 @@ body.nav-open {
   color: var(--text);
 }
 
-/* Compare: Почему мы — две карточки: фото сверху, список снизу */
+/* Compare: ÐÐ¾ÑÐµÐ¼Ñ Ð¼Ñ â Ð´Ð²Ðµ ÐºÐ°ÑÑÐ¾ÑÐºÐ¸: ÑÐ¾ÑÐ¾ ÑÐ²ÐµÑÑÑ, ÑÐ¿Ð¸ÑÐ¾Ðº ÑÐ½Ð¸Ð·Ñ */
 .compare.screen-section {
   height: auto;
   min-height: 100vh;
@@ -1354,7 +1354,7 @@ body.nav-open {
 }
 
 .compare__items--bad li::before {
-  content: '✕';
+  content: 'â';
   position: absolute;
   left: 0;
   color: #c62828;
@@ -2072,17 +2072,23 @@ a.contact-item__value:hover { color: var(--brown); }
   }
 
   .hero-banner__title {
-    font-size: clamp(26px, 7.4vw, 34px);
+    font-size: clamp(22px, 6.2vw, 30px);
+    line-height: 1.12;
+    letter-spacing: 0.2px;
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 
   .hero-banner__desc {
-    font-size: clamp(16px, 4.5vw, 19px);
-    line-height: 1.5;
+    font-size: clamp(14px, 3.8vw, 17px);
+    line-height: 1.45;
+    max-width: none;
   }
 
   .hero-banner__order {
     font-size: 15px;
     padding: 14px 28px;
+    align-self: center;
   }
 
   .hero-banner__equipment {
@@ -2153,5 +2159,131 @@ a.contact-item__value:hover { color: var(--brown); }
 
   .modal__back {
     display: inline-flex;
+  }
+}
+
+/* Footer like «Î êîìïàíèè» */
+.rental-landing .site-footer {
+  background: #111;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 48px 0 28px;
+  border-top: 0;
+  margin-top: 0;
+}
+
+.rental-landing .site-footer__inner {
+  display: grid;
+  gap: 28px 32px;
+}
+
+.rental-landing .site-footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.rental-landing .site-footer a:hover {
+  color: #f4c400;
+}
+
+.rental-landing .site-footer__brand {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.rental-landing .site-footer__tagline {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.rental-landing .site-footer__phone {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.rental-landing .site-footer__email {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rental-landing .site-footer__email:hover {
+  color: #f4be00;
+}
+
+.rental-landing .footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.rental-landing .footer-youtube {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ff0000;
+  color: #fff;
+  text-decoration: none;
+}
+
+.rental-landing .footer-youtube:hover {
+  color: #fff;
+  background: #e60000;
+}
+
+.rental-landing .footer-socials .messenger-link {
+  width: 40px;
+  height: 40px;
+}
+
+.rental-landing .site-footer .footer-title {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rental-landing .site-footer .footer-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.rental-landing .site-footer .footer-links a {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+}
+
+.rental-landing .site-footer .footer-copy {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.rental-landing .site-footer .logo__img {
+  height: 36px;
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .rental-landing .site-footer__inner {
+    grid-template-columns: 1.2fr 1fr 1fr;
   }
 }

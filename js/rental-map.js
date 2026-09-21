@@ -14,15 +14,8 @@ const MAP_WORK_PERIODS = [
   'до 1 июня 2026'
 ];
 
-/** Техника на карте: Минск, Кобрин, Брест */
-const MAP_KOBRIN_FLEET_IDS = ['b879f-8965', 'ek12-8872', 'cdm308'];
-const MAP_BREST_FLEET_IDS = ['l933f-8926'];
-
-const MAP_CITY_COORDS = {
-  minsk: { place: 'Минск', coords: [53.9045, 27.5615] },
-  brest: { place: 'Брест', coords: [52.0976, 23.7341] },
-  kobrin: { place: 'Кобрин', coords: [52.2138, 24.3564] }
-};
+/** Техника на карте: только Минск */
+const MAP_CITY = { place: 'Минск', coords: [53.9045, 27.5615] };
 
 function shuffleArray(items) {
   const list = [...items];
@@ -48,28 +41,13 @@ function buildMapMarkers() {
   const fleet = FLEET.filter(item => item.id !== 'hmb68');
   const periods = shuffleArray(MAP_WORK_PERIODS);
 
-  const kobrinFleet = fleet.filter(item => MAP_KOBRIN_FLEET_IDS.includes(item.id));
-  const brestFleet = fleet.filter(item => MAP_BREST_FLEET_IDS.includes(item.id));
-  const minskFleet = fleet.filter(item =>
-    !MAP_KOBRIN_FLEET_IDS.includes(item.id) && !MAP_BREST_FLEET_IDS.includes(item.id)
-  );
-
-  const buildCityMarkers = (items, cityKey) => {
-    const city = MAP_CITY_COORDS[cityKey];
-    return items.map((equipment, index) => ({
-      coords: coordsWithJitter(city.coords, index, items.length),
-      place: city.place,
-      dates: periods[index % periods.length],
-      equipmentName: equipment.name,
-      image: equipment.image
-    }));
-  };
-
-  return [
-    ...buildCityMarkers(minskFleet, 'minsk'),
-    ...buildCityMarkers(brestFleet, 'brest'),
-    ...buildCityMarkers(kobrinFleet, 'kobrin')
-  ];
+  return fleet.map((equipment, index) => ({
+    coords: coordsWithJitter(MAP_CITY.coords, index, fleet.length),
+    place: MAP_CITY.place,
+    dates: periods[index % periods.length],
+    equipmentName: equipment.name,
+    image: equipment.image
+  }));
 }
 
 function createBalloonHtml(marker) {
@@ -88,8 +66,8 @@ function initYandexMap() {
 
   ymaps.ready(() => {
     const map = new ymaps.Map('yandexMap', {
-      center: [52.85, 26.4],
-      zoom: 7,
+      center: MAP_CITY.coords,
+      zoom: 11,
       controls: ['zoomControl', 'fullscreenControl']
     }, {
       suppressMapOpenBlock: true

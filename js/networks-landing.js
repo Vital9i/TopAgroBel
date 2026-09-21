@@ -5,6 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   captureMarketingParams();
+  initAdsFocus();
   initStickyHeader();
   initMessengerLinks();
   initSmoothScroll();
@@ -25,6 +26,30 @@ document.addEventListener("DOMContentLoaded", () => {
 /* -------------------------------------------------------------------------- */
 /* Marketing parameters                                                        */
 /* -------------------------------------------------------------------------- */
+
+function initAdsFocus() {
+  const focus = new URLSearchParams(location.search).get("focus");
+  if (!focus) return;
+
+  const map = {
+    seti: "Водопровод и канализация",
+    blagoustroystvo: "Благоустройство",
+    dorogi: "Дороги и площадки",
+  };
+  const value = map[focus];
+  if (!value) return;
+
+  document.querySelectorAll('select[name="work_type"]').forEach((select) => {
+    const option = Array.from(select.options).find((item) => item.value === value);
+    if (option) select.value = value;
+  });
+
+  document.querySelectorAll('input[name="selected_service"]').forEach((input) => {
+    if (!input.value || input.value === "Заказать расчёт" || /заявк/i.test(input.value)) {
+      input.value = value;
+    }
+  });
+}
 
 function captureMarketingParams() {
   const keys = [

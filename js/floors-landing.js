@@ -483,9 +483,12 @@ function initFloorCalc() {
     if (previewLayers) previewLayers.textContent = selected.dataset.layers || "";
     if (previewThickness) {
       const thickness = selected.dataset.thickness || "";
+      const thicknessLabel = selected.dataset.thicknessLabel || "";
       previewThickness.textContent = isConsult
         ? "Конструкция индивидуально"
-        : `Толщина до ${thickness} см`;
+        : thicknessLabel
+          ? `Толщина ${thicknessLabel}`
+          : `Толщина до ${thickness} см`;
     }
 
     syncFloorOptionCards(root);
@@ -523,7 +526,11 @@ function initFloorCalc() {
       if (totalEl) totalEl.textContent = formatMoney(total);
       if (currencyEl) currencyEl.hidden = false;
       if (metaEl) {
-        metaEl.textContent = `${selected.value} · от ${price} BYN/м² · до ${thickness} см · ${area || "—"} м²`;
+        metaEl.textContent = `${selected.value} · от ${price} BYN/м² · ${
+          selected.dataset.thicknessLabel
+            ? selected.dataset.thicknessLabel
+            : `до ${thickness} см`
+        } · ${area || "—"} м²`;
       }
     }
 
@@ -708,7 +715,7 @@ function initLeadForms() {
           name: String(formData.get("name") || "").trim(),
           phone: String(formData.get("phone") || "").trim(),
           formId: form.id || (form.hasAttribute("data-calc-order-form") ? "calc-order" : "lead-form"),
-          source: `Бетонные полы · ${String(formData.get("selected_service") || "Заявка")}`,
+          source: `Бетонные и наливные полы · ${String(formData.get("selected_service") || "Заявка")}`,
         });
         return;
 
